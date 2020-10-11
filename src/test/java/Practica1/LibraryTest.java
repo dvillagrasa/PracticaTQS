@@ -4,6 +4,9 @@
 package Practica1;
 
 import org.junit.Test;
+
+import mastermind.api.Library;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
