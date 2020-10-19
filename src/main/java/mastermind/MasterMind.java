@@ -1,6 +1,8 @@
 package mastermind;
 
-import mastermind.api.view.Vista;
+import mastermind.api.view.*;
+import mastermind.api.controller.*;
+import mastermind.api.model.*;
 
 /** 
  * Clase MasterMind - abcdefghijk
@@ -8,8 +10,9 @@ import mastermind.api.view.Vista;
  * @author Daniel Villagrasa Ramírez
  */ 
 public class MasterMind {
-	public static void main(String[] args) {	
+	public static void main(String[] args) {//Main del programa, llamamos a los constructores de cada clase	
 		Vista vista = new Vista();
-		vista.dibujarTablero();
+		Modelo modelo = new Modelo();
+		Controlador controlador = new Controlador (vista, modelo);
 	}
 }

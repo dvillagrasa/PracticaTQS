@@ -1,8 +1,10 @@
 package mastermind.api.view;
 
 import java.util.Random;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+
 //import java.util.Scanner;
 
 /** 
@@ -10,7 +12,8 @@ import java.util.Collections;
  * @author Daniel Luis Garcia 
  * @author Daniel Villagrasa Ramírez
  */ 
-public class Vista {
+public class Vista {//Clase Vista. Debe mostrar únicamente los datos que el controlador nos pase. Su función se limita a mostrar 
+	
 	public static final int MAX_INTENTOS = 9;
 	public static final int MAX_CLAVIJAS = 4;
 	
@@ -26,20 +29,16 @@ public class Vista {
 	}
 	
 	
-	//int[] numeros = {0,1,2,3,4,5,6,7,8,9};
-	public static final Random aleatorio = new Random();
-	
 	/**
 	 * Explicación
 	 */
-	public void dibujarTablero(){
+	public void dibujarTablero(ArrayList<Integer> combinacionAleatoria){
 		
-		System.out.println("                _______________________");
+		ArrayList<Integer> Combinacion = combinacionAleatoria;
+		
+		System.out.println("                ________________");
 		System.out.println(
-				"               |  " + generarCombinacionAleatoria()[0] +
-				"  |  " + generarCombinacionAleatoria()[1] +
-				"  |  " + generarCombinacionAleatoria()[2] +
-				"  |  " + generarCombinacionAleatoria()[3] +
+				"               |  " + combinacionAleatoria +
 				"  |  ");
 		System.out.println(" _______________________      _______________________");
 		 
@@ -80,13 +79,5 @@ public class Vista {
 			System.out.println(vecesJugado);
 		}*/
 	}
-	
-	public int[] generarCombinacionAleatoria() {
-		int[] combinacionNumerica = new int[4];
-		for(int i = 0; i < combinacionNumerica.length; i++) {
-			combinacionNumerica[i] = aleatorio.nextInt(8); 
-		}
-		Collections.shuffle(Arrays.asList(combinacionNumerica));
-		return combinacionNumerica;
-	}
 }
+	
