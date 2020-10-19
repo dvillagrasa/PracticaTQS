@@ -1,4 +1,4 @@
-package mastermind;
+package mastermind.api.view;
 
 import java.util.Random;
 import java.util.Arrays;

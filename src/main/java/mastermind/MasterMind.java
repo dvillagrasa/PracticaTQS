@@ -1,4 +1,7 @@
 package mastermind;
+
+import mastermind.api.view.Vista;
+
 /** 
  * Clase MasterMind - abcdefghijk
  * @author Daniel Luis Garcia 

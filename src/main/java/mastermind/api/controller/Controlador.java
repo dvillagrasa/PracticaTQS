@@ -1,4 +1,4 @@
-package mastermind;
+package mastermind.api.controller;
 /** 
  * Clase Controlador - abcdefghijk
  * @author Daniel Luis Garcia 
