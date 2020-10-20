@@ -16,17 +16,16 @@ public class ModeloTest {
 		Modelo modelo = new Modelo();
 		ArrayList<Integer> lista = modelo.generarCombinacionAleatoria();
 		boolean repetidoEsperado = false;
-		boolean repetido;
+		boolean repetido = false;
 		System.out.println(lista);
 		
 		for(int i =0; i < lista.size(); i++) {
 			  if (lista.lastIndexOf(lista.get(i)) != i)  {
 			    	repetido = true;
-			    	
-			    	assertEquals(repetido,repetidoEsperado);
 			  }
 			}
-		
+		assertEquals(repetido,repetidoEsperado);
+		//plantear break del for
 		
 		/*Set<String> set = new HashSet<>();
 		for(int i = 0; i < lista.size(); i++) {
