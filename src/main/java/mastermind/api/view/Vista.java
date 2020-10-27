@@ -1,6 +1,7 @@
 package mastermind.api.view;
 
 import java.util.Random;
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -59,9 +60,13 @@ public class Vista {//Clase Vista. Debe mostrar únicamente los datos que el cont
 		      System.out.println(" _______________________      _______________________");
 		    }
 		
-		/*int MAX_INTENTOS = 9;
+
+	}
+	
+	public void PedirNumeros()
+	{
+		int MAX_INTENTOS = 9;
 		int vecesJugado = 0;
-		
 		while(vecesJugado < MAX_INTENTOS) {
 			System.out.println("Inserta la combinación con el siguiente formato: X X X X");
 			Scanner escaner = new Scanner(System.in);
@@ -76,8 +81,9 @@ public class Vista {//Clase Vista. Debe mostrar únicamente los datos que el cont
 			}
 			
 			vecesJugado++;
-			System.out.println(vecesJugado);
-		}*/
+			System.out.println("\n" + "Veces jugadas" + " " + vecesJugado);
+		}
 	}
 }
+
 	

@@ -27,19 +27,6 @@ public class ModeloTest {
 		assertEquals(repetido,repetidoEsperado);
 		//plantear break del for
 		
-		/*Set<String> set = new HashSet<>();
-		for(int i = 0; i < lista.size(); i++) {
-		    if (set.contains(lista.get(i))) {
-		    	repetido = true;
-		    	assertEquals(repetido,repetidoEsperado);
-		    	i++;
-		    	
-		    } else {
-		    	repetido = true;
-		    	assertEquals(repetido,repetidoEsperado);
-		    	i++;
-		    }
-		}*/
 	}
 
 }

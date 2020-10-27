@@ -30,9 +30,7 @@ public class Modelo {//Clase Modelo, se encargará de cálculos y de dar valores/o
 		for(int i = 0; i < MAX_CLAVIJAS; i++) {
 			  if (combinacionNumerica.size() < MAX_CLAVIJAS) 
 	    	   {
-				  int numAleatorio = aleatorio.nextInt(8);
-				  combinacionNumerica.add(numAleatorio); //lo siguiente está comentado porque es la correcta implementación del código. Lo de arriba hace que no se revise si estamos añadiendo un número repetido
-	    		  /* while(repetido)
+	    		   while(repetido)
 	    		   {    int numAleatorio = aleatorio.nextInt(8);
 		    	      if (!combinacionNumerica.contains(numAleatorio)) 
 		    	         {
@@ -40,7 +38,7 @@ public class Modelo {//Clase Modelo, se encargará de cálculos y de dar valores/o
 		    	    	  repetido = false;
 		    	         }
 	    		   }
-	    		   repetido = true;*/
+	    		   repetido = true;
 	    	   }
 		}
 		Collections.shuffle(Arrays.asList(combinacionNumerica));

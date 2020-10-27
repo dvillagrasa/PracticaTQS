@@ -21,5 +21,6 @@ public class Controlador {//clase Controlador. Como su nombre indica controlará 
 		ArrayList<Integer> combinacionAleatoria = Modelo.generarCombinacionAleatoria();
 		
 		Vista.dibujarTablero(combinacionAleatoria);
+		Vista.PedirNumeros();
 		}
 }
