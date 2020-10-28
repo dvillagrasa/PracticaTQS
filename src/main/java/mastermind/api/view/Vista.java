@@ -9,13 +9,13 @@ import java.util.Collections;
 //import java.util.Scanner;
 
 /**
- * Clase Vista - abcdefghijk
+ * Clase Vista -  Debe mostrar únicamente los datos que el controlador nos pase.
+	 Su función se limita a mostrar
  * 
  * @author Daniel Luis Garcia
  * @author Daniel Villagrasa Ramírez
  */
-public class Vista {// Clase Vista. Debe mostrar únicamente los datos que el controlador nos pase.
-					// Su función se limita a mostrar
+public class Vista {
 
 	public static final int MAX_INTENTOS = 9;
 	public static final int MAX_CLAVIJAS = 4;
@@ -28,11 +28,10 @@ public class Vista {// Clase Vista. Debe mostrar únicamente los datos que el con
 		// obtenido = new String[]{"1","2","3","4"};
 		suposicion = new String[MAX_INTENTOS][MAX_CLAVIJAS];
 		respuesta = new String[MAX_CLAVIJAS];
-		// dibujarTablero();
-	}
+		}
 
 	/**
-	 * Explicación
+	 * función que muestra por pantalla el tablero
 	 */
 	public void dibujarTablero(ArrayList<Integer> combinacionAleatoria) {
 
@@ -56,9 +55,7 @@ public class Vista {// Clase Vista. Debe mostrar únicamente los datos que el con
 
 	@SuppressWarnings("resource")
 	public void PedirNumeros() {
-		// int MAX_INTENTOS = 9;
 		int vecesJugado = 0;
-
 		while (vecesJugado < MAX_INTENTOS) {
 			try {
 				System.out.println("Inserta la combinación con el siguiente formato: X X X X");

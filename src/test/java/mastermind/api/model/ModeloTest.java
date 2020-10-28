@@ -10,9 +10,12 @@ import org.junit.Test;
 
 public class ModeloTest {
 
-
 	@Test
-	public void testgenerarCombinacionAleatoria() {//función que prueba el correcto funcionamiento de la función de la clase Modelo generarCombinacionAleatoria 
+	public void testgenerarCombinacionAleatoria() {
+		/*
+		 * función que prueba el correcto funcionamiento de la función de la clase Modelo generarCombinacionAleatoria 
+		 */
+
 		Modelo modelo = new Modelo();
 		ArrayList<Integer> lista = modelo.generarCombinacionAleatoria();
 		boolean repetidoEsperado = false;
@@ -22,6 +25,7 @@ public class ModeloTest {
 		for(int i =0; i < lista.size(); i++) {
 			  if (lista.lastIndexOf(lista.get(i)) != i)  {
 			    	repetido = true;
+			    	break;
 			  }
 			}
 		assertEquals(repetido,repetidoEsperado);

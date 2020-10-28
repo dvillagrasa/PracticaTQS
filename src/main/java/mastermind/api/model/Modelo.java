@@ -8,11 +8,11 @@ import java.util.Random;
 import mastermind.api.view.*;
 
 /** 
- * Clase Modelo - abcdefghijk
+ * Clase Modelo - se encargará de cálculos y de dar valores/objetos que tengamos que utilizar en nuestro programa
  * @author Daniel Luis Garcia 
  * @author Daniel Villagrasa Ramírez
  */ 
-public class Modelo {//Clase Modelo, se encargará de cálculos y de dar valores/objetos que tengamos que utilizar en nuestro programa 
+public class Modelo {
 	
 	public static final int MAX_CLAVIJAS = 4;
 	
@@ -20,9 +20,10 @@ public class Modelo {//Clase Modelo, se encargará de cálculos y de dar valores/o
 	//int[] numeros = {0,1,2,3,4,5,6,7,8,9};
 	public static final Random aleatorio = new Random(); //función a la que llamamos para que nos devuelva un aleatorio 
 	
-	
-	
-	public ArrayList<Integer> generarCombinacionAleatoria() {//función que nos genera una lista con números aleatorios del 0 al 7
+	/*
+	 * función que nos genera una lista con números aleatorios del 0 al 7
+	 */
+	public ArrayList<Integer> generarCombinacionAleatoria() {
 		
 		boolean repetido = true;
 		ArrayList<Integer>combinacionNumerica = new ArrayList<Integer>();
