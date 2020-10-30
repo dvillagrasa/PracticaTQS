@@ -23,14 +23,11 @@ public class ModeloTest {
 		System.out.println(lista);
 		
 		for(int i =0; i < lista.size(); i++) {
-			  if (lista.lastIndexOf(lista.get(i)) != i)  {
-			    	repetido = true;
-			    	break;
+			  if (lista.lastIndexOf(lista.get(i)) != i) {
+				  repetido = true;
+				  break;
 			  }
 			}
 		assertEquals(repetido,repetidoEsperado);
-		//plantear break del for
-		
 	}
-
 }

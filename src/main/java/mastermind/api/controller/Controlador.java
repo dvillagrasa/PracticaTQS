@@ -14,13 +14,22 @@ public class Controlador {//clase Controlador. Como su nombre indica controlará 
 	Vista Vista;
 	Modelo Modelo;
 		
-	public Controlador(Vista vista, Modelo modelo) {
+	public Controlador(Vista vista, Modelo modelo) throws Exception {
 		Modelo = modelo;
 		Vista = vista;
 		
 		ArrayList<Integer> combinacionAleatoria = Modelo.generarCombinacionAleatoria();
+		//String[] combinacionJugador = Vista.pedirNumeros();
+		//char[] entradaJugadorObtenida = Vista.obtenerEntradaJugador();
+		//Vista.pedirNumeros();
 		
-		Vista.dibujarTablero(combinacionAleatoria);
-		Vista.PedirNumeros();
-		}
+		Vista.buclePrincipal(combinacionAleatoria);
+		/*try {
+			Vista.comprobarEntradaJugador(entradaJugadorObtenida);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();*/
+	}
+		//Vista.dibujarTablero(combinacionAleatoria);
 }
+

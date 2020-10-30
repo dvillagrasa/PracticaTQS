@@ -10,7 +10,7 @@ import mastermind.api.model.*;
  * @author Daniel Villagrasa Ramírez
  */ 
 public class MasterMind {
-	public static void main(String[] args) {//Main del programa, llamamos a los constructores de cada clase	
+	public static void main(String[] args) throws Exception {//Main del programa, llamamos a los constructores de cada clase	
 		Vista vista = new Vista();
 		Modelo modelo = new Modelo();
 		Controlador controlador = new Controlador (vista, modelo);
