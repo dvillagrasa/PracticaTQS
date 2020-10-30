@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class VistaTest{
 	
-	String Entrada[] = new String[]{"22", "2" , "3" , "4"};
+	String Entrada[] = new String[]{"0", "2" , "3" , "4"};
 	
 	/*
 	 * Bueno, te comento: Esta función de test es diferente a la otra. Aquí no estamos comprobando que 

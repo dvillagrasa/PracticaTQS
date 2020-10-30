@@ -17,10 +17,7 @@ import java.util.Collections;
  */
 public class Vista {
 
-	public static final int MAX_INTENTOS = 9;
-	public static final int MAX_CLAVIJAS = 4;
-	
-	public int vecesJugado = 0;
+
 	public Scanner escaner = new Scanner(System.in);
 
 	private char[] WWW;
@@ -29,27 +26,10 @@ public class Vista {
 
 	public Vista() {
 		// obtenido = new String[]{"1","2","3","4"};
-		WWW = new char[MAX_CLAVIJAS];
-		AAA = new char[MAX_CLAVIJAS];
+		//WWW = new char[MAX_CLAVIJAS];
+		//AAA = new char[MAX_CLAVIJAS];
 		}
 
-	public void buclePrincipal(ArrayList<Integer> combinacionAleatoria) throws Exception {
-		//int vecesJugado = 0;		
-		char[] res = null;
-		try {
-			while (vecesJugado < MAX_INTENTOS) {
-				solicitarCombinacion();
-				res = obtenerEntradaJugador();
-				comprobarEntradaJugador(res);
-				mostrarJugada(res);
-				vecesJugado++;
-			}
-			System.out.println("La combinación secreta era: " + combinacionAleatoria);
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		escaner.close();
-	}
 	
 	public void solicitarCombinacion() {
 		System.out.println("Inserta la combinación con el siguiente formato: XXXX");
@@ -76,7 +56,7 @@ public class Vista {
 		}
 	}
 	
-	public void mostrarJugada(char[] entradaJugadorCasteada) {
+	public void mostrarJugada(char[] entradaJugadorCasteada, int vecesJugado) {
 		System.out.println("Jugada #" + vecesJugado + " " + Arrays.toString(entradaJugadorCasteada) + "\n");
 	}
 }
