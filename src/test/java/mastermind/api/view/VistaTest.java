@@ -9,7 +9,11 @@ import org.junit.Test;
 
 public class VistaTest{
 	
-	String Entrada[] = new String[]{"0", "2" , "3" , "4"};
+	/**
+	 * entrada es un array de cadena de carácteres que será usado para realizar pruebas de
+	 * la función comprobarEntradaJugador().
+	 */
+	private static final char[] entrada = {'0', '2' , '9' , '4'};
 	
 	/*
 	 * Bueno, te comento: Esta función de test es diferente a la otra. Aquí no estamos comprobando que 
@@ -20,43 +24,13 @@ public class VistaTest{
 	 * lo que controlamos es que sean números enteros entre 0 y 8. He retocado cosas en las excepciones y habría que tener en cuenta otras condiciones
 	 */
 
+	//@Test
+	//public void comprobarEntradaJugador() throws Exception {
 	@Test
-	public void testPedirNumeros() {
-		int vecesJugado = 0;
-		boolean valorEsperado = false;
-		boolean valor = false;
-		while (vecesJugado < 9) {
-			try {
-
-				int combinacionJugador[] = new int[4];
-
-				for (int i = 0; i < Entrada.length; i++) {
-					combinacionJugador[i] = Integer.parseInt(Entrada[i]);
-				}
-
-				for (int i = 0; i < combinacionJugador.length; i++) {
-					if ((combinacionJugador[i] < 0) || (combinacionJugador[i] > 8)) {
-						valor = true;
-						throw new Exception("El número " +combinacionJugador[i] + " está fuera del rango [0 - 8].");
-					} else {
-						System.out.println("El número " + combinacionJugador[i] + " es válido.");
-					}
-
-				}
-				vecesJugado++;
-				System.out.println("\n" + "Número de jugadas: " + vecesJugado);
-			} catch (NumberFormatException e) {
-				System.out.println("La combinación debe de ser numérica.");
-				valor = true;
-				break;
-			
-			} catch (Exception e) {
-				System.out.println(e);
-				break;
-			}
-
-		}
-		assertEquals(valorEsperado,valor);
+	public void comprobarEntradaJugador() {
+		boolean esperado = false;
+		boolean resultado = Vista.comprobarEntradaJugador(entrada);
+		
+		assertEquals(resultado, esperado);
 	}
-
 }

@@ -9,25 +9,26 @@ import java.util.Set;
 import org.junit.Test;
 
 public class ModeloTest {
-
+	/**
+	 * modelo es una instancia de la clase Modelo.
+	 */
+	Modelo modelo = new Modelo();
+	
+	/**
+	 * testgenerarCombinaconAleatoria es una función que prueba el correcto funcionamiento de la función
+	 * generarCombinacionAleatoria. Comprobando que realmente no se repite ningún número.
+	 */
 	@Test
 	public void testgenerarCombinacionAleatoria() {
-		/*
-		 * función que prueba el correcto funcionamiento de la función de la clase Modelo generarCombinacionAleatoria 
-		 */
+		boolean esRepetido = false;
 
-		Modelo modelo = new Modelo();
-		ArrayList<Integer> lista = modelo.generarCombinacionAleatoria();
-		boolean repetidoEsperado = false;
-		boolean repetido = false;
-		System.out.println(lista);
-		
-		for(int i =0; i < lista.size(); i++) {
-			  if (lista.lastIndexOf(lista.get(i)) != i) {
-				  repetido = true;
+		String[] resultado = Modelo.generarCombinacionAleatoria();
+		for(int i = 1; i < resultado.length; i++) {
+			  if (resultado [i-1] == resultado[i]) {
+				  esRepetido = true;
 				  break;
 			  }
 			}
-		assertEquals(repetido,repetidoEsperado);
+		assertFalse(esRepetido); //Esperamos que sea falso, es decir, que no encuentre ninguna repetición.
 	}
 }

@@ -16,30 +16,33 @@ public class Controlador {
 	Vista Vista;
 	Modelo Modelo;
 	
-	public static final int MAX_INTENTOS = 9;
-	public int vecesJugado = 0;
+	public static final int MAX_INTENTOS = 10;
+	public int vecesJugado = 1;
 	
 	/*
 	 * Controlador del programa, hará las llamadas a funciones de vista y modelo
 	 * controlará que se haya ganado o agotado turnos
 	 */
 		
-	public Controlador(Vista vista, Modelo modelo) throws Exception {
+	public Controlador(Vista vista, Modelo modelo){
 		Modelo = modelo;
 		Vista = vista;
 		
-		char[] res = null;
-		ArrayList<Integer> combinacionAleatoria = Modelo.generarCombinacionAleatoria();
+		char[] resultadoEntradaJugador = null;
+		//ArrayList<Integer> combinacionAleatoria = Modelo.generarCombinacionAleatoria();
 		try {
 			while (vecesJugado < MAX_INTENTOS) {
+				mastermind.api.model.Modelo.generarCombinacionAleatoria();
 				Vista.solicitarCombinacion();
-				res = Vista.obtenerEntradaJugador();
-				Vista.comprobarEntradaJugador(res);
-				Vista.mostrarJugada(res,vecesJugado);
+				resultadoEntradaJugador = Vista.obtenerEntradaJugador();
+				while(!mastermind.api.view.Vista.comprobarEntradaJugador(resultadoEntradaJugador)) { //Equivale a una especie de trow
+					Vista.solicitarNuevamenteCombinacion();
+					resultadoEntradaJugador = Vista.obtenerEntradaJugador();
+				}
+				Vista.mostrarJugada(resultadoEntradaJugador,vecesJugado);
 				vecesJugado++;
 			}
-			
-			System.out.println("La combinación secreta era: " + combinacionAleatoria);
+			//System.out.println("La combinación secreta era: " + combinacionAleatoria);
 			} catch (Exception e) {
 				e.printStackTrace();
 				}
