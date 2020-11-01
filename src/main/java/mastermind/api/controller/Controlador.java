@@ -28,7 +28,7 @@ public class Controlador {
 		Modelo = modelo;
 		Vista = vista;
 		
-		char[] resultadoEntradaJugador = null;
+		char[][] resultadoEntradaJugador = null;
 		//ArrayList<Integer> combinacionAleatoria = Modelo.generarCombinacionAleatoria();
 		try {
 			mastermind.api.model.Modelo.generarCombinacionAleatoria();

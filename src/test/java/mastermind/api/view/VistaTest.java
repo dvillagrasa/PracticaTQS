@@ -13,7 +13,7 @@ public class VistaTest{
 	 * entrada es un array de cadena de carácteres que será usado para realizar pruebas de
 	 * la función comprobarEntradaJugador().
 	 */
-	private static final char[] entrada = {'0', '2' , '9' , '4'};
+	private static final char[][] entrada = {{'0'}, {'2'} , {'9'} , {'4'}};
 	
 	/*
 	 * Bueno, te comento: Esta función de test es diferente a la otra. Aquí no estamos comprobando que 

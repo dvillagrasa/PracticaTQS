@@ -39,14 +39,15 @@ public class Vista {
 	 * en un array de cadenas de carácteres para convertirlo a un array de carácteres más tarde.
 	 * @return Devuelve la entrada del jugador como un array de carácteres.
 	 */
-	public char[] obtenerEntradaJugador() {
-		char[] entradaJugadorCasteada = null;
-
+	public char[][] obtenerEntradaJugador() {
+		char[][] entradaJugadorCasteada = new char[4][];
+		
 		if(escaner.hasNextLine()) {
-			String entradaJugador = escaner.nextLine();
-			entradaJugadorCasteada = entradaJugador.toCharArray();
+			String[] str = escaner.nextLine().split(""); //Separa 1111 en 1, 1, 1, 1
+			for(int i = 0; i < str.length; i++) {
+				entradaJugadorCasteada[i] = str[i].toCharArray();
+			}
 		}
-		//return Arrays.toString(entradaJugadorCasteada);
 		return entradaJugadorCasteada;
 	}
 	
@@ -58,10 +59,10 @@ public class Vista {
 	 * rango de 0 a 8 (ambos incluídos).
 	 */
 	//public static boolean comprobarEntradaJugador(char[] entradaJugadorCasteada) throws Exception {
-	public static boolean comprobarEntradaJugador(char[] entradaJugadorCasteada) {
+	public static boolean comprobarEntradaJugador(char[][] entradaJugadorCasteada) {
 		boolean entradaJugadorCorrecta = true;
 		for(int i = 0; i < entradaJugadorCasteada.length; i++) {
-			if((entradaJugadorCasteada[i] < '0') || (entradaJugadorCasteada[i] > '8')) {
+			if((entradaJugadorCasteada[i][0] < '0') || (entradaJugadorCasteada[i][0] > '8')) {
 				entradaJugadorCorrecta = false;
 				return entradaJugadorCorrecta;
 				//throw new Exception("El número " + entradaJugadorCasteada[i] + " está fuera del rango [0 - 8]."); // Si se ejecuta la execpción nunca hará el return.
@@ -76,7 +77,7 @@ public class Vista {
 	 * @param entradaJugadorCasteada es el array de carácteres de la función obtenerEntradaJugador().
 	 * @param vecesJugado es el número de veces que se ha intentado una combinación.
 	 */
-	public void mostrarJugada(char[] entradaJugadorCasteada, int vecesJugado) {
-		System.out.println("Jugada #" + vecesJugado + " " + Arrays.toString(entradaJugadorCasteada) + "\n");
+	public void mostrarJugada(char[][] entradaJugadorCasteada, int vecesJugado) {
+		System.out.println("Jugada #" + vecesJugado + " " + Arrays.deepToString(entradaJugadorCasteada) + "\n");
 	}
 }
