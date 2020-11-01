@@ -40,7 +40,7 @@ public class Vista {
 	 * @return Devuelve la entrada del jugador como un array de carácteres.
 	 */
 	public char[] obtenerEntradaJugador() {
-		char[] entradaJugadorCasteada=null;
+		char[] entradaJugadorCasteada = null;
 
 		if(escaner.hasNextLine()) {
 			String entradaJugador = escaner.nextLine();
@@ -54,7 +54,6 @@ public class Vista {
 	 * comprobarEntradaJugador es una función que comprueba que los carácteres que el jugador ha introducido por teclado
 	 * sean entre 0 y 8, ambos incluídos. En caso de que no sea así se mostrará un mensaje por pantalla con un aviso.
 	 * @param entradaJugadorCasteada es el array de carácteres de la función obtenerEntradaJugador().
-	 * @throws Exception
 	 * @return Devuelve un booleano que será verdadero cuando toda la entrada del jugador sean carácteres dentro del
 	 * rango de 0 a 8 (ambos incluídos).
 	 */

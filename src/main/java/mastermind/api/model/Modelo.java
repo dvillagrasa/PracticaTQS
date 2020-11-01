@@ -1,5 +1,6 @@
 package mastermind.api.model;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -41,11 +42,12 @@ public class Modelo {
 	 * generarCombinacionAleatoria devuelve un array de cadena de carácteres. Este array es 
 	 * la combinación secreta del juego, la cual deberá ser adivinada por el jugador.
 	 * 
-	 * @return Devuelve el array de cadena de carácteres secreto. 
+	 * @return Devuelve el array de cadenas de carácteres secreto. 
 	 */
-	public static String[] generarCombinacionAleatoria(){
+	public static char[][] generarCombinacionAleatoria(){
 		
 		String[] combinacionAleatoria = new String [4];
+		char[][] combinacionAleatoriaCasteada = new char [combinacionAleatoria.length][];
 		
 		ArrayList<String> cola = new ArrayList<>();
 		for(int i = 0; i < 9; i++) {
@@ -57,9 +59,12 @@ public class Modelo {
 			int numAleatorio = aleatorio.nextInt(cola.size());
 			combinacionAleatoria[i] = cola.get(numAleatorio);
 			cola.remove(numAleatorio);
+			
+			combinacionAleatoriaCasteada[i] = combinacionAleatoria[i].toCharArray(); 
 		}
 		System.out.println(cola); // Imprime la cola sin 4 números.
-		System.out.println("La combinación aleatoria es: " + Arrays.toString(combinacionAleatoria));
-		return combinacionAleatoria;
+		System.out.println("La combinación aleatoria es: " + Arrays.deepToString(combinacionAleatoriaCasteada)); // Imprime [[X],[X],[X],[X]]
+
+		return combinacionAleatoriaCasteada;
 	}
 }

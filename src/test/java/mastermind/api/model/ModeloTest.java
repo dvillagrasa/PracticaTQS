@@ -3,6 +3,7 @@ package mastermind.api.model;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,14 +23,21 @@ public class ModeloTest {
 	public void testgenerarCombinacionAleatoria() {
 		boolean esRepetido = false;
 
-		String[] resultado = Modelo.generarCombinacionAleatoria();
+		char[][] resultado = Modelo.generarCombinacionAleatoria();
+		//char[][] resultado = {'1', '2' , '3' , '5'}; //Array de carácteres para comprobar que sí funciona el test.
 		for (int i = 0; i < resultado.length; i++) { 
 			for (int j = i + 1 ; j < resultado.length; j++) { 
-				if (resultado[i].equals(resultado[j])) { 
-					esRepetido = true; 
-				}	
+				if(resultado[i] == resultado[j]) {
+					//System.out.println("Repetido: " + resultado[i]);
+					esRepetido = true;
+				}
 			}
 		assertFalse(esRepetido);//Esperamos que sea falso, es decir, que no encuentre ninguna repetición.
 		} 
 	}
+	
+	/*@Test
+	public void testrevisarAciertosJugador() {
+		String[] combinacionAleatoria = {};
+	}*/
 }
