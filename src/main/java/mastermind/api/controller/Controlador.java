@@ -31,8 +31,8 @@ public class Controlador {
 		char[] resultadoEntradaJugador = null;
 		//ArrayList<Integer> combinacionAleatoria = Modelo.generarCombinacionAleatoria();
 		try {
+			mastermind.api.model.Modelo.generarCombinacionAleatoria();
 			while (vecesJugado < MAX_INTENTOS) {
-				mastermind.api.model.Modelo.generarCombinacionAleatoria();
 				Vista.solicitarCombinacion();
 				resultadoEntradaJugador = Vista.obtenerEntradaJugador();
 				while(!mastermind.api.view.Vista.comprobarEntradaJugador(resultadoEntradaJugador)) { //Equivale a una especie de trow
