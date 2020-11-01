@@ -27,7 +27,7 @@ public class VistaTest{
 	//@Test
 	//public void comprobarEntradaJugador() throws Exception {
 	@Test
-	public void comprobarEntradaJugador() {
+	public void testcomprobarEntradaJugador() {
 		boolean esperado = false;
 		boolean resultado = Vista.comprobarEntradaJugador(entrada);
 		

@@ -23,12 +23,13 @@ public class ModeloTest {
 		boolean esRepetido = false;
 
 		String[] resultado = Modelo.generarCombinacionAleatoria();
-		for(int i = 1; i < resultado.length; i++) {
-			  if (resultado [i-1] == resultado[i]) {
-				  esRepetido = true;
-				  break;
-			  }
+		for (int i = 0; i < resultado.length; i++) { 
+			for (int j = i + 1 ; j < resultado.length; j++) { 
+				if (resultado[i].equals(resultado[j])) { 
+					esRepetido = true; 
+				}	
 			}
-		assertFalse(esRepetido); //Esperamos que sea falso, es decir, que no encuentre ninguna repetición.
+		assertFalse(esRepetido);//Esperamos que sea falso, es decir, que no encuentre ninguna repetición.
+		} 
 	}
 }
