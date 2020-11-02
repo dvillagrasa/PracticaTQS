@@ -19,13 +19,12 @@ public class ModeloTest {
 	Modelo modelo = new Modelo();
 	Vista vista = new Vista();
 	public static final int MAX_CLAVIJAS = 4;
-	public static boolean error = false;
 	
 	/**
 	 * testgenerarCombinaconAleatoria es una función que prueba el correcto funcionamiento de la función
 	 * generarCombinacionAleatoria. Comprobando que realmente no se repite ningún número.
 	 */
-	/*@Test
+	@Test
 	public void testgenerarCombinacionAleatoria() {
 		boolean esRepetido = false;
 		char[][] resultado = Modelo.generarCombinacionAleatoria();
@@ -39,34 +38,53 @@ public class ModeloTest {
 			}
 		assertFalse(esRepetido); //Esperamos que sea falso, es decir, que no encuentre ninguna repetición, si no da fallo
 		} 
-	}*/
+	}
 	
+	/*
+	 * Función que testea el método CompararCombinaciones del modelo
+	 * fijamos una combinación aleatoria, una introducida por el jugado
+	 * y el resultado que esperamos en formato {Aciertos negros, Aciertos Blancos}
+	 * comparamos el esperado con el obtenido
+	 * Hay varios casos, hay que descomentar solo el que se vaya a utilizar
+	 */
 	@Test
 	public void testCompararCombinaciones() {
-		int aciertosBlancos = 0;
-		int aciertosNegros = 0;
-		//char[][] combinacionAleatoria = Modelo.generarCombinacionAleatoria();
-		//char[] entradaJugador = vista.obtenerEntradaJugador();
+		
+		// Caso 1: 4 Negros, 0 Blancos #BLM
 		
 		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
-		char[][] combinacionJugador = {{'0'},{'4'},{'1'},{'5'}};
+		char[][] combinacionJugador = {{'5'},{'4'},{'1'},{'0'}};
+		int[] esperado = {4, 0};
+	    int[] resultado = Modelo.CompararCombinaciones(combinacionAleatoria, combinacionJugador);
+	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
 		
 		
-
-		for(int i = 0; i < MAX_CLAVIJAS; i++){
-			for (int j = 0; j < combinacionAleatoria.length; j++){
-				if(combinacionAleatoria[i][0] == combinacionJugador[j][0]){
-					if(combinacionAleatoria[i][0] == combinacionJugador[i][0]) {
-						aciertosBlancos++;
-					} else {
-						aciertosNegros++;
-						}
-					}
-				}
-			}
-		System.out.println("Aciertos Negros: " + aciertosNegros);
-		System.out.println("Aciertos Blancos: " + aciertosBlancos);
-		assertFalse(error); //Esperamos que sea false, es decir, que no haya errores
-		}
+		// Caso 2: 2 Negros, 2 Blancos
+	    /*
+		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
+		char[][] combinacionJugador = {{'5'},{'4'},{'0'},{'1'}};
+		int[] esperado = {2, 2};
+	    int[] resultado = Modelo.CompararCombinaciones(combinacionAleatoria, combinacionJugador);
+	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
+	    */
+		
+		// Caso 3: 0 Negros, 4 Blancos
+	    /*
+		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
+		char[][] combinacionJugador = {{'0'},{'1'},{'4'},{'5'}};
+		int[] esperado = {0, 4};
+	    int[] resultado = Modelo.CompararCombinaciones(combinacionAleatoria, combinacionJugador);
+	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
+	    */
+		
+	    // Caso 4: 0 Negros, 0 Blancos
+		/*
+		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
+		char[][] combinacionJugador = {{'3'},{'6'},{'2'},{'7'}};
+		int[] esperado = {0, 0};
+	    int[] resultado = Modelo.CompararCombinaciones(combinacionAleatoria, combinacionJugador);
+	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
+	    */
+	}
 
 }

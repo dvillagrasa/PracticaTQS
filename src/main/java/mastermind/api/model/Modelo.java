@@ -75,22 +75,22 @@ public class Modelo {
 
 		char[][] combinacionAleatoria = Aleatoria;
 		char[][] combinacionJugador = Usuario;
-		int aciertosBlancos = 0;
 		int aciertosNegros = 0;
+		int aciertosBlancos = 0;
 		
 
 		for(int i = 0; i < MAX_CLAVIJAS; i++){
 			for (int j = 0; j < combinacionAleatoria.length; j++){
 				if(combinacionAleatoria[i][0] == combinacionJugador[j][0]){
 					if(combinacionAleatoria[i][0] == combinacionJugador[i][0]) {
-						aciertosBlancos++;
+						aciertosNegros++; //ACIERTO POSICION Y COLOR (RECORDATORIO PARA DANI PORQUE ME OLVIDO DE COMO VA ESTO)
 					} else {
-						aciertosNegros++;
+						aciertosBlancos++; //ACIERTO SOLO POSICION (RECORDATORIO PARA DANI PORQUE ME OLVIDO DE COMO VA ESTO)
 						}
 					}
 				}
 			}
-		return new int[] {aciertosBlancos, aciertosNegros};
+		return new int[] {aciertosNegros, aciertosBlancos};
 		}
 	
 	
