@@ -62,7 +62,7 @@ public class Modelo {
 			
 			combinacionAleatoriaCasteada[i] = combinacionAleatoria[i].toCharArray(); 
 		}
-		System.out.println(cola); // Imprime la cola sin 4 números.
+		//System.out.println(cola);  Imprime la cola sin 4 números.
 		System.out.println("La combinación aleatoria es: " + Arrays.deepToString(combinacionAleatoriaCasteada)); // Imprime [[X],[X],[X],[X]]
 
 		return combinacionAleatoriaCasteada;

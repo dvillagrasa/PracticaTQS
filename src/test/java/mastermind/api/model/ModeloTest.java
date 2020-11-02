@@ -18,6 +18,8 @@ public class ModeloTest {
 	 */
 	Modelo modelo = new Modelo();
 	Vista vista = new Vista();
+	public static final int MAX_CLAVIJAS = 4;
+	public static boolean error = false;
 	
 	/**
 	 * testgenerarCombinaconAleatoria es una función que prueba el correcto funcionamiento de la función
@@ -27,41 +29,45 @@ public class ModeloTest {
 	public void testgenerarCombinacionAleatoria() {
 		boolean esRepetido = false;
 		char[][] resultado = Modelo.generarCombinacionAleatoria();
-		//char[][] resultado = {{'5'},{'4'},{'0'},{'0'}}; //Array de carácteres para comprobar que sí funciona el test.
-		
-		//System.out.println(Arrays.deepToString(resultado)); Imprime [[5], [4], [0], [0]]
 		
 		for (int i = 0; i < resultado.length; i++) { 
 			for (int j = i + 1 ; j < resultado.length; j++) { 
-				//System.out.println("tstI " + Arrays.toString(resultado[i])); //Imprime [5] (si i = 0)
-				//System.out.println("tstJ " + Arrays.toString(resultado[j])); //Imprime [4] (si j = 1)
 				if(resultado[i][0] == resultado[j][0]) {
-					//System.out.println("Repetido: " + Arrays.toString(resultado[i])); //Imprime cuál es el número repetido (en este caso el [0])
 					esRepetido = true;
+					break;
 				}
 			}
-		assertFalse(esRepetido); //Esperamos que sea falso, es decir, que no encuentre ninguna repetición.
+		assertFalse(esRepetido); //Esperamos que sea falso, es decir, que no encuentre ninguna repetición, si no da fallo
 		} 
 	}*/
 	
 	@Test
-	public void testrevisarAciertosJugador() {
-		boolean esIgual = true;
+	public void testCompararCombinaciones() {
+		int aciertosBlancos = 0;
+		int aciertosNegros = 0;
 		//char[][] combinacionAleatoria = Modelo.generarCombinacionAleatoria();
 		//char[] entradaJugador = vista.obtenerEntradaJugador();
 		
-		char[][] combinacionAleatoria = {{'5'},{'4'},{'0'},{'0'}};
-		//char[] entradaJugador = {'5','4','0','0'};
-		char[][] entradaJugador = {{'5'},{'4'},{'0'},{'0'}};
+		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
+		char[][] combinacionJugador = {{'0'},{'4'},{'1'},{'5'}};
 		
-		for (int i = 0; i < combinacionAleatoria.length; i++) { 
-			System.out.println("tstI " + Arrays.toString(combinacionAleatoria[i]));
-			//System.out.println("tstJ " + Array.getChar(entradaJugador, i));
-			System.out.println("tstI " + Arrays.toString(entradaJugador[i]));
-			if(combinacionAleatoria[i][0] != entradaJugador[i][0]) {
-				esIgual = false;
+		
+
+		for(int i = 0; i < MAX_CLAVIJAS; i++){
+			for (int j = 0; j < combinacionAleatoria.length; j++){
+				if(combinacionAleatoria[i][0] == combinacionJugador[j][0]){
+					if(combinacionAleatoria[i][0] == combinacionJugador[i][0]) {
+						aciertosBlancos++;
+					} else {
+						aciertosNegros++;
+						}
+					}
+				}
 			}
+		System.out.println("Aciertos Negros: " + aciertosNegros);
+		System.out.println("Aciertos Blancos: " + aciertosBlancos);
+		assertFalse(error); //Esperamos que sea false, es decir, que no haya errores
 		}
-		assertTrue(esIgual); //Esperamos que sea true, es decir, que sean iguales.
-	}
+	
+
 }
