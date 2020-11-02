@@ -1,5 +1,7 @@
 package mastermind.api.model;
 
+
+
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +28,7 @@ public class Modelo {
 	 * para mostrar los aciertos de números y/o posición (serían los colores blanco y negro).
 	 */
 	public static final int MAX_CLAVIJAS = 4;	
+
 	/**
 	 * aleatorio es la variable que nos permite obtener un número aleatorio dentro de un
 	 * conjunto de datos.
@@ -67,4 +70,28 @@ public class Modelo {
 
 		return combinacionAleatoriaCasteada;
 	}
+	
+	public static int[] CompararCombinaciones(char[][] Aleatoria, char[][] Usuario) {
+
+		char[][] combinacionAleatoria = Aleatoria;
+		char[][] combinacionJugador = Usuario;
+		int aciertosBlancos = 0;
+		int aciertosNegros = 0;
+		
+
+		for(int i = 0; i < MAX_CLAVIJAS; i++){
+			for (int j = 0; j < combinacionAleatoria.length; j++){
+				if(combinacionAleatoria[i][0] == combinacionJugador[j][0]){
+					if(combinacionAleatoria[i][0] == combinacionJugador[i][0]) {
+						aciertosBlancos++;
+					} else {
+						aciertosNegros++;
+						}
+					}
+				}
+			}
+		return new int[] {aciertosBlancos, aciertosNegros};
+		}
+	
+	
 }

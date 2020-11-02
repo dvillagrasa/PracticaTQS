@@ -68,6 +68,5 @@ public class ModeloTest {
 		System.out.println("Aciertos Blancos: " + aciertosBlancos);
 		assertFalse(error); //Esperamos que sea false, es decir, que no haya errores
 		}
-	
 
 }

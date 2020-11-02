@@ -29,12 +29,21 @@ public class Controlador {
 		Vista = vista;
 		
 		char[][] resultadoEntradaJugador = null;
+		int[] aciertos;
+		
 		//ArrayList<Integer> combinacionAleatoria = Modelo.generarCombinacionAleatoria();
 		try {
-			mastermind.api.model.Modelo.generarCombinacionAleatoria();
+			char[][] combinacionAleatoria = mastermind.api.model.Modelo.generarCombinacionAleatoria();
 			while (vecesJugado < MAX_INTENTOS) {
+				
 				Vista.solicitarCombinacion();
 				resultadoEntradaJugador = Vista.obtenerEntradaJugador();
+				aciertos = mastermind.api.model.Modelo.CompararCombinaciones(combinacionAleatoria, resultadoEntradaJugador);
+				System.out.println("Aciertos Negros: " + aciertos[0]);
+				System.out.println("Aciertos Blancos: " + aciertos[1]);
+				//llamada a función que compruebe si hemos ganado
+				//condicion si hemos ganado
+				//no hemos ganado
 				while(!mastermind.api.view.Vista.comprobarEntradaJugador(resultadoEntradaJugador)) { //Equivale a una especie de trow
 					Vista.solicitarNuevamenteCombinacion();
 					resultadoEntradaJugador = Vista.obtenerEntradaJugador();
