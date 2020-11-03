@@ -41,7 +41,7 @@ public class Controlador {
 				aciertos = mastermind.api.model.Modelo.CompararCombinaciones(combinacionAleatoria, resultadoEntradaJugador);
 				System.out.println("Aciertos Negros: " + aciertos[0]);
 				System.out.println("Aciertos Blancos: " + aciertos[1]);
-				if (Modelo.haGanado(aciertos)) { //llamada a función que compruebe si hemos ganado
+				if (mastermind.api.model.Modelo.haGanado(aciertos)) { //llamada a función que compruebe si hemos ganado
 					System.out.println("Has Ganado!!! ");
 					break;
 				} else { //no hemos ganado

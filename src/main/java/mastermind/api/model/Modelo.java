@@ -71,6 +71,13 @@ public class Modelo {
 		return combinacionAleatoriaCasteada;
 	}
 	
+	/**
+	 * Método que recorre y compara ambas combinaciones y devuelve el número de aciertos 
+	 * en base a las normas del Mastermind
+	 * @param Aleatoria - Es la combinacion aleatoria generada por el programa
+	 * @param Usuario - Es la combinación entrada por el usuario
+	 * @return Devuelve un string de int donde se muestra el número de [aciertosNegros, aciertosBlancos]
+	 */
 	public static int[] CompararCombinaciones(char[][] Aleatoria, char[][] Usuario) {
 
 		char[][] combinacionAleatoria = Aleatoria;
@@ -92,19 +99,22 @@ public class Modelo {
 			}
 		return new int[] {aciertosNegros, aciertosBlancos};
 		}
-	
-	public boolean haGanado(int[] aciertos) {
+	/**
+	 * 
+	 * @param aciertos - Recibimos el string de int con el número de aciertos negros y blancos
+	 * @return Devolvemos true si el número de aciertos negros es = 4
+	 * false si el número de aciertos negros es cualquier otro
+	 */
+	public static boolean haGanado(int[] aciertos) {
 		
 		boolean ganar = false;
 		
 		if(aciertos[0] == MAX_CLAVIJAS) {
 			ganar = true;
 		}
-
 		else {
 			ganar = false;
-		}
-		
+		}	
 		return ganar;
 	}
 	
