@@ -93,5 +93,20 @@ public class Modelo {
 		return new int[] {aciertosNegros, aciertosBlancos};
 		}
 	
+	public boolean haGanado(int[] aciertos) {
+		
+		boolean ganar = false;
+		
+		if(aciertos[0] == MAX_CLAVIJAS) {
+			ganar = true;
+		}
+
+		else {
+			ganar = false;
+		}
+		
+		return ganar;
+	}
+	
 	
 }

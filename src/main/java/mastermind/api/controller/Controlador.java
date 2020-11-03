@@ -30,6 +30,7 @@ public class Controlador {
 		
 		char[][] resultadoEntradaJugador = null;
 		int[] aciertos;
+		boolean fin = false;
 		
 		//ArrayList<Integer> combinacionAleatoria = Modelo.generarCombinacionAleatoria();
 		try {
@@ -40,17 +41,17 @@ public class Controlador {
 				aciertos = mastermind.api.model.Modelo.CompararCombinaciones(combinacionAleatoria, resultadoEntradaJugador);
 				System.out.println("Aciertos Negros: " + aciertos[0]);
 				System.out.println("Aciertos Blancos: " + aciertos[1]);
-				/*TODO 
-				 * llamada a función que compruebe si hemos ganado
-				 * condicion si hemos ganado
-				 * no hemos ganado
-				 * */
-				while(!mastermind.api.view.Vista.comprobarEntradaJugador(resultadoEntradaJugador)) { //Equivale a una especie de trow
-					Vista.solicitarNuevamenteCombinacion();
-					resultadoEntradaJugador = Vista.obtenerEntradaJugador();
+				if (Modelo.haGanado(aciertos)) { //llamada a función que compruebe si hemos ganado
+					System.out.println("Has Ganado!!! ");
+					break;
+				} else { //no hemos ganado
+					while(!mastermind.api.view.Vista.comprobarEntradaJugador(resultadoEntradaJugador)) { //Equivale a una especie de trow
+						Vista.solicitarNuevamenteCombinacion();
+						resultadoEntradaJugador = Vista.obtenerEntradaJugador();
+						Vista.mostrarJugada(resultadoEntradaJugador,vecesJugado);
+						vecesJugado++;
+					}
 				}
-				Vista.mostrarJugada(resultadoEntradaJugador,vecesJugado);
-				vecesJugado++;
 			}
 			//System.out.println("La combinación secreta era: " + combinacionAleatoria);
 			} catch (Exception e) {
