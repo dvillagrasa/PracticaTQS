@@ -86,5 +86,20 @@ public class ModeloTest {
 	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
 	    */
 	}
+	
+	@Test
+	public void testHaGanado() {
+		int[] esperado = {4, 0};
+		boolean ganar = false;
+		
+		if(esperado[0] == MAX_CLAVIJAS) {
+			ganar = true;
+		}
+
+		else {
+			ganar = false;
+		}
+	}
+	
 
 }
