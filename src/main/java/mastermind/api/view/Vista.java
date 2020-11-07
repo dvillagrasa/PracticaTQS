@@ -1,10 +1,7 @@
 package mastermind.api.view;
 
-import java.util.Random;
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 //import java.util.Scanner;
 
@@ -29,11 +26,9 @@ public class Vista {
 	 * jugador que inserte una combinación de 4 números con un formato "XXXX".
 	 */
 	public void solicitarCombinacion() {
-		System.out.println("Inserta la combinación con el siguiente formato: XXXX");
+		System.out.println("Inserta la combinación con el siguiente formato: XXXX \n");
 	}
-	public void solicitarNuevamenteCombinacion() {
-		System.out.println("Por favor, entra una combinación con formato XXXX de números entre 0 y 8.");
-	}
+
 	/**
 	 * obtenerEntradaJugador es una función que recibe lo que el jugador introduce por teclado y lo almacena
 	 * en un array de cadenas de carácteres para convertirlo a un array de carácteres más tarde.
@@ -50,34 +45,31 @@ public class Vista {
 		}
 		return entradaJugadorCasteada;
 	}
-	
-	/**
-	 * comprobarEntradaJugador es una función que comprueba que los carácteres que el jugador ha introducido por teclado
-	 * sean entre 0 y 8, ambos incluídos. En caso de que no sea así se mostrará un mensaje por pantalla con un aviso.
-	 * @param entradaJugadorCasteada es el array de carácteres de la función obtenerEntradaJugador().
-	 * @return Devuelve un booleano que será verdadero cuando toda la entrada del jugador sean carácteres dentro del
-	 * rango de 0 a 8 (ambos incluídos).
-	 */
-	//public static boolean comprobarEntradaJugador(char[] entradaJugadorCasteada) throws Exception {
-	public static boolean comprobarEntradaJugador(char[][] entradaJugadorCasteada) {
-		boolean entradaJugadorCorrecta = true;
-		for(int i = 0; i < entradaJugadorCasteada.length; i++) {
-			if((entradaJugadorCasteada[i][0] < '0') || (entradaJugadorCasteada[i][0] > '8')) {
-				entradaJugadorCorrecta = false;
-				return entradaJugadorCorrecta;
-				//throw new Exception("El número " + entradaJugadorCasteada[i] + " está fuera del rango [0 - 8]."); // Si se ejecuta la execpción nunca hará el return.
-			}
-		}
-		//System.out.println(entradaJugadorCorrecta);
-		return entradaJugadorCorrecta;
-	}
+
 	/**
 	 * mostrarJugada es una función que muestra por pantalla las jugadas del jugador, indicando el número de tirada
 	 * y la combinación entrada por él mismo.
-	 * @param entradaJugadorCasteada es el array de carácteres de la función obtenerEntradaJugador().
+	 * @param resultadoEntradaJugador es el array de carácteres de la función obtenerEntradaJugador().
 	 * @param vecesJugado es el número de veces que se ha intentado una combinación.
 	 */
-	public void mostrarJugada(char[][] entradaJugadorCasteada, int vecesJugado) {
-		System.out.println("Jugada #" + vecesJugado + " " + Arrays.deepToString(entradaJugadorCasteada) + "\n");
+	public void mostrarJugada(char[][] resultadoEntradaJugador, int vecesJugado, int[] aciertos) {		
+		System.out.println("Jugada #" + vecesJugado + " " + Arrays.deepToString(resultadoEntradaJugador) + "\n");
+		System.out.println("Aciertos Negros: " + aciertos[0] + "\n" + "Aciertos Blancos: " + aciertos[1] + "\n");
+		System.out.println("--------------------------------");
+	}
+	
+	/**
+	 * Le dice al jugador que ha ganado y muestra la combinación 
+	 * @param resultadoEntradaJugador es el array de carácteres de la combinación introducida por el jugador
+	 */
+	public void haGanado(char[][] resultadoEntradaJugador) {
+		System.out.println("¡Felicidades, has ganado!");
+		System.out.println("Has acertado la combinación secreta: " + Arrays.deepToString(resultadoEntradaJugador));
+		
+	}
+	
+	public void haPerdido(char [][] combAleatoria) {
+		System.out.println("¡Has perdido!");
+		System.out.println("La combinación secreta era: " + Arrays.deepToString(combAleatoria));
 	}
 }

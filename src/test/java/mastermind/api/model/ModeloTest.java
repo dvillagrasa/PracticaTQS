@@ -2,12 +2,7 @@ package mastermind.api.model;
 
 import static org.junit.Assert.*;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.junit.Test;
 
 import mastermind.api.view.Vista;
@@ -19,6 +14,7 @@ public class ModeloTest {
 	Modelo modelo = new Modelo();
 	Vista vista = new Vista();
 	public static final int MAX_CLAVIJAS = 4;
+
 	
 	/**
 	 * testgenerarCombinaconAleatoria es una función que prueba el correcto funcionamiento de la función
@@ -27,6 +23,7 @@ public class ModeloTest {
 	@Test
 	public void testgenerarCombinacionAleatoria() {
 		boolean esRepetido = false;
+		boolean esRepetidoEsperado = false;
 		char[][] resultado = Modelo.generarCombinacionAleatoria();		
 		for (int i = 0; i < resultado.length; i++) { 
 			for (int j = i + 1 ; j < resultado.length; j++) { 
@@ -35,7 +32,7 @@ public class ModeloTest {
 					break;
 				}
 			}
-		assertFalse(esRepetido); //Esperamos que sea falso, es decir, que no encuentre ninguna repetición, si no da fallo
+		assertEquals(esRepetido, esRepetidoEsperado); //Esperamos que sea falso, es decir, que no encuentre ninguna repetición, si no da fallo
 		} 
 	}
 	
@@ -158,4 +155,38 @@ public class ModeloTest {
 		boolean obtenido = Modelo.haGanado(aciertos);
 	    assertEquals(esperado, obtenido);
 	}
+	
+	/*
+	 * -------------------------------------------------------
+	 * TESTS MÉTODO comprobarEntradaJugador
+	 * -------------------------------------------------------
+	 */
+	
+	/**
+	 * Test que comprueba que si se introduce una variable incorrecta
+	 * el método comprobador devuelve false
+	 */
+	@Test
+	public void testcomprobarEntradaJugadorIncorrectaPorArriba() {
+		char[][] entrada = {{'0'}, {'2'} , {'9'} , {'4'}};
+		boolean esperado = false;
+		boolean resultado = Modelo.comprobarEntradaJugador(entrada);
+		
+		assertEquals(resultado, esperado);
+	}
+	
+	/**
+	 * Test que comprueba que si se introduce una variable correcta
+	 * el método comprobador devuelve true
+	 */
+	@Test
+	public void testcomprobarEntradaJugadorCorrecta() {
+		char[][] entrada = {{'0'}, {'2'} , {'8'} , {'4'}};
+		boolean esperado = true;
+		boolean resultado = Modelo.comprobarEntradaJugador(entrada);
+		
+		assertEquals(resultado, esperado);
+	}
+	
+	
 }

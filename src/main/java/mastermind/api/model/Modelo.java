@@ -2,16 +2,8 @@ package mastermind.api.model;
 
 
 
-import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Random;
-
-
-import mastermind.api.view.*;
 
 /**
  * Clase Modelo - Esta clase se encargará de cálculos y de dar valores/objetos que tengamos
@@ -65,10 +57,27 @@ public class Modelo {
 			
 			combinacionAleatoriaCasteada[i] = combinacionAleatoria[i].toCharArray(); 
 		}
-		//System.out.println(cola);  Imprime la cola sin 4 números.
-		System.out.println("La combinación aleatoria es: " + Arrays.deepToString(combinacionAleatoriaCasteada)); // Imprime [[X],[X],[X],[X]]
-
 		return combinacionAleatoriaCasteada;
+	}
+	
+	/**
+	 * comprobarEntradaJugador es una función que comprueba que los carácteres que el jugador ha introducido por teclado
+	 * sean entre 0 y 8, ambos incluídos. En caso de que no sea así se mostrará un mensaje por pantalla con un aviso.
+	 * @param entradaJugadorCasteada es el array de carácteres de la función obtenerEntradaJugador().
+	 * @return Devuelve un booleano que será verdadero cuando toda la entrada del jugador sean carácteres dentro del
+	 * rango de 0 a 8 (ambos incluídos).
+	 */
+	public static boolean comprobarEntradaJugador(char[][] entradaJugadorCasteada) {
+		boolean entradaJugadorCorrecta = true;
+		for(int i = 0; i < entradaJugadorCasteada.length; i++) {
+			if((entradaJugadorCasteada[i][0] < '0') || (entradaJugadorCasteada[i][0] > '8')) {
+				entradaJugadorCorrecta = false;
+				return entradaJugadorCorrecta;
+				//throw new Exception("El número " + entradaJugadorCasteada[i] + " está fuera del rango [0 - 8]."); // Si se ejecuta la execpción nunca hará el return.
+			}
+		}
+		//System.out.println(entradaJugadorCorrecta);
+		return entradaJugadorCorrecta;
 	}
 	
 	/**

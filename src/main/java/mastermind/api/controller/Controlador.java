@@ -1,9 +1,8 @@
 package mastermind.api.controller;
 
-import java.util.ArrayList;
-
 import mastermind.api.model.*;
 import mastermind.api.view.*;
+
 /** 
  * Clase Controlador - Como su nombre indica controlará todo lo que sucede 
  * en el juego y se comunicará con el modelo, tratará los datos y los enviará a la vista
@@ -30,29 +29,27 @@ public class Controlador {
 		
 		char[][] resultadoEntradaJugador = null;
 		int[] aciertos;
-		boolean fin = false;
-		
 		//ArrayList<Integer> combinacionAleatoria = Modelo.generarCombinacionAleatoria();
 		try {
 			char[][] combinacionAleatoria = mastermind.api.model.Modelo.generarCombinacionAleatoria();
 			while (vecesJugado < MAX_INTENTOS) {
 				Vista.solicitarCombinacion();
 				resultadoEntradaJugador = Vista.obtenerEntradaJugador();
+				while(!mastermind.api.model.Modelo.comprobarEntradaJugador(resultadoEntradaJugador)) {
+					Vista.solicitarCombinacion();
+					resultadoEntradaJugador = Vista.obtenerEntradaJugador();
+				}
 				aciertos = mastermind.api.model.Modelo.CompararCombinaciones(combinacionAleatoria, resultadoEntradaJugador);
-				System.out.println("Aciertos Negros: " + aciertos[0]);
-				System.out.println("Aciertos Blancos: " + aciertos[1]);
 				if (mastermind.api.model.Modelo.haGanado(aciertos)) { //llamada a función que compruebe si hemos ganado
-					System.out.println("Has Ganado!!! ");
+					Vista.haGanado(resultadoEntradaJugador);
 					break;
 				} else { //no hemos ganado
-					while(!mastermind.api.view.Vista.comprobarEntradaJugador(resultadoEntradaJugador)) { //Equivale a una especie de trow
-						Vista.solicitarNuevamenteCombinacion();
-						resultadoEntradaJugador = Vista.obtenerEntradaJugador();
-						Vista.mostrarJugada(resultadoEntradaJugador,vecesJugado);
-						vecesJugado++;
-					}
+					Vista.mostrarJugada(resultadoEntradaJugador,vecesJugado,aciertos);
+					vecesJugado++;
 				}
+
 			}
+			Vista.haPerdido(combinacionAleatoria);
 			//System.out.println("La combinación secreta era: " + combinacionAleatoria);
 			} catch (Exception e) {
 				e.printStackTrace();
