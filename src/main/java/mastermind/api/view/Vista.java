@@ -31,6 +31,7 @@ public class Vista {
 	 * @return Devuelve la entrada del jugador como un array de carácteres.
 	 */
 	public char[][] obtenerEntradaJugador() {
+		
 		char[][] entradaJugadorCasteada = new char[4][]; // Creación e inicialización del array de carácteres que será necesario para todo el programa.
 		
 		if(escaner.hasNextLine()) { // Comprueba si existe una entrada por teclado.

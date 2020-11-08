@@ -27,7 +27,34 @@ public class ModeloTest {
 	 * números y/o posición (serían los colores blanco y negro).
 	 */
 	public static final int MAX_CLAVIJAS = 4;
-
+	
+	/**
+	 * -------------------------------- Tests del método castearEntradaJugador() --------------------------------
+	 */
+	@Test
+	public void testCastearEntradaJugador() {
+		
+		boolean esCorrecto = true;
+		boolean esperado = true;
+		
+		String[] entradaDePrueba = {"1", "2", "3", "4"};
+		char[][] entradaDePruebaCasteada = new char[entradaDePrueba.length][];
+		char[][] resultadoEsperadoCasteado = {{'1'}, {'2'}, {'3'}, {'4'}};
+		
+		for(int i = 0; i < entradaDePrueba.length; i++) {
+			entradaDePruebaCasteada[i] = entradaDePrueba[i].toCharArray();
+			if(entradaDePruebaCasteada[i][0] != resultadoEsperadoCasteado[i][0]) {
+				esCorrecto = false;
+				break;
+			}
+		}
+		assertEquals(esperado, esCorrecto);	
+	}
+	
+	/**
+	 * -------------------------------- Tests del método comprobarCombinaciones() --------------------------------
+	 */
+	
 	/**
 	 * Comprueba el correcto funcionamiento de la función generarCombinacionAleatoria, 
 	 * verificando si realmente no se repite ningún número dentro de la combinación aleatoria.
