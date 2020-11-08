@@ -21,7 +21,7 @@ public class ModeloTest {
 	 * generarCombinacionAleatoria. Comprobando que realmente no se repite ningún número.
 	 */
 	@Test
-	public void testgenerarCombinacionAleatoria() {
+	public void testGenerarCombinacionAleatoria() {
 		boolean esRepetido = false;
 		boolean esRepetidoEsperado = false;
 		char[][] resultado = Modelo.generarCombinacionAleatoria();		
@@ -54,7 +54,7 @@ public class ModeloTest {
 		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
 		char[][] combinacionJugador = {{'5'},{'4'},{'1'},{'0'}};
 		int[] esperado = {4, 0};
-	    int[] resultado = Modelo.CompararCombinaciones(combinacionAleatoria, combinacionJugador);
+	    int[] resultado = Modelo.compararCombinaciones(combinacionAleatoria, combinacionJugador);
 	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
 	}
 	
@@ -70,7 +70,7 @@ public class ModeloTest {
 		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
 		char[][] combinacionJugador = {{'0'},{'1'},{'4'},{'5'}};
 		int[] esperado = {0, 4};
-	    int[] resultado = Modelo.CompararCombinaciones(combinacionAleatoria, combinacionJugador);
+	    int[] resultado = Modelo.compararCombinaciones(combinacionAleatoria, combinacionJugador);
 	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));  
 	}
 	
@@ -86,7 +86,7 @@ public class ModeloTest {
 		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
 		char[][] combinacionJugador = {{'3'},{'6'},{'2'},{'7'}};
 		int[] esperado = {0, 0};
-	    int[] resultado = Modelo.CompararCombinaciones(combinacionAleatoria, combinacionJugador);
+	    int[] resultado = Modelo.compararCombinaciones(combinacionAleatoria, combinacionJugador);
 	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
 	}	
 	
@@ -105,7 +105,7 @@ public class ModeloTest {
 	public void testHaGanado() {
 		int[] aciertos = {4, 0};		
 		boolean esperado = true;
-		boolean obtenido = Modelo.haGanado(aciertos);
+		boolean obtenido = Modelo.comprobarVictoria(aciertos);
 	    assertEquals(esperado, obtenido);
 	}
 	
@@ -117,7 +117,7 @@ public class ModeloTest {
 	public void testSigueJugandoLimiteSuperior() {
 		int[] aciertos = {3, 1};	
 		boolean esperado = false;
-		boolean obtenido = Modelo.haGanado(aciertos);
+		boolean obtenido = Modelo.comprobarVictoria(aciertos);
 	    assertEquals(esperado, obtenido);
 	}
 	
@@ -129,7 +129,7 @@ public class ModeloTest {
 	public void testSigueJugandoLimiteInferior() {
 		int[] aciertos = {0, 0};
 		boolean esperado = false;
-		boolean obtenido = Modelo.haGanado(aciertos);
+		boolean obtenido = Modelo.comprobarVictoria(aciertos);
 	    assertEquals(esperado, obtenido);
 	}
 	/**
@@ -140,7 +140,7 @@ public class ModeloTest {
 	public void testSigueJugandoValorBlanco() {
 		int[] aciertos = {0, 4};		
 		boolean esperado = false;
-		boolean obtenido = Modelo.haGanado(aciertos);
+		boolean obtenido = Modelo.comprobarVictoria(aciertos);
 	    assertEquals(esperado, obtenido);
 	}
 	
@@ -152,7 +152,7 @@ public class ModeloTest {
 	public void testSigueJugandoLimiteSuperiorFuera() {
 		int[] aciertos = {5, 0};		
 		boolean esperado = false;
-		boolean obtenido = Modelo.haGanado(aciertos);
+		boolean obtenido = Modelo.comprobarVictoria(aciertos);
 	    assertEquals(esperado, obtenido);
 	}
 	

@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Clase Modelo - Esta clase se encargará de cálculos y de dar valores/objetos que tengamos
- * que utilizar en nuestro programa.
+ * Clase Modelo - Realiza cálculos y proporciona los resultados que son necesarios para uilizar en nuestro programa.
  *  
  * @author Daniel Luis Garcia
  * @author Daniel Villagrasa Ramírez
@@ -15,29 +14,28 @@ import java.util.Random;
 public class Modelo {
 
 	/**
-	 * MAX_CLAVIJAS es el número de posiciones del tablero del juego. En este caso son 4
-	 * tanto para los números (serían los colores exceptuando el blanco y negro), como 
-	 * para mostrar los aciertos de números y/o posición (serían los colores blanco y negro).
+	 * Número de posiciones del tablero del juego. En este caso son 4 tanto para los números (serían los colores 
+	 * exceptuando el blanco y negro), como para mostrar los aciertos de números y/o posición (serían los 
+	 * colores blanco y negro).
 	 */
 	public static final int MAX_CLAVIJAS = 4;	
 
 	/**
-	 * aleatorio es la variable que nos permite obtener un número aleatorio dentro de un
-	 * conjunto de datos.
+	 * Variable que permite obtener un valor aleatorio dentro de un conjunto de datos.
 	 */
 	public static final Random aleatorio = new Random(); // función a la que llamamos para que nos devuelva un aleatorio
+	
 	/**
-	 * numeros es un array de cadenas de carácteres. Estos carácteres establecen un rango
-	 * de 0 a 8, que son los números que pueden ser usados tanto para las tiradas del
-	 * jugador como para el código aleatorio secreto.
+	 * Array de cadenas de carácteres de un rango de 0 a 8, que son los números para el código aleatorio secreto.
 	 */
 	static String[] numeros = {"0","1","2","3","4","5","6","7","8"};
 	
 	/**
-	 * generarCombinacionAleatoria devuelve un array de cadena de carácteres. Este array es 
-	 * la combinación secreta del juego, la cual deberá ser adivinada por el jugador.
+	 * Genera la combinación aleatoria de la partida a partir de una cola que contiene los números del 0 al 8,
+	 * ambos incluídos. De esta cola se extraen de forma aleatoria y sin repetición 4 números que formarán parte
+	 * de la combinación aleatoria.
 	 * 
-	 * @return Devuelve el array de cadenas de carácteres secreto. 
+	 * @return Devuelve el array de carácteres que almacena la combinación aleatoria de la partida. 
 	 */
 	public static char[][] generarCombinacionAleatoria(){
 		
@@ -45,87 +43,90 @@ public class Modelo {
 		char[][] combinacionAleatoriaCasteada = new char [combinacionAleatoria.length][];
 		
 		ArrayList<String> cola = new ArrayList<>();
-		for(int i = 0; i < 9; i++) {
-			cola.add(numeros[i]);
+		for(int i = 0; i < numeros.length; i++) { // Por cada valor del array de cadena de carácteres.
+			cola.add(numeros[i]); // Se añade a la cola.
 		}
 		//System.out.println(cola); // Imprime [0, 1, 2, 3, 4, 5, 6, 7, 8]
-		for(int i = 0; i < 4; i++) //Saca 5 numeros de la cola, así quedan 4.
-		{
-			int numAleatorio = aleatorio.nextInt(cola.size());
-			combinacionAleatoria[i] = cola.get(numAleatorio);
-			cola.remove(numAleatorio);
+		for(int i = 0; i < 4; i++) { // Por cada número de la cola hasta hacerlo 4 veces.
+			int numAleatorio = aleatorio.nextInt(cola.size()); // Variable que almacena un entero que se encuentra dentro de la cola.
+			combinacionAleatoria[i] = cola.get(numAleatorio); // El número seleccionado de forma aleatoria se añade al array de la combinación aleatoria.
+			cola.remove(numAleatorio); // Se elimina de la cola el número seleccionado de forma aleatoria.
 			
-			combinacionAleatoriaCasteada[i] = combinacionAleatoria[i].toCharArray(); 
+			combinacionAleatoriaCasteada[i] = combinacionAleatoria[i].toCharArray(); //Convierte cada posición del array de cadena de carácteres a tipo carácter y lo almacena en un array de carácteres.
 		}
 		return combinacionAleatoriaCasteada;
 	}
 	
 	/**
-	 * comprobarEntradaJugador es una función que comprueba que los carácteres que el jugador ha introducido por teclado
-	 * sean entre 0 y 8, ambos incluídos. En caso de que no sea así se mostrará un mensaje por pantalla con un aviso.
-	 * @param entradaJugadorCasteada es el array de carácteres de la función obtenerEntradaJugador().
-	 * @return Devuelve un booleano que será verdadero cuando toda la entrada del jugador sean carácteres dentro del
+	 * Comprueba que los carácteres que el jugador ha introducido por teclado sean entre 0 y 8, ambos incluídos.
+	 * 
+	 * @param entradaJugadorCasteada - Array de carácteres de la función obtenerEntradaJugador().
+	 * @return Devuelve un booleano que será true cuando toda la entrada del jugador sean carácteres dentro del
 	 * rango de 0 a 8 (ambos incluídos).
 	 */
 	public static boolean comprobarEntradaJugador(char[][] entradaJugadorCasteada) {
+		
 		boolean entradaJugadorCorrecta = true;
-		for(int i = 0; i < entradaJugadorCasteada.length; i++) {
-			if((entradaJugadorCasteada[i][0] < '0') || (entradaJugadorCasteada[i][0] > '8')) {
-				entradaJugadorCorrecta = false;
+		
+		for(int i = 0; i < entradaJugadorCasteada.length; i++) { // Por cada elemento del array de carácteres.
+			if((entradaJugadorCasteada[i][0] < '0') || (entradaJugadorCasteada[i][0] > '8')) { // Comprobamos si se encuentra fuera del rango [0-8].
+				entradaJugadorCorrecta = false; // Se pone entradaJugadorCorrecta a falso.
 				return entradaJugadorCorrecta;
 				//throw new Exception("El número " + entradaJugadorCasteada[i] + " está fuera del rango [0 - 8]."); // Si se ejecuta la execpción nunca hará el return.
 			}
 		}
 		//System.out.println(entradaJugadorCorrecta);
-		return entradaJugadorCorrecta;
+		return entradaJugadorCorrecta; // En caso de que todos los elementos del array de carácteres se encuentren en el rango [0-8] entradaJugadorCorrecta será true.
 	}
 	
 	/**
-	 * Método que recorre y compara ambas combinaciones y devuelve el número de aciertos 
-	 * en base a las normas del Mastermind
-	 * @param Aleatoria - Es la combinacion aleatoria generada por el programa
-	 * @param Usuario - Es la combinación entrada por el usuario
-	 * @return Devuelve un string de int donde se muestra el número de [aciertosNegros, aciertosBlancos]
+	 * Comprueba la combinación generada por la máquina y la combinación itroducida por el jugador. En función de la combinación
+	 * introducida por el jugador se comprobará si los números existen y si están bien ubicados respecto de la combinación
+	 * generada por la máquina.
+	 * 
+	 * @param aleatoria - Combinacion aleatoria generada por la máquina.
+	 * @param usuario - Combinación introducida por el jugador.
+	 * @return Devuelve un array de enteros de 2 posiciones. La posición 0 almacena el nº de aciertos negros y la posición
+	 * 1 almacena el nº de aciertos blancos.
 	 */
-	public static int[] CompararCombinaciones(char[][] Aleatoria, char[][] Usuario) {
+	public static int[] compararCombinaciones(char[][] aleatoria, char[][] usuario) {
 
-		char[][] combinacionAleatoria = Aleatoria;
-		char[][] combinacionJugador = Usuario;
-		int aciertosNegros = 0;
-		int aciertosBlancos = 0;
+		char[][] combinacionAleatoria = aleatoria;
+		char[][] combinacionJugador = usuario;
+		
+		int aciertosNegros = 0; // Acierto de número y posición.
+		int aciertosBlancos = 0; // Acierto de número, pero no de posición.
 		
 
 		for(int i = 0; i < MAX_CLAVIJAS; i++){
-			for (int j = 0; j < combinacionAleatoria.length; j++){
-				if(combinacionAleatoria[i][0] == combinacionJugador[j][0]){
+			for (int j = 0; j < combinacionAleatoria.length; j++) {
+				if(combinacionAleatoria[i][0] == combinacionJugador[j][0]) {
 					if(combinacionAleatoria[i][0] == combinacionJugador[i][0]) {
-						aciertosNegros++; //ACIERTO POSICION Y COLOR (RECORDATORIO PARA DANI PORQUE ME OLVIDO DE COMO VA ESTO)
+						aciertosNegros++; // Incrementa el número de aciertos de números y la posición del mismo.
 					} else {
-						aciertosBlancos++; //ACIERTO SOLO POSICION (RECORDATORIO PARA DANI PORQUE ME OLVIDO DE COMO VA ESTO)
+						aciertosBlancos++; // Incrementa el número de aciertos de números.
 						}
 					}
 				}
 			}
-		return new int[] {aciertosNegros, aciertosBlancos};
+		return new int[] {aciertosNegros, aciertosBlancos}; // [0]: aciertosNegros, [1]: aciertosBlancos.
 		}
+	
 	/**
+	 * Comprueba si el número de aciertos negros almacenados en la posición 0 del array de enteros es idéntico a MAX_CLAVIJAS.
+	 * En caso de que sea idéntico (4 == 4, no existe otra posibilidad) el flag ganar se pondrá a true. En caso contrario, 
+	 * seguirá siendo false.
 	 * 
-	 * @param aciertos - Recibimos el string de int con el número de aciertos negros y blancos
-	 * @return Devolvemos true si el número de aciertos negros es = 4
-	 * false si el número de aciertos negros es cualquier otro
+	 * @param aciertos - Array de enteros de 2 posiciones. La posición 0 almacena el nº de aciertos negros y la posición
+	 * 1 almacena el nº de aciertos blancos.
+	 * @return Devuelve true si el número de aciertos negros es igual a 4, en caso contrario, devuelve false.
 	 */
-	public static boolean haGanado(int[] aciertos) {
+	public static boolean comprobarVictoria(int[] aciertos) {
 		
-		boolean ganar = false;
-		
-		if(aciertos[0] == MAX_CLAVIJAS) {
-			ganar = true;
+		boolean victoria = false;
+		if(aciertos[0] == MAX_CLAVIJAS) { // Si el número de aciertos negros almacenados en la posición 0 es idéntica a MAX_CLAVIJAS.
+			victoria = true;
 		}
-		else {
-			ganar = false;
-		}	
-		return ganar;
+		return victoria; // Será falso si la condición no se cumple.
 	}
-	
-	
 }
