@@ -3,7 +3,7 @@ package mastermind.api.model;
 import static org.junit.Assert.*;
 import java.util.Arrays;
 import org.junit.Test;
-import mastermind.api.view.Vista;
+import mastermind.api.view.*;
 /**
  * Clase ModeloTest - Clase donde se encuentran los métodos de test relacionados
  * con el modelo del juego.
@@ -30,6 +30,18 @@ public class ModeloTest {
 	
 	/**
 	 * -------------------------------- Tests del método castearEntradaJugador() --------------------------------
+	 */
+	/**
+	 * Comprueba que realiza la transformación del tipo de dato de forma correcta.
+	 * 
+	 * Primero se crea un array de cadena de carácteres simulando que una secuencia
+	 * de 4 numeros ha sido sometida a un split(). Segundo, creamos un array de
+	 * carácteres que servirá para comprobar posición a posición con el array de 
+	 * carácteres que contendrá valores que han sido transformados de array de 
+	 * cadena de carácteres a carácteres. En caso de que la comprobación de 
+	 * alguna posición no sea equivalente, el flag de esCorrecto será false
+	 * y terminará la ejecución del test ya que el código desarrollado no
+	 * realizaría de forma correcta la transformación de datos.
 	 */
 	@Test
 	public void testCastearEntradaJugador() {

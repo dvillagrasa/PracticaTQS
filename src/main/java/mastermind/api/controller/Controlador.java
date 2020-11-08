@@ -46,7 +46,8 @@ public class Controlador {
 	 */
 	public Controlador(Vista vista, Modelo modelo){
 		
-		char[][] resultadoEntradaJugador = null;
+		String[] entradaJugador = {""};
+		char[][] entradaJugadorCasteada = null;
 		int[] aciertos;
 
 		try {
@@ -54,18 +55,19 @@ public class Controlador {
 			
 			while (vecesJugado < MAX_INTENTOS) { // Mientras el número de veces jugadas sea menor a MAX_INTENTOS
 				vista.solicitarCombinacion(); // Muestra por pantalla la solicitud de introducción de combinación al jugador.
-				resultadoEntradaJugador = vista.obtenerEntradaJugador(); // Se almacena la entrada del jugador.
-				while(!mastermind.api.model.Modelo.comprobarEntradaJugador(resultadoEntradaJugador)) { // Mientras la entrada del jugador sea incorrecta.
+				entradaJugador = vista.obtenerEntradaJugador(); // Se almacena la entrada del jugador.
+				entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador);
+				while(!mastermind.api.model.Modelo.comprobarEntradaJugador(entradaJugadorCasteada)) { // Mientras la entrada del jugador sea incorrecta.
 					vista.solicitarCombinacion(); // Vuelve a solicitar una combinación al jugador sin incrementar el número de jugadas.
-					resultadoEntradaJugador = vista.obtenerEntradaJugador(); // Se almacena la entrada del jugador.
+					entradaJugador = vista.obtenerEntradaJugador(); // Se almacena la entrada del jugador.
 				}
-				aciertos = mastermind.api.model.Modelo.compararCombinaciones(combinacionAleatoria, resultadoEntradaJugador);
+				aciertos = mastermind.api.model.Modelo.compararCombinaciones(combinacionAleatoria, entradaJugadorCasteada);
 				
 				if (mastermind.api.model.Modelo.comprobarVictoria(aciertos)) { // Si el jugador ha acertado la combinación aleatoria.
-					vista.mostrarMensajeVictoria(resultadoEntradaJugador); // Se muestra el mensaje de victoria junto con la combinación del jugador.
+					vista.mostrarMensajeVictoria(entradaJugadorCasteada); // Se muestra el mensaje de victoria junto con la combinación del jugador.
 					break; // ¿?
 				} else { // Si el jugador no ha acertado la combinación aleatoria
-					vista.mostrarJugada(resultadoEntradaJugador, vecesJugado, aciertos); // Se muestra la nueva jugada del jugador.
+					vista.mostrarJugada(entradaJugadorCasteada, vecesJugado, aciertos); // Se muestra la nueva jugada del jugador.
 					vecesJugado++; // Incrementa el número de veces jugadas de la partida.
 				}
 

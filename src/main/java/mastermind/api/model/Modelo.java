@@ -1,9 +1,10 @@
 package mastermind.api.model;
 
-
-
 import java.util.ArrayList;
 import java.util.Random;
+
+import mastermind.api.model.*;
+import mastermind.api.view.*;
 
 /**
  * Clase Modelo - Realiza cálculos y proporciona los resultados que son necesarios para uilizar en nuestro programa.
@@ -12,6 +13,7 @@ import java.util.Random;
  * @author Daniel Villagrasa Ramírez
  */
 public class Modelo {
+	private Vista vista = new Vista();
 
 	/**
 	 * Número de posiciones del tablero del juego. En este caso son 4 tanto para los números (serían los colores 
@@ -29,7 +31,7 @@ public class Modelo {
 	 * Array de cadenas de carácteres de un rango de 0 a 8, que son los números para el código aleatorio secreto.
 	 */
 	static String[] numeros = {"0","1","2","3","4","5","6","7","8"};
-	
+
 	/**
 	 * Genera la combinación aleatoria de la partida a partir de una cola que contiene los números del 0 al 8,
 	 * ambos incluídos. De esta cola se extraen de forma aleatoria y sin repetición 4 números que formarán parte
@@ -56,7 +58,16 @@ public class Modelo {
 		}
 		return combinacionAleatoriaCasteada;
 	}
-	
+		
+	public char[][] castearEntradaJugador(String[] entradaJugador){
+		//String[] entradaJugador = vista.obtenerEntradaJugador();
+		char[][] entradaJugadorCasteada = new char[entradaJugador.length][];
+		
+		for(int i = 0; i < entradaJugador.length; i++) { // Por cada elemento del array de cadena de carácteres.
+			entradaJugadorCasteada[i] = entradaJugador[i].toCharArray(); // Convierte cada posición del array de cadena de carácteres a tipo carácter y lo almacena en un array de carácteres.
+		}
+		return entradaJugadorCasteada;
+	}
 	/**
 	 * Comprueba que los carácteres que el jugador ha introducido por teclado sean entre 0 y 8, ambos incluídos.
 	 * 
