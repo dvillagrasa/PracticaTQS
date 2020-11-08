@@ -1,5 +1,8 @@
 package mastermind.api.view;
 
-public class genericClassView {
 
+public class VistaTest{
+
+
+	
 }
