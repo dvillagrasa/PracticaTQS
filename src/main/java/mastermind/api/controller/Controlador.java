@@ -55,12 +55,16 @@ public class Controlador {
 			
 			while (vecesJugado < MAX_INTENTOS) { // Mientras el número de veces jugadas sea menor a MAX_INTENTOS
 				vista.solicitarCombinacion(); // Muestra por pantalla la solicitud de introducción de combinación al jugador.
+				
 				entradaJugador = vista.obtenerEntradaJugador(); // Se almacena la entrada del jugador.
-				entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador);
-				while(!mastermind.api.model.Modelo.comprobarEntradaJugador(entradaJugadorCasteada)) { // Mientras la entrada del jugador sea incorrecta.
+				entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador); // Se transforma el tipo de datos de la entrada del jugador.
+				
+				while(!Modelo.comprobarEntradaJugador(entradaJugadorCasteada)) { // Mientras la entrada del jugador sea incorrecta.
 					vista.solicitarCombinacion(); // Vuelve a solicitar una combinación al jugador sin incrementar el número de jugadas.
 					entradaJugador = vista.obtenerEntradaJugador(); // Se almacena la entrada del jugador.
+					entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador); // Se transforma el tipo de datos de la entrada del jugador.
 				}
+				
 				aciertos = mastermind.api.model.Modelo.compararCombinaciones(combinacionAleatoria, entradaJugadorCasteada);
 				
 				if (mastermind.api.model.Modelo.comprobarVictoria(aciertos)) { // Si el jugador ha acertado la combinación aleatoria.
@@ -70,13 +74,10 @@ public class Controlador {
 					vista.mostrarJugada(entradaJugadorCasteada, vecesJugado, aciertos); // Se muestra la nueva jugada del jugador.
 					vecesJugado++; // Incrementa el número de veces jugadas de la partida.
 				}
-
 			}
 			vista.mostrarMensajeDerrota(combinacionAleatoria); // Se muestra el mensaje de derrota junto con la combinación aleatoria.
-			//System.out.println("La combinación secreta era: " + combinacionAleatoria);
 			} catch (Exception e) {
 				e.printStackTrace();
 				}
 		}
 	}
-

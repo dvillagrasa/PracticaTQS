@@ -13,7 +13,6 @@ import mastermind.api.view.*;
  * @author Daniel Villagrasa Ramírez
  */
 public class Modelo {
-	private Vista vista = new Vista();
 
 	/**
 	 * Número de posiciones del tablero del juego. En este caso son 4 tanto para los números (serían los colores 
@@ -58,9 +57,14 @@ public class Modelo {
 		}
 		return combinacionAleatoriaCasteada;
 	}
-		
+	/**
+	 * Recibe un array de cadena de carácteres el cual convierte a un array de carácteres para poder ser utilizado
+	 * en el resto de métodos del programa.	
+	 * 
+	 * @param entradaJugador - Array de cadena de carácteres con la entrada del jugador separada por carácteres.
+	 * @return Devuelve el array de cadena de carácteres transformado a array de carácteres.
+	 */
 	public char[][] castearEntradaJugador(String[] entradaJugador){
-		//String[] entradaJugador = vista.obtenerEntradaJugador();
 		char[][] entradaJugadorCasteada = new char[entradaJugador.length][];
 		
 		for(int i = 0; i < entradaJugador.length; i++) { // Por cada elemento del array de cadena de carácteres.
@@ -82,7 +86,8 @@ public class Modelo {
 		for(int i = 0; i < entradaJugadorCasteada.length; i++) { // Por cada elemento del array de carácteres.
 			if((entradaJugadorCasteada[i][0] < '0') || (entradaJugadorCasteada[i][0] > '8')) { // Comprobamos si se encuentra fuera del rango [0-8].
 				entradaJugadorCorrecta = false; // Se pone entradaJugadorCorrecta a falso.
-				return entradaJugadorCorrecta;
+				//return entradaJugadorCorrecta;
+				break;
 				//throw new Exception("El número " + entradaJugadorCasteada[i] + " está fuera del rango [0 - 8]."); // Si se ejecuta la execpción nunca hará el return.
 			}
 		}

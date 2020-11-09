@@ -24,31 +24,17 @@ public class Vista {
 	}
 
 	/**
-	 * Recibe la entrada por teclado del jugador y lo almacena en un array de cadena de carácteres, seguidamente
-	 * ese array de cadena de carácteres se convierte a un array de carácteres para poder ser utilizado
-	 * en el resto de métodos del programa.
+	 * Recibe la entrada por teclado del jugador, separa los carácteres y lo almacena en un 
+	 * array de cadena de carácteres.
 	 * 
-	 * @return Devuelve la entrada del jugador como un array de carácteres.
+	 * @return Devuelve un array de cadena de carácteres.
 	 */
-	/*public char[][] obtenerEntradaJugador() {
-		
-		char[][] entradaJugadorCasteada = new char[4][]; // Creación e inicialización del array de carácteres que será necesario para todo el programa.
-		
-		if(escaner.hasNextLine()) { // Comprueba si existe una entrada por teclado.
-			String[] str = escaner.nextLine().split(""); // Caso de ejemplo: Separa la entrada 1234 en 1, 2, 3, 4.
-			for(int i = 0; i < str.length; i++) { // Por cada elemento del array de cadena de carácteres.
-				entradaJugadorCasteada[i] = str[i].toCharArray(); // Convierte cada posición del array de cadena de carácteres a tipo carácter y lo almacena en un array de carácteres.
-			}
-		}
-		return entradaJugadorCasteada;
-	}*/
-	
 	public String[] obtenerEntradaJugador() {
-		String[] str = {""};
+		String[] entrada = {""};
 		if(escaner.hasNextLine()) { // Comprueba si existe una entrada por teclado.
-			str = escaner.nextLine().split("");
+			entrada = escaner.nextLine().split("");
 		}
-		return str;
+		return entrada;
 	}
 
 	/**
