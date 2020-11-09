@@ -29,6 +29,54 @@ public class ModeloTest {
 	public static final int MAX_CLAVIJAS = 4;
 	
 	/**
+	 * -------------------------------- Tests del método obtenerEntradaJugador() --------------------------------
+	 */
+	/**
+	 * Comprueba si el tamaño de la entrada del jugador es mayor al permitido.
+	 */
+	@Test
+	public void testObtenerEntradaJugadorMayor() {
+		boolean medidaCorrecta = true;
+		boolean valorEsperado = false;
+		
+		String[] entrada = {"1","2","3","4","5"};
+		if(entrada.length > MAX_CLAVIJAS) {
+			medidaCorrecta = false;
+		}
+		assertEquals(valorEsperado, medidaCorrecta);
+	}
+	
+	/**
+	 * Comprueba si el tamaño de la entrada del jugador es menor al permitido.
+	 */
+	@Test
+	public void testObtenerEntradaJugadorMenor() {
+		boolean medidaCorrecta = true;
+		boolean valorEsperado = false;
+		
+		String[] entrada = {"1","2","3"};
+		if(entrada.length < MAX_CLAVIJAS) {
+			medidaCorrecta = false;
+		}
+		assertEquals(valorEsperado, medidaCorrecta);
+	}
+	
+	/**
+	 * Comprueba si el tamaño de la entrada del jugador igual al permitido.
+	 */
+	@Test
+	public void testObtenerEntradaJugadorExacta() {
+		boolean medidaCorrecta = false;
+		boolean valorEsperado = true;
+		
+		String[] entrada = {"1","2","3","4"};
+		if(entrada.length == MAX_CLAVIJAS) {
+			medidaCorrecta = true;
+		}
+		assertEquals(valorEsperado, medidaCorrecta);
+	}
+	
+	/**
 	 * -------------------------------- Tests del método castearEntradaJugador() --------------------------------
 	 */
 	/**

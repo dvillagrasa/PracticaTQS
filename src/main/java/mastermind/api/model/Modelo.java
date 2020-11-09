@@ -64,7 +64,7 @@ public class Modelo {
 	 * @param entradaJugador - Array de cadena de carácteres con la entrada del jugador separada por carácteres.
 	 * @return Devuelve el array de cadena de carácteres transformado a array de carácteres.
 	 */
-	public char[][] castearEntradaJugador(String[] entradaJugador){
+	public char[][] castearEntradaJugador(String[] entradaJugador) {
 		char[][] entradaJugadorCasteada = new char[entradaJugador.length][];
 		
 		for(int i = 0; i < entradaJugador.length; i++) { // Por cada elemento del array de cadena de carácteres.
@@ -86,12 +86,10 @@ public class Modelo {
 		for(int i = 0; i < entradaJugadorCasteada.length; i++) { // Por cada elemento del array de carácteres.
 			if((entradaJugadorCasteada[i][0] < '0') || (entradaJugadorCasteada[i][0] > '8')) { // Comprobamos si se encuentra fuera del rango [0-8].
 				entradaJugadorCorrecta = false; // Se pone entradaJugadorCorrecta a falso.
-				//return entradaJugadorCorrecta;
 				break;
 				//throw new Exception("El número " + entradaJugadorCasteada[i] + " está fuera del rango [0 - 8]."); // Si se ejecuta la execpción nunca hará el return.
 			}
 		}
-		//System.out.println(entradaJugadorCorrecta);
 		return entradaJugadorCorrecta; // En caso de que todos los elementos del array de carácteres se encuentren en el rango [0-8] entradaJugadorCorrecta será true.
 	}
 	
@@ -113,7 +111,6 @@ public class Modelo {
 		int aciertosNegros = 0; // Acierto de número y posición.
 		int aciertosBlancos = 0; // Acierto de número, pero no de posición.
 		
-
 		for(int i = 0; i < MAX_CLAVIJAS; i++){
 			for (int j = 0; j < combinacionAleatoria.length; j++) {
 				if(combinacionAleatoria[i][0] == combinacionJugador[j][0]) {
@@ -121,12 +118,12 @@ public class Modelo {
 						aciertosNegros++; // Incrementa el número de aciertos de números y la posición del mismo.
 					} else {
 						aciertosBlancos++; // Incrementa el número de aciertos de números.
-						}
 					}
 				}
 			}
-		return new int[] {aciertosNegros, aciertosBlancos}; // [0]: aciertosNegros, [1]: aciertosBlancos.
 		}
+		return new int[] {aciertosNegros, aciertosBlancos}; // [0]: aciertosNegros, [1]: aciertosBlancos.
+	}
 	
 	/**
 	 * Comprueba si el número de aciertos negros almacenados en la posición 0 del array de enteros es idéntico a MAX_CLAVIJAS.
