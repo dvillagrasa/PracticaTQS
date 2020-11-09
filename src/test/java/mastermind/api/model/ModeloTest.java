@@ -32,6 +32,8 @@ public class ModeloTest {
 	 * -------------------------------- Tests del método obtenerEntradaJugador() --------------------------------
 	 */
 	/**
+	 * Test caja negra #1 de valor límite superior. 5 números en vez de 4.
+	 * 
 	 * Comprueba si el tamaño de la entrada del jugador es mayor al permitido.
 	 */
 	@Test
@@ -40,13 +42,15 @@ public class ModeloTest {
 		boolean valorEsperado = false;
 		
 		String[] entrada = {"1","2","3","4","5"};
-		if(entrada.length > MAX_CLAVIJAS) {
+		if(entrada.length != MAX_CLAVIJAS) {
 			medidaCorrecta = false;
 		}
 		assertEquals(valorEsperado, medidaCorrecta);
 	}
 	
 	/**
+	 * Test caja negra #2 de valor límite interior. 3 números en vez de 4.
+	 * 
 	 * Comprueba si el tamaño de la entrada del jugador es menor al permitido.
 	 */
 	@Test
@@ -55,13 +59,32 @@ public class ModeloTest {
 		boolean valorEsperado = false;
 		
 		String[] entrada = {"1","2","3"};
-		if(entrada.length < MAX_CLAVIJAS) {
+		if(entrada.length != MAX_CLAVIJAS) {
 			medidaCorrecta = false;
 		}
 		assertEquals(valorEsperado, medidaCorrecta);
 	}
 	
 	/**
+	 * Test caja negra #2 de valor límite interior. 3 números en vez de 4.
+	 * 
+	 * Comprueba si el tamaño de la entrada del jugador es menor al permitido.
+	 */
+	@Test
+	public void testObtenerEntradaJugadorCero() {
+		boolean medidaCorrecta = true;
+		boolean valorEsperado = false;
+		
+		String[] entrada = {""};
+		if(entrada.length != MAX_CLAVIJAS) {
+			medidaCorrecta = false;
+		}
+		assertEquals(valorEsperado, medidaCorrecta);
+	}
+	
+	/**
+	 * Test caja negra #4 de valor frontera. 4 números.
+	 * 
 	 * Comprueba si el tamaño de la entrada del jugador igual al permitido.
 	 */
 	@Test

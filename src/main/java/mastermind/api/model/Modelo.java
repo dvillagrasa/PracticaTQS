@@ -95,7 +95,6 @@ public class Modelo {
 			entradaJugadorCorrecta = false;
 			return entradaJugadorCorrecta;
 		}
-		
 		return entradaJugadorCorrecta; // En caso de que todos los elementos del array de carácteres se encuentren en el rango [0-8] entradaJugadorCorrecta será true.
 	}
 	
