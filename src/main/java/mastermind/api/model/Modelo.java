@@ -83,13 +83,19 @@ public class Modelo {
 		
 		boolean entradaJugadorCorrecta = true;
 		
-		for(int i = 0; i < entradaJugadorCasteada.length; i++) { // Por cada elemento del array de carácteres.
-			if((entradaJugadorCasteada[i][0] < '0') || (entradaJugadorCasteada[i][0] > '8')) { // Comprobamos si se encuentra fuera del rango [0-8].
-				entradaJugadorCorrecta = false; // Se pone entradaJugadorCorrecta a falso.
-				break;
-				//throw new Exception("El número " + entradaJugadorCasteada[i] + " está fuera del rango [0 - 8]."); // Si se ejecuta la execpción nunca hará el return.
+		if(entradaJugadorCasteada.length == MAX_CLAVIJAS) {
+			for(int i = 0; i < entradaJugadorCasteada.length; i++) { // Por cada elemento del array de carácteres.
+				if((entradaJugadorCasteada[i][0] < '0') || (entradaJugadorCasteada[i][0] > '8')) { // Comprobamos si se encuentra fuera del rango [0-8].
+					entradaJugadorCorrecta = false; // Se pone entradaJugadorCorrecta a falso.
+					break;
+					//throw new Exception("El número " + entradaJugadorCasteada[i] + " está fuera del rango [0 - 8]."); // Si se ejecuta la execpción nunca hará el return.
+				}
 			}
+		} else {
+			entradaJugadorCorrecta = false;
+			return entradaJugadorCorrecta;
 		}
+		
 		return entradaJugadorCorrecta; // En caso de que todos los elementos del array de carácteres se encuentren en el rango [0-8] entradaJugadorCorrecta será true.
 	}
 	
