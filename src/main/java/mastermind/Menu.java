@@ -17,7 +17,7 @@ public class Menu {
 	public boolean comprobarOpcion(int opcion) {
 		boolean esCorrecto = true;
 		
-		if((opcion < 1) || (opcion > 2)) {
+		if((opcion < '1') || (opcion > '2')) {
 			esCorrecto = false;
 		}
 		return esCorrecto;
