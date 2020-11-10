@@ -580,60 +580,7 @@ public class ModeloTest {
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8654));
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8765));
 	}
-	
-	/**
-	 * Test caja negra #3 de valor límite interior. 0 números en vez de 4.
-	 * 
-	 * Comprueba si el tamaño de la entrada del jugador es menor al permitido.
-	 */
-	@Test
-	public void testObtenerEntradaJugadorCero() {
-		boolean valorEsperado = false;
-		String[] entrada = {""};
-		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
-
-		assertEquals(valorEsperado, modelo.validarEntradaJugador(entradaCasteada));
-	}
-	
-	/**
-	 * Test caja negra #4 de valor frontera. 4 números.
-	 * 
-	 * Comprueba si el tamaño de la entrada del jugador igual al permitido.
-	 */
-	@Test
-	public void testObtenerEntradaJugadorExacta() {
-		boolean valorEsperado = true;
-		String[] entrada = {"1","2","3","4"};
-		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
-
-		assertEquals(valorEsperado, modelo.validarEntradaJugador(entradaCasteada));
-	}
-	
-	/**
-	 * -------------------------------- Tests del método castearEntradaJugador() --------------------------------
-	 */
-	@SuppressWarnings("deprecation")
-	/**
-	 * Comprueba que realiza la transformación del tipo de dato de forma correcta.
-	 * 
-	 * Primero se crea un array de cadena de carácteres simulando que una secuencia
-	 * de 4 numeros ha sido sometida a un split(). Segundo, creamos un array de
-	 * carácteres que servirá para comprobar posición a posición con el array de 
-	 * carácteres que contendrá valores que han sido transformados de array de 
-	 * cadena de carácteres a carácteres. En caso de que la comprobación de 
-	 * alguna posición no sea equivalente, el flag de esCorrecto será false
-	 * y terminará la ejecución del test ya que el código desarrollado no
-	 * realizaría de forma correcta la transformación de datos.
-	 */
-	@Test
-	public void testCastearEntradsaJugador() {		
-		String[] entradaDePrueba = {"1", "2", "3", "4"};
-		char[][] resultadoEsperadoCasteado = {{'1'}, {'2'}, {'3'}, {'4'}};
-		char[][] entradaDePruebaCasteada = modelo.castearEntradaJugador(entradaDePrueba);
 		
-		assertEquals(resultadoEsperadoCasteado, entradaDePruebaCasteada);	
-	}
-	
 	/**
 	 * -------------------------------- Tests del método comprobarCombinaciones() --------------------------------
 	 */
@@ -666,6 +613,22 @@ public class ModeloTest {
 			}
 		assertEquals(esRepetido, esRepetidoEsperado);
 		} 
+	}
+	
+	/**
+	 * testear tamaños for
+	 * testear repetido
+	 * testear no repetid
+	 * 
+	 */
+	@Test
+	public void testValidarCombinacionSecreta() {
+		char[] combinacionSecretaCasteadaValida = Modelo.generarCombinacionSecreta();
+		char[] combinacionSecretaCasteadaInvalida = {'5', '4', '0', '5'};
+		
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteadaValida));
+		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteadaInvalida));
+		
 	}
 
 	/**
