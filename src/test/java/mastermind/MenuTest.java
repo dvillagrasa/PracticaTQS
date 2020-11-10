@@ -11,15 +11,16 @@ public class MenuTest {
 		
 		Menu menu = new Menu();
 		
-		assertFalse(menu.comprobarOpcion(-50)); // Límite inferior extremo.
-		assertFalse(menu.comprobarOpcion(-1)); // Límite inferior alejado.
-		assertFalse(menu.comprobarOpcion(0)); // Frontera inferior.
+		//assertFalse(menu.comprobarOpcion(-50)); // Límite inferior extremo.
+		//assertFalse(menu.comprobarOpcion(-1.1));
+		//assertFalse(menu.comprobarOpcion(-1)); // Límite inferior alejado.
+		assertFalse(menu.comprobarOpcion('0')); // Frontera inferior.
 		
-		assertTrue(menu.comprobarOpcion(1)); // Frontera inferior.
-		assertTrue(menu.comprobarOpcion(2)); // Frontera superior.
+		assertTrue(menu.comprobarOpcion('1')); // Frontera inferior.
+		assertTrue(menu.comprobarOpcion('2')); // Frontera superior.
 		
-		assertFalse(menu.comprobarOpcion(3)); // Límite superior alejado.
-		assertFalse(menu.comprobarOpcion(50)); // Límite superior extremo.
+		assertFalse(menu.comprobarOpcion('3')); // Límite superior alejado.
+		assertFalse(menu.comprobarOpcion('5')); // Límite superior extremo.
 
 	}
 }
