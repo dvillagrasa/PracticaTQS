@@ -580,46 +580,10 @@ public class ModeloTest {
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8654));
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8765));
 	}
-		
-	/**
-	 * -------------------------------- Tests del método comprobarCombinaciones() --------------------------------
-	 */
 	
 	/**
-	 * Comprueba el correcto funcionamiento de la función generarCombinacionAleatoria, 
-	 * verificando si realmente no se repite ningún número dentro de la combinación aleatoria.
-	 * 
-	 * Primero obtenemos la combinación generada por la máquina y la almacenamos, seguidamente, 
-	 * por cada valor de la combinación generada por la máquina y por cada posición por delante 
-	 * del valor resultado[i] se comprueba si el valor de la combinación generada por la máquina 
-	 * es igual a los valores de cada posición por delante del valor. En caso afirmativo, existe 
-	 * una repetición dentro de la combinación aleatoria y termina la ejecución del bucle if ya 
-	 * que se ha hallado un fallo en el código desarrollado. Para finalizar, se realiza una 
-	 * comprobación para saber si el assert es (false, false).
-	 */
-	@Test
-	public void testGenerarCombinacionAleatoria() {
-		
-		boolean esRepetido = false;
-		boolean esRepetidoEsperado = false;
-		char[][] resultado = Modelo.generarCombinacionSecreta();		
-		
-		for (int i = 0; i < resultado.length; i++) {
-			for (int j = i + 1 ; j < resultado.length; j++) { 
-				if(resultado[i][0] == resultado[j][0]) { 
-					esRepetido = true; 
-					break;
-				}
-			}
-		assertEquals(esRepetido, esRepetidoEsperado);
-		} 
-	}
-	
-	/**
-	 * testear tamaños for
-	 * testear repetido
-	 * testear no repetid
-	 * 
+	 * Comprueba el correcto funcionamiento de la función generarCombinacionSecreta, 
+	 * verificando si realmente no se repite ningún número dentro de la combinación secreta.
 	 */
 	@Test
 	public void testValidarCombinacionSecreta() {
@@ -628,67 +592,54 @@ public class ModeloTest {
 		
 		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteadaValida));
 		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteadaInvalida));
-		
 	}
-
-	/**
-	 * -------------------------------- Tests del método comprobarCombinaciones() --------------------------------
-	 */
 	
 	/**
 	 * Test de caja negra #1 del método comprobarCombinaciones().
 	 * 
-	 * Comprueba que al comparar una combinación aleatoria y una combinación del jugador
-	 * que son idénticas nos devuelve 4 aciertos negros y 0 aciertos blancos.
-	 * 
-	 * Caso 1: 4 Negros, 0 Blancos
+	 * Comprueba los resultados que surgen de la comparativa de la combinación secreta 
+	 * y la combinación del jugador.
 	 */
 	@Test
-	public void testCompararCombinacionesIdenticas() {
-		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
-		char[][] combinacionJugador = {{'5'},{'4'},{'1'},{'0'}};
-		int[] esperado = {4, 0};
-	    int[] resultado = Modelo.compararCombinaciones(combinacionAleatoria, combinacionJugador);
-	    
-	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
-	}
-	
-	/**
-	 * Test de caja negra #2 del método comprobarCombinaciones().
-	 * 
-	 * Comprueba que al comparar una combinación aleatoria y una combinación del jugador
-	 * que una es la inversa de la otra nos devuelve 0 aciertos negros y 4 aciertos blancos.
-	 * 
-	 * Caso 2: 0 Negros, 4 Blancos
-	 */
-	@Test
-	public void testCompararCombinacionesInversas() {    
-		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
-		char[][] combinacionJugador = {{'0'},{'1'},{'4'},{'5'}};
-		int[] esperado = {0, 4};
-	    int[] resultado = Modelo.compararCombinaciones(combinacionAleatoria, combinacionJugador);
-	    
-	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));  
-	}
-	
-	/**
-	 * Test de caja negra #3 del método comprobarCombinaciones().
-	 * 
-	 * Comprueba que al comparar una combinación aleatoria y una combinación del jugador
-	 * totalmente distintas una de la otra nos devuelve 0 aciertos negros y 0 aciertos blancos.
-	 * 
-	 * Caso 3: 0 Negros, 0 Blancos
-	 */
-	@Test
-	public void testCompararCombinacionesQueNoCompartenNumeros() {
-		char[][] combinacionAleatoria = {{'5'},{'4'},{'1'},{'0'}};
-		char[][] combinacionJugador = {{'3'},{'6'},{'2'},{'7'}};
-		int[] esperado = {0, 0};
-	    int[] resultado = Modelo.compararCombinaciones(combinacionAleatoria, combinacionJugador);
-	    
-	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
-	}	
+	public void testCompararCombinaciones() {
+		char[] combinacionSecreta2357 = {'2', '3', '5', '7'};
+		char[] combinacionJugador2357 = {'2', '3', '5', '7'};
+		char[] aciertosComparativa2357X2357 = Modelo.compararCombinaciones(combinacionSecreta2357, combinacionJugador2357);
+		char[] aciertosEsperadosNNNN = {'N', 'N', 'N', 'N'};
 		
+		char[] combinacionSecreta2356 = {'2', '3', '5', '6'};
+		char[] combinacionJugador1234 = {'1', '2', '3', '4'};
+		char[] aciertosComparativa2356X1234 = Modelo.compararCombinaciones(combinacionSecreta2356, combinacionJugador1234);
+		char[] aciertosEsperados0BB0 = {'0', 'B', 'B', '0'};
+		
+		char[] combinacionSecreta8740 = {'8', '7', '4', '0'};
+		char[] combinacionJugador1235 = {'1', '2', '3', '5'};
+		char[] aciertosComparativa8740X1235 = Modelo.compararCombinaciones(combinacionSecreta8740, combinacionJugador1235);
+		char[] aciertosEsperados0000 = {'0', '0', '0', '0'};
+		
+		char[] combinacionSecreta7856 = {'7', '8', '5', '6'};
+		char[] combinacionJugador7236 = {'7', '2', '3', '6'};
+		char[] aciertosComparativa7856X7236 = Modelo.compararCombinaciones(combinacionSecreta7856, combinacionJugador7236);
+		char[] aciertosEsperadosN00N = {'N', '0', '0', 'N'};
+		
+		char[] combinacionSecreta4207 = {'4', '2', '0', '7'};
+		char[] combinacionJugador4082 = {'4', '0', '8', '2'};
+		char[] aciertosComparativa4207X4082 = Modelo.compararCombinaciones(combinacionSecreta4207, combinacionJugador4082);
+		char[] aciertosEsperadosNBB0 = {'N', 'B', '0', 'B'};
+		
+		char[] combinacionSecreta0351 = {'0', '3', '5', '1'};
+		char[] combinacionJugador0531 = {'0', '5', '3', '1'};
+		char[] aciertosComparativa0351X0531 = Modelo.compararCombinaciones(combinacionSecreta0351, combinacionJugador0531);
+		char[] aciertosEsperadosNBBN = {'N', 'B', 'B', 'N'};
+		
+		assertArrayEquals(aciertosEsperadosNNNN, aciertosComparativa2357X2357);
+		assertArrayEquals(aciertosEsperados0BB0, aciertosComparativa2356X1234);
+		assertArrayEquals(aciertosEsperados0000, aciertosComparativa8740X1235);
+		assertArrayEquals(aciertosEsperadosN00N, aciertosComparativa7856X7236);
+		assertArrayEquals(aciertosEsperadosNBB0, aciertosComparativa4207X4082);
+		assertArrayEquals(aciertosEsperadosNBBN, aciertosComparativa0351X0531);
+	}
+	
 	/**
 	 * Test de caja negra del método comprobarVictoria().
 	 * 
@@ -792,74 +743,5 @@ public class ModeloTest {
 		assertFalse(Modelo.comprobarVictoria(aciertosBBNN));
 		assertFalse(Modelo.comprobarVictoria(aciertosBBNB));
 		assertFalse(Modelo.comprobarVictoria(aciertosBBBN));		
-	}
-	
-	/**
-	 * -------------------------------- Tests del método comprobarEntradaJugador() --------------------------------
-	 */
-	
-	/**
-	 * Test de caja negra #1 del método comprobarEntradaJugador().
-	 * 
-	 * Comprueba el límite superior del rango [0-8] con el valor 9.
-	 * El método comprobarEntradaJugador debe devolver false al
-	 * tratarse de un valor fuera del rango [0-8].
-	 */
-	@Test
-	public void testComprobarLimiteSuperiorEntradaJugador() {
-		char[][] entrada = {{'0'}, {'2'} , {'9'} , {'4'}};
-		boolean esperado = false;
-		boolean resultado = Modelo.validarEntradaJugador(entrada);
-		
-		assertEquals(resultado, esperado);
-	}
-	
-	/**
-	 * Test de caja negra #2 del método comprobarEntradaJugador().
-	 * 
-	 * Comprueba el límite superior del rango [0-8] con el valor -.
-	 * El método comprobarEntradaJugador debe devolver false al
-	 * tratarse de un valor fuera del rango [0-8].
-	 */
-	@Test
-	public void testComprobarLimiteInferiorEntradaJugador() {
-		char[][] entrada = {{'0'}, {'2'} , {'-'} , {'4'}};
-		boolean esperado = false;
-		boolean resultado = Modelo.validarEntradaJugador(entrada);
-		
-		assertEquals(resultado, esperado);
-	}
-	
-	
-	/**
-	 * Test de caja negra #3 del método comprobarEntradaJugador().
-	 * 
-	 * Comprueba el valor frontera superior del rango [0-8] con el valor 8.
-	 * El método comprobarEntradaJugador debe devolver true al
-	 * tratarse de un valor dentro del rango [0-8].
-	 */
-	@Test
-	public void testComprobarValorFronteraSuperiorEntradaJugadorCorrecta() {
-		char[][] entrada = {{'6'}, {'2'} , {'8'} , {'4'}};
-		boolean esperado = true;
-		boolean resultado = Modelo.validarEntradaJugador(entrada);
-		
-		assertEquals(resultado, esperado);
-	}
-	
-	/**
-	 * Test de caja negra #4 del método comprobarEntradaJugador().
-	 * 
-	 * Comprueba el valor frontera del rango [0-8] con el valor 0.
-	 * El método comprobarEntradaJugador debe devolver true al
-	 * tratarse de un valor dentro del rango [0-8].
-	 */
-	@Test
-	public void testComprobarValorFronteraInferiorEntradaJugadorCorrecta() {
-		char[][] entrada = {{'6'}, {'2'} , {'0'} , {'4'}};
-		boolean esperado = true;
-		boolean resultado = Modelo.validarEntradaJugador(entrada);
-		
-		assertEquals(resultado, esperado);
 	}
 }
