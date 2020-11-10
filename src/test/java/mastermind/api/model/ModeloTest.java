@@ -42,7 +42,7 @@ public class ModeloTest {
 		String[] entrada = {"1","2","3","4","5"};
 		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
 
-		assertEquals(valorEsperado, modelo.comprobarEntradaJugador(entradaCasteada));
+		assertEquals(valorEsperado, modelo.validarEntradaJugador(entradaCasteada));
 	}
 	
 	/**
@@ -56,7 +56,7 @@ public class ModeloTest {
 		String[] entrada = {"1","2","3"};
 		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
 		// Valorar cambiarlo por assertFalse y eliminar la linea 55
-		assertEquals(valorEsperado, modelo.comprobarEntradaJugador(entradaCasteada));
+		assertEquals(valorEsperado, modelo.validarEntradaJugador(entradaCasteada));
 	}
 	
 	/**
@@ -70,7 +70,7 @@ public class ModeloTest {
 		String[] entrada = {""};
 		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
 
-		assertEquals(valorEsperado, modelo.comprobarEntradaJugador(entradaCasteada));
+		assertEquals(valorEsperado, modelo.validarEntradaJugador(entradaCasteada));
 	}
 	
 	/**
@@ -84,7 +84,7 @@ public class ModeloTest {
 		String[] entrada = {"1","2","3","4"};
 		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
 
-		assertEquals(valorEsperado, modelo.comprobarEntradaJugador(entradaCasteada));
+		assertEquals(valorEsperado, modelo.validarEntradaJugador(entradaCasteada));
 	}
 	
 	/**
@@ -133,7 +133,7 @@ public class ModeloTest {
 		
 		boolean esRepetido = false;
 		boolean esRepetidoEsperado = false;
-		char[][] resultado = Modelo.generarCombinacionAleatoria();		
+		char[][] resultado = Modelo.generarCombinacionSecreta();		
 		
 		for (int i = 0; i < resultado.length; i++) {
 			for (int j = i + 1 ; j < resultado.length; j++) { 
@@ -203,94 +203,110 @@ public class ModeloTest {
 	    
 	    assertEquals(Arrays.toString(esperado), Arrays.toString(resultado));
 	}	
-	
+		
+	/**
+	 * Test de caja negra del método comprobarVictoria().
+	 * 
+	 * Comprueba que únicamente es victoria cuando es {'N','N','N','N'}.
+	 */
+	@Test
+	public void testComprobarVictoria() {
+		
+		char[] aciertos0000 = {'0','0','0','0'};
+		char[] aciertos000B = {'0','0','0','B'};
+		char[] aciertos00B0 = {'0','0','B','0'};
+		char[] aciertos00BB = {'0','0','B','B'};
+		char[] aciertos0B00 = {'0','B','0','0'};
+		char[] aciertos0B0B = {'0','B','0','B'};
+		char[] aciertos0BB0 = {'0','B','B','0'};
+		char[] aciertos0BBB = {'0','B','B','B'};
+		char[] aciertosB000 = {'B','0','0','0'};
+		char[] aciertosB00B = {'B','0','0','B'};
+		char[] aciertosB0B0 = {'B','0','B','0'};
+		char[] aciertosB0BB = {'B','0','B','B'};
+		char[] aciertosBB00 = {'B','B','0','0'};
+		char[] aciertosBB0B = {'B','B','0','B'};
+		char[] aciertosBBB0 = {'B','B','B','0'};
+		char[] aciertosBBBB = {'B','B','B','B'};
+		
+		assertFalse(Modelo.comprobarVictoria(aciertos0000));
+		assertFalse(Modelo.comprobarVictoria(aciertos000B));
+		assertFalse(Modelo.comprobarVictoria(aciertos00B0));
+		assertFalse(Modelo.comprobarVictoria(aciertos00BB));
+		assertFalse(Modelo.comprobarVictoria(aciertos0B00));
+		assertFalse(Modelo.comprobarVictoria(aciertos0B0B));
+		assertFalse(Modelo.comprobarVictoria(aciertos0BB0));
+		assertFalse(Modelo.comprobarVictoria(aciertos0BBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosB000));
+		assertFalse(Modelo.comprobarVictoria(aciertosB00B));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0B0));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0BB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBB00));
+		assertFalse(Modelo.comprobarVictoria(aciertosBB0B));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBB0));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBBB));
+		
+		char[] aciertos000N = {'0','0','0','N'};
+		char[] aciertos00N0 = {'0','0','N','0'};
+		char[] aciertos00NN = {'0','0','N','N'};
+		char[] aciertos0N00 = {'0','N','0','0'};
+		char[] aciertos0N0N = {'0','N','0','N'};
+		char[] aciertos0NN0 = {'0','N','N','0'};
+		char[] aciertos0NNN = {'0','N','N','N'};
+		char[] aciertosN000 = {'N','0','0','0'};
+		char[] aciertosN00N = {'N','0','0','N'};
+		char[] aciertosN0N0 = {'N','0','N','0'};
+		char[] aciertosN0NN = {'N','0','N','N'};
+		char[] aciertosNN00 = {'N','N','0','0'};
+		char[] aciertosNN0N = {'N','N','0','N'};
+		char[] aciertosNNN0 = {'N','N','N','0'};
+		char[] aciertosNNNN = {'N','N','N','N'};
 
-	/**
-	 * -------------------------------- Tests del método comprobarVictoria() --------------------------------
-	 */
-	
-	/**
-	 * Test de caja negra #1 del método comprobarVictoria().
-	 * 
-	 * Comprueba el valor frontera superior del número de aciertos 
-	 * permitido. En este caso el valor fronteran superior es 4. 
-	 * El método comprobarVictoria debe devolver true al tratarse 
-	 * de un valor frontera.
-	 */
-	@Test
-	public void testValorFronteraSuperiorComprobarVictoria() {
-		int[] aciertos = {4, 0};		
-		boolean esperado = true;
-		boolean obtenido = Modelo.comprobarVictoria(aciertos);
-	    
-		assertEquals(esperado, obtenido);
-	}
-	
-	/**
-	 * Test de caja negra #2 del método comprobarVictoria().
-	 * 
-	 * Comprueba el valor interior del número de aciertos permitido. 
-	 * En este caso el valor interior es 3. El método comprobarVictoria 
-	 * debe devolver false al no obtener la victoria.
-	 */
-	@Test
-	public void testValorInteriorComprobarVictoria() {
-		int[] aciertos = {3, 1};	
-		boolean esperado = false;
-		boolean obtenido = Modelo.comprobarVictoria(aciertos);
-	    
-		assertEquals(esperado, obtenido);
-	}
-	
-	/**
-	 * Test de caja negra #3 del método comprobarVictoria().
-	 * 
-	 * Comprueba el valor frontera inferior del número de aciertos 
-	 * permitido. En este caso el valor frontera superior es 0. El 
-	 * método comprobarVictoria debe devolver false al no obtener 
-	 * la victoria.
-	 */
-	@Test
-	public void testValorFronteraInferiorComprobarVictoria() {
-		int[] aciertos = {0, 0};
-		boolean esperado = false;
-		boolean obtenido = Modelo.comprobarVictoria(aciertos);
-	    
-		assertEquals(esperado, obtenido);
-	}
-	
-	/**
-	 * Test de caja negra #4 del método comprobarVictoria().
-	 * 
-	 * Comprueba el valor frontera inferior del número de aciertos 
-	 * blancos permitido. En este caso el valor frontera superior 
-	 * es 4. El método comprobarVictoria debe devolver false al no 
-	 * obtener la victoria.
-	 */
-	@Test
-	public void testValorFronteraSuperiorBlancoComprobarVictoria() {
-		int[] aciertos = {0, 4};		
-		boolean esperado = false;
-		boolean obtenido = Modelo.comprobarVictoria(aciertos);
-	    
-		assertEquals(esperado, obtenido);
-	}
-	
-	/**
-	 * Test de caja negra #5 del método comprobarVictoria().
-	 * 
-	 * Comprueba el valor límite superior del número de aciertos 
-	 * permitido. En este caso el valor límite superior es 5. El 
-	 * método comprobarVictoria debe devolver false al no ser 4 
-	 * aciertos.
-	 */
-	@Test
-	public void testValorLimiteSuperiorComprobarVictoria() {
-		int[] aciertos = {5, 0};		
-		boolean esperado = false;
-		boolean obtenido = Modelo.comprobarVictoria(aciertos);
-	    
-		assertEquals(esperado, obtenido);
+		assertFalse(Modelo.comprobarVictoria(aciertos000N));
+		assertFalse(Modelo.comprobarVictoria(aciertos00N0));
+		assertFalse(Modelo.comprobarVictoria(aciertos00NN));
+		assertFalse(Modelo.comprobarVictoria(aciertos0N00));
+		assertFalse(Modelo.comprobarVictoria(aciertos0N0N));
+		assertFalse(Modelo.comprobarVictoria(aciertos0NN0));
+		assertFalse(Modelo.comprobarVictoria(aciertos0NNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosN000));
+		assertFalse(Modelo.comprobarVictoria(aciertosN00N));
+		assertFalse(Modelo.comprobarVictoria(aciertosN0N0));
+		assertFalse(Modelo.comprobarVictoria(aciertosN0NN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNN00));
+		assertFalse(Modelo.comprobarVictoria(aciertosNN0N));
+		assertFalse(Modelo.comprobarVictoria(aciertosNNN0));
+		assertTrue(Modelo.comprobarVictoria(aciertosNNNN));
+		
+		char[] aciertosNNNB = {'N','N','N','B'};
+		char[] aciertosNNBN = {'N','N','B','N'};
+		char[] aciertosNNBB = {'N','N','B','B'};
+		char[] aciertosNBNN = {'N','B','N','N'};
+		char[] aciertosNBNB = {'N','B','N','B'};
+		char[] aciertosNBBN = {'N','B','B','N'};
+		char[] aciertosNBBB = {'N','B','B','B'};
+		char[] aciertosBNNN = {'B','N','N','N'};
+		char[] aciertosBNNB = {'B','N','N','B'};
+		char[] aciertosBNBN = {'B','N','B','N'};
+		char[] aciertosBNBB = {'B','N','B','B'};
+		char[] aciertosBBNN = {'B','B','N','N'};
+		char[] aciertosBBNB = {'B','B','N','B'};
+		char[] aciertosBBBN = {'B','B','B','N'};
+		
+		assertFalse(Modelo.comprobarVictoria(aciertosNNNB));
+		assertFalse(Modelo.comprobarVictoria(aciertosNNBN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNNBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBNB));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBBN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNNB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNBN));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBNB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBBN));		
 	}
 	
 	/**
@@ -308,7 +324,7 @@ public class ModeloTest {
 	public void testComprobarLimiteSuperiorEntradaJugador() {
 		char[][] entrada = {{'0'}, {'2'} , {'9'} , {'4'}};
 		boolean esperado = false;
-		boolean resultado = Modelo.comprobarEntradaJugador(entrada);
+		boolean resultado = Modelo.validarEntradaJugador(entrada);
 		
 		assertEquals(resultado, esperado);
 	}
@@ -324,7 +340,7 @@ public class ModeloTest {
 	public void testComprobarLimiteInferiorEntradaJugador() {
 		char[][] entrada = {{'0'}, {'2'} , {'-'} , {'4'}};
 		boolean esperado = false;
-		boolean resultado = Modelo.comprobarEntradaJugador(entrada);
+		boolean resultado = Modelo.validarEntradaJugador(entrada);
 		
 		assertEquals(resultado, esperado);
 	}
@@ -341,7 +357,7 @@ public class ModeloTest {
 	public void testComprobarValorFronteraSuperiorEntradaJugadorCorrecta() {
 		char[][] entrada = {{'6'}, {'2'} , {'8'} , {'4'}};
 		boolean esperado = true;
-		boolean resultado = Modelo.comprobarEntradaJugador(entrada);
+		boolean resultado = Modelo.validarEntradaJugador(entrada);
 		
 		assertEquals(resultado, esperado);
 	}
@@ -357,7 +373,7 @@ public class ModeloTest {
 	public void testComprobarValorFronteraInferiorEntradaJugadorCorrecta() {
 		char[][] entrada = {{'6'}, {'2'} , {'0'} , {'4'}};
 		boolean esperado = true;
-		boolean resultado = Modelo.comprobarEntradaJugador(entrada);
+		boolean resultado = Modelo.validarEntradaJugador(entrada);
 		
 		assertEquals(resultado, esperado);
 	}
