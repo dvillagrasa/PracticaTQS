@@ -38,14 +38,11 @@ public class ModeloTest {
 	 */
 	@Test
 	public void testObtenerEntradaJugadorMayor() {
-		boolean medidaCorrecta = true;
 		boolean valorEsperado = false;
-		
 		String[] entrada = {"1","2","3","4","5"};
-		if(entrada.length != MAX_CLAVIJAS) {
-			medidaCorrecta = false;
-		}
-		assertEquals(valorEsperado, medidaCorrecta);
+		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
+
+		assertEquals(valorEsperado, modelo.comprobarEntradaJugador(entradaCasteada));
 	}
 	
 	/**
@@ -55,31 +52,25 @@ public class ModeloTest {
 	 */
 	@Test
 	public void testObtenerEntradaJugadorMenor() {
-		boolean medidaCorrecta = true;
 		boolean valorEsperado = false;
-		
 		String[] entrada = {"1","2","3"};
-		if(entrada.length != MAX_CLAVIJAS) {
-			medidaCorrecta = false;
-		}
-		assertEquals(valorEsperado, medidaCorrecta);
+		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
+		// Valorar cambiarlo por assertFalse y eliminar la linea 55
+		assertEquals(valorEsperado, modelo.comprobarEntradaJugador(entradaCasteada));
 	}
 	
 	/**
-	 * Test caja negra #2 de valor límite interior. 3 números en vez de 4.
+	 * Test caja negra #3 de valor límite interior. 0 números en vez de 4.
 	 * 
 	 * Comprueba si el tamaño de la entrada del jugador es menor al permitido.
 	 */
 	@Test
 	public void testObtenerEntradaJugadorCero() {
-		boolean medidaCorrecta = true;
 		boolean valorEsperado = false;
-		
 		String[] entrada = {""};
-		if(entrada.length != MAX_CLAVIJAS) {
-			medidaCorrecta = false;
-		}
-		assertEquals(valorEsperado, medidaCorrecta);
+		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
+
+		assertEquals(valorEsperado, modelo.comprobarEntradaJugador(entradaCasteada));
 	}
 	
 	/**
@@ -89,19 +80,17 @@ public class ModeloTest {
 	 */
 	@Test
 	public void testObtenerEntradaJugadorExacta() {
-		boolean medidaCorrecta = false;
 		boolean valorEsperado = true;
-		
 		String[] entrada = {"1","2","3","4"};
-		if(entrada.length == MAX_CLAVIJAS) {
-			medidaCorrecta = true;
-		}
-		assertEquals(valorEsperado, medidaCorrecta);
+		char[][] entradaCasteada = modelo.castearEntradaJugador(entrada);
+
+		assertEquals(valorEsperado, modelo.comprobarEntradaJugador(entradaCasteada));
 	}
 	
 	/**
 	 * -------------------------------- Tests del método castearEntradaJugador() --------------------------------
 	 */
+	@SuppressWarnings("deprecation")
 	/**
 	 * Comprueba que realiza la transformación del tipo de dato de forma correcta.
 	 * 
@@ -115,23 +104,12 @@ public class ModeloTest {
 	 * realizaría de forma correcta la transformación de datos.
 	 */
 	@Test
-	public void testCastearEntradaJugador() {
-		
-		boolean esCorrecto = true;
-		boolean esperado = true;
-		
+	public void testCastearEntradaJugador() {		
 		String[] entradaDePrueba = {"1", "2", "3", "4"};
-		char[][] entradaDePruebaCasteada = new char[entradaDePrueba.length][];
 		char[][] resultadoEsperadoCasteado = {{'1'}, {'2'}, {'3'}, {'4'}};
+		char[][] entradaDePruebaCasteada = modelo.castearEntradaJugador(entradaDePrueba);
 		
-		for(int i = 0; i < entradaDePrueba.length; i++) {
-			entradaDePruebaCasteada[i] = entradaDePrueba[i].toCharArray();
-			if(entradaDePruebaCasteada[i][0] != resultadoEsperadoCasteado[i][0]) {
-				esCorrecto = false;
-				break;
-			}
-		}
-		assertEquals(esperado, esCorrecto);	
+		assertEquals(resultadoEsperadoCasteado, entradaDePruebaCasteada);	
 	}
 	
 	/**

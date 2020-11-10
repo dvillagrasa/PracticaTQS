@@ -44,12 +44,11 @@ public class Controlador {
 	 * @param vista - Instancia de la clase vista.
 	 * @param modelo - Instancia de la clase modelo.
 	 */
-	public Controlador(Vista vista, Modelo modelo){
-		
+	public Controlador(Vista vista, Modelo modelo) {
 		String[] entradaJugador = {""};
 		char[][] entradaJugadorCasteada = null;
 		int[] aciertos;
-
+		
 		try {
 			char[][] combinacionAleatoria = mastermind.api.model.Modelo.generarCombinacionAleatoria();
 			
@@ -79,5 +78,5 @@ public class Controlador {
 			} catch (Exception e) {
 				e.printStackTrace();
 				}
-		}
 	}
+}

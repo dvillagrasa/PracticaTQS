@@ -11,9 +11,10 @@ import org.junit.Test;
  * @author Daniel Villagrasa Ramírez
  */
 public class VistaTest{
+	Vista vista = new Vista();
 	
 	@Test
-	public void test() {
-		//fail("Not yet implemented");
+	public void testSolicitarCombinacion() {
+		
 	}
 }

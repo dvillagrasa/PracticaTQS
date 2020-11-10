@@ -3,9 +3,6 @@ package mastermind.api.model;
 import java.util.ArrayList;
 import java.util.Random;
 
-import mastermind.api.model.*;
-import mastermind.api.view.*;
-
 /**
  * Clase Modelo - Realiza cálculos y proporciona los resultados que son necesarios para uilizar en nuestro programa.
  *  
@@ -91,6 +88,8 @@ public class Modelo {
 					//throw new Exception("El número " + entradaJugadorCasteada[i] + " está fuera del rango [0 - 8]."); // Si se ejecuta la execpción nunca hará el return.
 				}
 			}
+			//entradaJugadorCorrecta = false; // Se pone entradaJugadorCorrecta a falso.
+			//return entradaJugadorCorrecta;
 		} else {
 			entradaJugadorCorrecta = false;
 			return entradaJugadorCorrecta;
