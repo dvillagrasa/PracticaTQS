@@ -6,17 +6,17 @@ import mastermind.api.controller.*;
 import java.util.Scanner;
 
 /** 
- * Clase MasterMind - Clase principal del juego Master Mind que contiene el método principal del juego.
+ * Clase MasterMind - Clase principal del juego Master Mind que contiene el metodo principal del juego.
  * 
  * @author Daniel Luis Garcia 
- * @author Daniel Villagrasa Ramírez
+ * @author Daniel Villagrasa Ramirez
  */ 
 public class MasterMind {
 	
 	/**
 	 * Método principal del juego Master Mind.
 	 * 
-	 * @param args - Array de cadena de carácteres con los argumentos introducidos desde la línea de comandos.
+	 * @param args - Array de cadena de caracteres con los argumentos introducidos desde la linea de comandos.
 	 */
 	public static void main(String[] args) {
 		
@@ -43,7 +43,8 @@ public class MasterMind {
 					System.exit(0);
 					break;
 				default:
-					System.out.println("Opción inválida, inténtalo de nuevo.");
+					System.out.println("");
+					System.out.println("Opcion invalida, intentalo de nuevo.");
 					System.out.println("");
 					break;
 			}

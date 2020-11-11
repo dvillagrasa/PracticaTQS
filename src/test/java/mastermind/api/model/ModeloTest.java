@@ -1,15 +1,14 @@
 package mastermind.api.model;
 
 import static org.junit.Assert.*;
-import java.util.Arrays;
 import org.junit.Test;
 import mastermind.api.view.*;
 /**
- * Clase ModeloTest - Clase donde se encuentran los métodos de test relacionados
+ * Clase ModeloTest - Clase donde se encuentran los metodos de test relacionados
  * con el modelo del juego.
  * 
  * @author Daniel Luis Garcia
- * @author Daniel Villagrasa Ramírez
+ * @author Daniel Villagrasa Ramirez
  */
 public class ModeloTest {
 	/**
@@ -22,14 +21,14 @@ public class ModeloTest {
 	 */
 	Vista vista = new Vista();
 	/**
-	 * Número de posiciones del tablero del juego. En este caso son 4 tanto para los números 
-	 * (serían los colores exceptuando el blanco y negro), como para mostrar los aciertos de 
-	 * números y/o posición (serían los colores blanco y negro).
+	 * Numero de posiciones del tablero del juego. En este caso son 4 tanto para los numeros 
+	 * (serian los colores exceptuando el blanco y negro), como para mostrar los aciertos de 
+	 * numeros y/o posicion (serian los colores blanco y negro).
 	 */
 	public static final int MAX_CLAVIJAS = 4;
 	
 	/**
-	 * 	            Pair-wise testing de números [0-8]
+	 * 	            Pair-wise testing de numeros [0-8]
 	 * 			-------------------------------------------
 	 * 						0 | 0 | 0 | 0 
 	 * 						1 | 1 | 1 | 1 
@@ -210,20 +209,20 @@ public class ModeloTest {
 
 	/**
 	 * Test caja negra de castearEntradaJugador.
-	 * R -> Símbolo de restar (-).
-	 * A -> Símbolo asterisco (*). 
+	 * R -> Simbolo de restar (-).
+	 * A -> Simbolo asterisco (*). 
 	 */
 	@Test
 	public void testCastearEntradaJugador() {
 		
 		/**
-		 * 			  Pair-wise testing de números y símbolos
+		 * 			  Pair-wise testing de numeros y simbolos
 		 * 			-------------------------------------------
-		 * Char numérico | Char símbolo  | Char numérico | Char símbolo
-		 * Char símbolo  | Char numérico | Char símbolo  | Char numérico
+		 * Char numerico | Char simbolo  | Char numerico | Char simbolo
+		 * Char simbolo  | Char numerico | Char simbolo  | Char numerico
 		 *  
-		 *  R -> Símbolo de restar (-).
-		 *  A -> Símbolo asterisco (*). 
+		 *  R -> Simbolo de restar (-).
+		 *  A -> Simbolo asterisco (*). 
 		 * 
 		 */
 		String combinacionJugador0R0A = "0-0*";
@@ -402,13 +401,13 @@ public class ModeloTest {
 	}
 	
 	/**
-	 * Test caja negra #2 de valor límite interior. 3 números en vez de 4.
-	 * 
-	 * Comprueba si el tamaño de la entrada del jugador es menor al permitido.
+	 * --------------- Test del metodo validarEntradaJugador() ---------------
+	 * Comprueba los valores interiores, limite y frontera ademas de las particiones
+	 * equivalentes.
 	 */
 	@Test
 	public void testValidarEntradaJugador() {
-
+		
 		String combinacionJugador0000 = "0000";
 		String combinacionJugador000 = "000";
 		String combinacionJugador00000 = "00000";
@@ -582,8 +581,8 @@ public class ModeloTest {
 	}
 	
 	/**
-	 * Comprueba el correcto funcionamiento de la función generarCombinacionSecreta, 
-	 * verificando si realmente no se repite ningún número dentro de la combinación secreta.
+	 * Comprueba el correcto funcionamiento de la funcion generarCombinacionSecreta, 
+	 * verificando si realmente no se repite ningun numero dentro de la combinacion secreta.
 	 */
 	@Test
 	public void testValidarCombinacionSecreta() {
@@ -595,10 +594,8 @@ public class ModeloTest {
 	}
 	
 	/**
-	 * Test de caja negra #1 del método comprobarCombinaciones().
-	 * 
-	 * Comprueba los resultados que surgen de la comparativa de la combinación secreta 
-	 * y la combinación del jugador.
+	 * --------------- Test del metodo compararCombinaciones ---------------
+	 *
 	 */
 	@Test
 	public void testCompararCombinaciones() {
@@ -641,107 +638,263 @@ public class ModeloTest {
 	}
 	
 	/**
-	 * Test de caja negra del método comprobarVictoria().
+	 * --------------- Test del metodo comprobarVictoria ---------------
+	 * Comprueba todas las combinaciones posibles de 0, B y N en un array de 4 posiciones. 
 	 * 
-	 * Comprueba que únicamente es victoria cuando es {'N','N','N','N'}.
+	 * https://pairwise.teremokgames.com/x4to/
+	 * 
+	 * La unica vez que el assert es true es cuando el array es {'N','N','N','N'}.
 	 */
 	@Test
-	public void testComprobarVictoria() {
-		
+	public void testComprobarVictoriaTodasCombinaciones() {
 		char[] aciertos0000 = {'0','0','0','0'};
 		char[] aciertos000B = {'0','0','0','B'};
+		char[] aciertos000N = {'0','0','0','N'};
 		char[] aciertos00B0 = {'0','0','B','0'};
 		char[] aciertos00BB = {'0','0','B','B'};
+		char[] aciertos00BN = {'0','0','B','N'};
+		char[] aciertos00N0 = {'0','0','N','0'};
+		char[] aciertos00NB = {'0','0','N','B'};
+		char[] aciertos00NN = {'0','0','N','N'};
 		char[] aciertos0B00 = {'0','B','0','0'};
 		char[] aciertos0B0B = {'0','B','0','B'};
+		char[] aciertos0B0N = {'0','B','0','N'};
 		char[] aciertos0BB0 = {'0','B','B','0'};
 		char[] aciertos0BBB = {'0','B','B','B'};
+		char[] aciertos0BBN = {'0','B','B','N'};
+		char[] aciertos0BN0 = {'0','B','N','0'};
+		char[] aciertos0BNB = {'0','B','N','B'};
+		char[] aciertos0BNN = {'0','B','N','N'};
+		char[] aciertos0N00 = {'0','N','0','0'};
+		char[] aciertos0N0B = {'0','N','0','B'};
+		char[] aciertos0N0N = {'0','N','0','N'};
+		char[] aciertos0NB0 = {'0','N','B','0'};
+		char[] aciertos0NBB = {'0','N','B','B'};
+		char[] aciertos0NBN = {'0','N','B','N'};
+		char[] aciertos0NN0 = {'0','N','N','0'};
+		char[] aciertos0NNB = {'0','N','N','B'};
+		char[] aciertos0NNN = {'0','N','N','N'};
 		char[] aciertosB000 = {'B','0','0','0'};
 		char[] aciertosB00B = {'B','0','0','B'};
+		char[] aciertosB00N = {'B','0','0','N'};
 		char[] aciertosB0B0 = {'B','0','B','0'};
 		char[] aciertosB0BB = {'B','0','B','B'};
+		char[] aciertosB0BN = {'B','0','B','N'};
+		char[] aciertosB0N0 = {'B','0','N','0'};
+		char[] aciertosB0NB = {'B','0','N','B'};
+		char[] aciertosB0NN = {'B','0','N','N'};
 		char[] aciertosBB00 = {'B','B','0','0'};
 		char[] aciertosBB0B = {'B','B','0','B'};
+		char[] aciertosBB0N = {'B','B','0','N'};
 		char[] aciertosBBB0 = {'B','B','B','0'};
 		char[] aciertosBBBB = {'B','B','B','B'};
-		
-		assertFalse(Modelo.comprobarVictoria(aciertos0000));
-		assertFalse(Modelo.comprobarVictoria(aciertos000B));
-		assertFalse(Modelo.comprobarVictoria(aciertos00B0));
-		assertFalse(Modelo.comprobarVictoria(aciertos00BB));
-		assertFalse(Modelo.comprobarVictoria(aciertos0B00));
-		assertFalse(Modelo.comprobarVictoria(aciertos0B0B));
-		assertFalse(Modelo.comprobarVictoria(aciertos0BB0));
-		assertFalse(Modelo.comprobarVictoria(aciertos0BBB));
-		assertFalse(Modelo.comprobarVictoria(aciertosB000));
-		assertFalse(Modelo.comprobarVictoria(aciertosB00B));
-		assertFalse(Modelo.comprobarVictoria(aciertosB0B0));
-		assertFalse(Modelo.comprobarVictoria(aciertosB0BB));
-		assertFalse(Modelo.comprobarVictoria(aciertosBB00));
-		assertFalse(Modelo.comprobarVictoria(aciertosBB0B));
-		assertFalse(Modelo.comprobarVictoria(aciertosBBB0));
-		assertFalse(Modelo.comprobarVictoria(aciertosBBBB));
-		
-		char[] aciertos000N = {'0','0','0','N'};
-		char[] aciertos00N0 = {'0','0','N','0'};
-		char[] aciertos00NN = {'0','0','N','N'};
-		char[] aciertos0N00 = {'0','N','0','0'};
-		char[] aciertos0N0N = {'0','N','0','N'};
-		char[] aciertos0NN0 = {'0','N','N','0'};
-		char[] aciertos0NNN = {'0','N','N','N'};
+		char[] aciertosBBBN = {'B','B','B','N'};
+		char[] aciertosBBN0 = {'B','B','N','0'};
+		char[] aciertosBBNB = {'B','B','N','B'};
+		char[] aciertosBBNN = {'B','B','N','N'};
+		char[] aciertosBN00 = {'B','N','0','0'};
+		char[] aciertosBN0B = {'B','N','0','B'};
+		char[] aciertosBN0N = {'B','N','0','N'};
+		char[] aciertosBNB0 = {'B','N','B','0'};
+		char[] aciertosBNBB = {'B','N','B','B'};
+		char[] aciertosBNBN = {'B','N','B','N'};
+		char[] aciertosBNN0 = {'B','N','N','0'};
+		char[] aciertosBNNB = {'B','N','N','B'};
+		char[] aciertosBNNN = {'B','N','N','N'};
 		char[] aciertosN000 = {'N','0','0','0'};
+		char[] aciertosN00B = {'N','0','0','B'};
 		char[] aciertosN00N = {'N','0','0','N'};
+		char[] aciertosN0B0 = {'N','0','B','0'};
+		char[] aciertosN0BB = {'N','0','B','B'};
+		char[] aciertosN0BN = {'N','0','B','N'};
 		char[] aciertosN0N0 = {'N','0','N','0'};
+		char[] aciertosN0NB = {'N','0','N','B'};
 		char[] aciertosN0NN = {'N','0','N','N'};
+		char[] aciertosNB00 = {'N','B','0','0'};
+		char[] aciertosNB0B = {'N','B','0','B'};
+		char[] aciertosNB0N = {'N','B','0','N'};
+		char[] aciertosNBB0 = {'N','B','B','0'};
+		char[] aciertosNBBB = {'N','B','B','B'};
+		char[] aciertosNBBN = {'N','B','B','N'};
+		char[] aciertosNBN0 = {'N','B','N','0'};
+		char[] aciertosNBNB = {'N','B','N','B'};
+		char[] aciertosNBNN = {'N','B','N','N'};
 		char[] aciertosNN00 = {'N','N','0','0'};
+		char[] aciertosNN0B = {'N','N','0','B'};
 		char[] aciertosNN0N = {'N','N','0','N'};
+		char[] aciertosNNB0 = {'N','N','B','0'};
+		char[] aciertosNNBB = {'N','N','B','B'};
+		char[] aciertosNNBN = {'N','N','B','N'};
 		char[] aciertosNNN0 = {'N','N','N','0'};
+		char[] aciertosNNNB = {'N','N','N','B'};
 		char[] aciertosNNNN = {'N','N','N','N'};
 
+		assertFalse(Modelo.comprobarVictoria(aciertos0000));
+		assertFalse(Modelo.comprobarVictoria(aciertos000B));
 		assertFalse(Modelo.comprobarVictoria(aciertos000N));
+		assertFalse(Modelo.comprobarVictoria(aciertos00B0));
+		assertFalse(Modelo.comprobarVictoria(aciertos00BB));
+		assertFalse(Modelo.comprobarVictoria(aciertos00BN));
 		assertFalse(Modelo.comprobarVictoria(aciertos00N0));
+		assertFalse(Modelo.comprobarVictoria(aciertos00NB));
 		assertFalse(Modelo.comprobarVictoria(aciertos00NN));
+		assertFalse(Modelo.comprobarVictoria(aciertos0B00));
+		assertFalse(Modelo.comprobarVictoria(aciertos0B0B));
+		assertFalse(Modelo.comprobarVictoria(aciertos0B0N));
+		assertFalse(Modelo.comprobarVictoria(aciertos0BB0));
+		assertFalse(Modelo.comprobarVictoria(aciertos0BBB));
+		assertFalse(Modelo.comprobarVictoria(aciertos0BBN));
+		assertFalse(Modelo.comprobarVictoria(aciertos0BN0));
+		assertFalse(Modelo.comprobarVictoria(aciertos0BNB));
+		assertFalse(Modelo.comprobarVictoria(aciertos0BNN));
 		assertFalse(Modelo.comprobarVictoria(aciertos0N00));
+		assertFalse(Modelo.comprobarVictoria(aciertos0N0B));
 		assertFalse(Modelo.comprobarVictoria(aciertos0N0N));
+		assertFalse(Modelo.comprobarVictoria(aciertos0NB0));
+		assertFalse(Modelo.comprobarVictoria(aciertos0NBB));
+		assertFalse(Modelo.comprobarVictoria(aciertos0NBN));
 		assertFalse(Modelo.comprobarVictoria(aciertos0NN0));
+		assertFalse(Modelo.comprobarVictoria(aciertos0NNB));
 		assertFalse(Modelo.comprobarVictoria(aciertos0NNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosB000));
+		assertFalse(Modelo.comprobarVictoria(aciertosB00B));
+		assertFalse(Modelo.comprobarVictoria(aciertosB00N));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0B0));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0BB));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0BN));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0N0));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0NB));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0NN));
+		assertFalse(Modelo.comprobarVictoria(aciertosBB00));
+		assertFalse(Modelo.comprobarVictoria(aciertosBB0B));
+		assertFalse(Modelo.comprobarVictoria(aciertosBB0N));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBB0));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBBN));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBN0));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBNB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBBNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosBN00));
+		assertFalse(Modelo.comprobarVictoria(aciertosBN0B));
+		assertFalse(Modelo.comprobarVictoria(aciertosBN0N));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNB0));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNBN));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNN0));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNNB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNNN));
 		assertFalse(Modelo.comprobarVictoria(aciertosN000));
+		assertFalse(Modelo.comprobarVictoria(aciertosN00B));
+		assertFalse(Modelo.comprobarVictoria(aciertosN00N));
+		assertFalse(Modelo.comprobarVictoria(aciertosN0B0));
+		assertFalse(Modelo.comprobarVictoria(aciertosN0BB));
+		assertFalse(Modelo.comprobarVictoria(aciertosN0BN));
+		assertFalse(Modelo.comprobarVictoria(aciertosN0N0));
+		assertFalse(Modelo.comprobarVictoria(aciertosN0NB));
+		assertFalse(Modelo.comprobarVictoria(aciertosN0NN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNB00));
+		assertFalse(Modelo.comprobarVictoria(aciertosNB0B));
+		assertFalse(Modelo.comprobarVictoria(aciertosNB0N));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBB0));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBBN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBN0));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBNB));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNN00));
+		assertFalse(Modelo.comprobarVictoria(aciertosNN0B));
+		assertFalse(Modelo.comprobarVictoria(aciertosNN0N));
+		assertFalse(Modelo.comprobarVictoria(aciertosNNB0));
+		assertFalse(Modelo.comprobarVictoria(aciertosNNBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosNNBN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNNN0));
+		assertFalse(Modelo.comprobarVictoria(aciertosNNNB));
+		assertTrue(Modelo.comprobarVictoria(aciertosNNNN));		
+	}
+	
+	/**
+	 * --------------- Test del metodo comprobarVictoria ---------------
+	 * Comprueba todas las combinaciones posibles de: 
+	 * - 0, B y N en un array de 4 posiciones | https://pairwise.teremokgames.com/x4to/
+	 * - 0 y B en un array de 4 posiciones    | https://pairwise.teremokgames.com/x4wg/
+	 * - 0 y N en un array de 4 posiciones    | https://pairwise.teremokgames.com/x520/
+	 * - B y N en un array de 4 posiciones    | https://pairwise.teremokgames.com/x4z8/
+	 * 
+	 * Todo ello usando pair-wise testing. 
+	 * La unica vez que el assert es true es cuando el array es {'N','N','N','N'}.
+	 */
+	@Test
+	public void comprobarVictoriaPairWise() {
+		// Pair-wise testing de los posibles valores 0, B y N.
+		char[] aciertosNNNN = {'N','N','N','N'};
+		char[] aciertosN000 = {'N','0','0','0'};
+		char[] aciertosNBBB = {'N','B','B','B'};
+		char[] aciertos00BN = {'0','0','B','N'};
+		char[] aciertos0BN0 = {'0','B','N','0'};
+		char[] aciertos0N0B = {'0','N','0','B'};
+		char[] aciertosBB0N = {'B','B','0','N'};
+		char[] aciertosBNB0 = {'B','N','B','0'};
+		char[] aciertosB0NB = {'B','0','N','B'};
+
+		assertTrue(Modelo.comprobarVictoria(aciertosNNNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosN000));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBBB));
+		assertFalse(Modelo.comprobarVictoria(aciertos00BN));
+		assertFalse(Modelo.comprobarVictoria(aciertos0BN0));
+		assertFalse(Modelo.comprobarVictoria(aciertos0N0B));
+		assertFalse(Modelo.comprobarVictoria(aciertosBB0N));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNB0));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0NB));
+		
+		// Pair-wise testing de los valores 0 y B.
+		char[] aciertos0BBB = {'0','B','B','B'};
+		char[] aciertosBB00 = {'B','B','0','0'};
+		char[] aciertosB00B = {'B','0','0','B'};
+		char[] aciertosB0B0 = {'B','0','B','0'};
+		char[] aciertos00B0 = {'0','0','B','0'};
+		char[] aciertos000B = {'0','0','0','B'};
+		char[] aciertos0B00 = {'0','B','0','0'};
+
+		assertFalse(Modelo.comprobarVictoria(aciertos0BBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosBB00));
+		assertFalse(Modelo.comprobarVictoria(aciertosB00B));
+		assertFalse(Modelo.comprobarVictoria(aciertosB0B0));
+		assertFalse(Modelo.comprobarVictoria(aciertos00B0));
+		assertFalse(Modelo.comprobarVictoria(aciertos000B));
+		assertFalse(Modelo.comprobarVictoria(aciertos0B00));
+		
+		// Pair-wise testing de los valores 0 y N.
+		char[] aciertos0NNN = {'0','N','N','N'};
+		char[] aciertosNN00 = {'N','N','0','0'};
+		char[] aciertosN00N = {'N','0','0','N'};
+		char[] aciertosN0N0 = {'N','0','N','0'};
+		char[] aciertos00N0 = {'0','0','N','0'};
+		char[] aciertos000N = {'0','0','0','N'};
+		char[] aciertos0N00 = {'0','N','0','0'};
+
+		assertFalse(Modelo.comprobarVictoria(aciertos0NNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNN00));
 		assertFalse(Modelo.comprobarVictoria(aciertosN00N));
 		assertFalse(Modelo.comprobarVictoria(aciertosN0N0));
-		assertFalse(Modelo.comprobarVictoria(aciertosN0NN));
-		assertFalse(Modelo.comprobarVictoria(aciertosNN00));
-		assertFalse(Modelo.comprobarVictoria(aciertosNN0N));
-		assertFalse(Modelo.comprobarVictoria(aciertosNNN0));
-		assertTrue(Modelo.comprobarVictoria(aciertosNNNN));
+		assertFalse(Modelo.comprobarVictoria(aciertos00N0));
+		assertFalse(Modelo.comprobarVictoria(aciertos000N));
+		assertFalse(Modelo.comprobarVictoria(aciertos0N00));
 		
-		char[] aciertosNNNB = {'N','N','N','B'};
-		char[] aciertosNNBN = {'N','N','B','N'};
-		char[] aciertosNNBB = {'N','N','B','B'};
-		char[] aciertosNBNN = {'N','B','N','N'};
-		char[] aciertosNBNB = {'N','B','N','B'};
-		char[] aciertosNBBN = {'N','B','B','N'};
-		char[] aciertosNBBB = {'N','B','B','B'};
+		// Pair-wise testing de los valores B y N.
 		char[] aciertosBNNN = {'B','N','N','N'};
-		char[] aciertosBNNB = {'B','N','N','B'};
-		char[] aciertosBNBN = {'B','N','B','N'};
-		char[] aciertosBNBB = {'B','N','B','B'};
-		char[] aciertosBBNN = {'B','B','N','N'};
+		char[] aciertosNNBB = {'N','N','B','B'};
+		char[] aciertosNBBN = {'N','B','B','N'};
+		char[] aciertosNBNB = {'N','B','N','B'};
 		char[] aciertosBBNB = {'B','B','N','B'};
 		char[] aciertosBBBN = {'B','B','B','N'};
-		
-		assertFalse(Modelo.comprobarVictoria(aciertosNNNB));
-		assertFalse(Modelo.comprobarVictoria(aciertosNNBN));
-		assertFalse(Modelo.comprobarVictoria(aciertosNNBB));
-		assertFalse(Modelo.comprobarVictoria(aciertosNBNN));
-		assertFalse(Modelo.comprobarVictoria(aciertosNBNB));
-		assertFalse(Modelo.comprobarVictoria(aciertosNBBN));
-		assertFalse(Modelo.comprobarVictoria(aciertosNBBB));
+		char[] aciertosBNBB = {'B','N','B','B'};
+
 		assertFalse(Modelo.comprobarVictoria(aciertosBNNN));
-		assertFalse(Modelo.comprobarVictoria(aciertosBNNB));
-		assertFalse(Modelo.comprobarVictoria(aciertosBNBN));
-		assertFalse(Modelo.comprobarVictoria(aciertosBNBB));
-		assertFalse(Modelo.comprobarVictoria(aciertosBBNN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNNBB));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBBN));
+		assertFalse(Modelo.comprobarVictoria(aciertosNBNB));
 		assertFalse(Modelo.comprobarVictoria(aciertosBBNB));
-		assertFalse(Modelo.comprobarVictoria(aciertosBBBN));		
+		assertFalse(Modelo.comprobarVictoria(aciertosBBBN));
+		assertFalse(Modelo.comprobarVictoria(aciertosBNBB));
 	}
 }
