@@ -5,76 +5,82 @@ import mastermind.api.view.*;
 
 /** 
  * Clase Controlador - Controla todo lo que sucede en el juego gracias al tratamiento de datos
- * obtenidos de las clases Vista y Modelo. Una vez estos datos estén tratados los mandará a la
+ * obtenidos de las clases Vista y Modelo. Una vez estos datos esten tratados los mandara a la
  * clase Vista para poder ser mostrados por pantalla.
  * 
  * @author Daniel Luis Garcia 
- * @author Daniel Villagrasa Ramírez
+ * @author Daniel Villagrasa Ramirez
  */ 
 public class Controlador {
 	/**
-	 * Número de jugadas que dispone el jugador para adivinar la combinación generada por la máquina.
+	 * Numero de jugadas que dispone el jugador para adivinar la combinacion generada por la maquina.
 	 */
 	public static final int MAX_INTENTOS = 10;
 	
 	/**
-	 * Variable que almacenará el número de jugadas del jugador. La primera de todas será igual a 1.
+	 * Variable que almacenara el numero de jugadas del jugador. La primera de todas sera igual a 1.
 	 */
 	public int vecesJugado = 1;
 	
 	/**
-	 * Realiza las llamadas a los métodos de la clase Vista y Modelo y controlará que el 
-	 * jugador alcance la victoria o agote el número de turnos en función de sus jugadas y
-	 * de la combinación aleatoria generada por la máquina. El flujo del controlador es el
+	 * Realiza las llamadas a los metodos de la clase Vista y Modelo y controlara que el 
+	 * jugador alcance la victoria o agote el numero de turnos en funcion de sus jugadas y
+	 * de la combinacion aleatoria generada por la maquina. El flujo del controlador es el
 	 * siguiente:
 	 * 
-	 * Mientras el número de veces jugadas sea menor a MAX_INTENTOS se mostrará por pantalla 
-	 * la solicitud de introducción de combinación al jugador y se almacenará. Seguidamente, 
-	 * mientras la entrada del jugador sea incorrecta se volverá a solicitar una combinación 
-	 * al jugador sin incrementar el número de jugadas y se almacenará. Cuando la entrada del 
-	 * jugador sea válida, se realizará una comprobación entre la entrada del jugador y la
-	 * combinación aleatoria generada por la máquina y se almacenará. Seguidamente, se 
-	 * comprobará si el jugador ha acertado la combinación generada por la máquina y, en ese
-	 * caso, se mostrará un mensaje de victoria junto con la combinación ganadora. En caso 
-	 * contrario, se seguirá el curso de la partida mostrando el número de jugada junto con 
+	 * Mientras el numero de veces jugadas sea menor a MAX_INTENTOS se mostrara por pantalla 
+	 * la solicitud de introduccion de combinacion al jugador y se almacenara. Seguidamente, 
+	 * mientras la entrada del jugador sea incorrecta se volvera a solicitar una combinacion 
+	 * al jugador sin incrementar el numero de jugadas y se almacenara. Cuando la entrada del 
+	 * jugador sea valida, se realizara una comprobacion entre la entrada del jugador y la
+	 * combinacion aleatoria generada por la maquina y se almacenara. Seguidamente, se 
+	 * comprobara si el jugador ha acertado la combinacion generada por la maquina y, en ese
+	 * caso, se mostrara un mensaje de victoria junto con la combinacion ganadora. En caso 
+	 * contrario, se seguira el curso de la partida mostrando el numero de jugada junto con 
 	 * el intento y los aciertos correspondientes en calidad de blancos o negros. Cuando el
-	 * número de veces jugado llegue a MAX_INTENTOS se mostrará por pantalla un mensaje de
-	 * derrota junto con la combinación generada por la máquina y finalizará la partida.
+	 * numero de veces jugado llegue a MAX_INTENTOS se mostrara por pantalla un mensaje de
+	 * derrota junto con la combinacion generada por la maquina y finalizara la partida.
 	 *  
 	 * @param vista - Instancia de la clase vista.
 	 * @param modelo - Instancia de la clase modelo.
 	 */
 	public Controlador(Vista vista, Modelo modelo) {
-		String[] entradaJugador = {""};
-		char[][] entradaJugadorCasteada = null;
-		int[] aciertos;
+		String entradaJugador = null;
+		char[] entradaJugadorCasteada = null;
+		char[] aciertos;
+		char[] combinacionSecretaCasteada;
 		
 		try {
-			char[][] combinacionAleatoria = mastermind.api.model.Modelo.generarCombinacionAleatoria();
+			//char[] combinacionSecretaCasteada = mastermind.api.model.Modelo.generarCombinacionSecreta();
+			do {
+				combinacionSecretaCasteada = mastermind.api.model.Modelo.generarCombinacionSecreta();
+			}while(!modelo.validarCombinacionSecreta(combinacionSecretaCasteada));
 			
-			while (vecesJugado < MAX_INTENTOS) { // Mientras el número de veces jugadas sea menor a MAX_INTENTOS
-				vista.solicitarCombinacion(); // Muestra por pantalla la solicitud de introducción de combinación al jugador.
+			while (vecesJugado < MAX_INTENTOS) {
+				vista.solicitarCombinacion();
 				
-				entradaJugador = vista.obtenerEntradaJugador(); // Se almacena la entrada del jugador.
-				entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador); // Se transforma el tipo de datos de la entrada del jugador.
+				entradaJugador = vista.obtenerCombinacionJugador();
+				entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador);
 				
-				while(!Modelo.comprobarEntradaJugador(entradaJugadorCasteada)) { // Mientras la entrada del jugador sea incorrecta.
-					vista.solicitarCombinacion(); // Vuelve a solicitar una combinación al jugador sin incrementar el número de jugadas.
-					entradaJugador = vista.obtenerEntradaJugador(); // Se almacena la entrada del jugador.
-					entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador); // Se transforma el tipo de datos de la entrada del jugador.
+				while(!Modelo.validarEntradaJugador(entradaJugadorCasteada)) {
+					vista.solicitarCombinacion();
+					entradaJugador = vista.obtenerCombinacionJugador();
+					entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador);
 				}
 				
-				aciertos = mastermind.api.model.Modelo.compararCombinaciones(combinacionAleatoria, entradaJugadorCasteada);
+				aciertos = mastermind.api.model.Modelo.compararCombinaciones(combinacionSecretaCasteada, entradaJugadorCasteada);
 				
-				if (mastermind.api.model.Modelo.comprobarVictoria(aciertos)) { // Si el jugador ha acertado la combinación aleatoria.
-					vista.mostrarMensajeVictoria(entradaJugadorCasteada); // Se muestra el mensaje de victoria junto con la combinación del jugador.
-					break; // ¿?
-				} else { // Si el jugador no ha acertado la combinación aleatoria
-					vista.mostrarJugada(entradaJugadorCasteada, vecesJugado, aciertos); // Se muestra la nueva jugada del jugador.
-					vecesJugado++; // Incrementa el número de veces jugadas de la partida.
+				if (mastermind.api.model.Modelo.comprobarVictoria(aciertos)) {
+					vista.mostrarMensajeVictoria(entradaJugadorCasteada);
+					break;
+				} else {
+					vista.mostrarJugada(entradaJugadorCasteada, vecesJugado, aciertos);
+					vecesJugado++;
 				}
 			}
-			vista.mostrarMensajeDerrota(combinacionAleatoria); // Se muestra el mensaje de derrota junto con la combinación aleatoria.
+			if(vecesJugado == MAX_INTENTOS) {
+				vista.mostrarMensajeDerrota(combinacionSecretaCasteada);
+			}
 			} catch (Exception e) {
 				e.printStackTrace();
 				}

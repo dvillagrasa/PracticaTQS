@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class MasterMind {
 	
 	/**
-	 * Método principal del juego Master Mind.
+	 * Metodo principal del juego Master Mind.
 	 * 
 	 * @param args - Array de cadena de caracteres con los argumentos introducidos desde la linea de comandos.
 	 */
@@ -39,7 +39,7 @@ public class MasterMind {
 					Controlador controlador = new Controlador(vista, modelo);
 					break;
 				case '2':
-					System.out.println("¡Hasta pronto!");
+					System.out.println("!Hasta pronto!");
 					System.exit(0);
 					break;
 				default:
