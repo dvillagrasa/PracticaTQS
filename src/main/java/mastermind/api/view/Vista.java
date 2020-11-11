@@ -19,8 +19,10 @@ public class Vista {
 	 * Muestra un mensaje por pantalla solicitando al jugador que inserte una combinación de 4 números 
 	 * con el formato "XXXX".
 	 */
-	public void solicitarCombinacion() {
-		System.out.println("Inserta la combinación con el siguiente formato: XXXX \n"); // Muestra el mensaje de solicitud de una combinación.
+	public String solicitarCombinacion() {
+		String solicitarCombinacion = "Inserta la combinación con el siguiente formato: XXXX";
+		System.out.println(solicitarCombinacion); // Muestra el mensaje de solicitud de una combinación.
+		return solicitarCombinacion;
 	}
 
 	/**
@@ -29,10 +31,10 @@ public class Vista {
 	 * 
 	 * @return Devuelve un array de cadena de carácteres.
 	 */
-	public String[] obtenerEntradaJugador() {
-		String[] entrada = {""};
+	public String obtenerCombinacionJugador() {
+		String entrada = null;
 		if(escaner.hasNextLine()) { // Comprueba si existe una entrada por teclado.
-			entrada = escaner.nextLine().split("");
+			entrada = escaner.nextLine();
 		}
 		return entrada;
 	}
@@ -47,10 +49,13 @@ public class Vista {
 	 * @param aciertos - Array de enteros de 2 posiciones. La posición 0 almacena el nº de aciertos negros y la posición
 	 * 1 almacena el nº de aciertos blancos.
 	 */
-	public void mostrarJugada(char[][] resultadoEntradaJugador, int vecesJugado, int[] aciertos) {		
-		System.out.println("Jugada #" + vecesJugado + " " + Arrays.deepToString(resultadoEntradaJugador) + "\n"); // Muestra el nº de jugada y la entrada del jugador.
-		System.out.println("Aciertos Negros: " + aciertos[0] + "\n" + "Aciertos Blancos: " + aciertos[1] + "\n"); // Muestra el nº de aciertos de cada tipo.
-		System.out.println("--------------------------------"); // Delimitador entre jugadas.
+	public String mostrarJugada(char[] resultadoEntradaJugador, int vecesJugado, char[] aciertos) {		
+		//array de 2 para ambos strings xdd
+		String mostrarJugada = "Jugada #" + vecesJugado + " " + Arrays.toString(resultadoEntradaJugador) + " "+ Arrays.toString(aciertos);
+		System.out.println(mostrarJugada);
+		//System.out.println("Jugada #" + vecesJugado + " " + Arrays.toString(resultadoEntradaJugador) + " "+ Arrays.toString(aciertos));
+		System.out.println("-----------------------------------");
+		return mostrarJugada;
 	}
 	
 	/**
@@ -60,20 +65,25 @@ public class Vista {
 	 * @param resultadoEntradaJugador - Combinación del jugador (obtenida de la función obtenerEntradaJugador())
 	 * que ha resultado ser idéntica a la combinación generada por la máquina.
 	 */
-	public void mostrarMensajeVictoria(char[][] resultadoEntradaJugador) {
-		System.out.println("¡Felicidades, has ganado!"); // Mensaje de victoria.
-		System.out.println("Has acertado la combinación secreta: " + Arrays.deepToString(resultadoEntradaJugador)); // Muestra la combinación ganadora del jugador.
+	public String mostrarMensajeVictoria(char[] resultadoEntradaJugador) {
+		String mostrarMensajeVictoria = "¡Felicidades, has ganado! \nHas acertado la combinación secreta: " + Arrays.toString(resultadoEntradaJugador);
+		System.out.println(mostrarMensajeVictoria);
+		return mostrarMensajeVictoria;
 	}
 	
 	/**
 	 * Muestra por pantalla un mensaje informando al jugador sobre su derrota y le muestra, también por pantalla,
 	 * cuál era la combinación aleatoria generada por la máquina.
 	 * 
-	 * @param combinacionAleatoria - Combinación aleatoria generada por la máquina, la cuál el jugador tenía que
+	 * @param combinacionSecreta - Combinación aleatoria generada por la máquina, la cuál el jugador tenía que
 	 * adivinar.
 	 */
-	public void mostrarMensajeDerrota(char [][] combinacionAleatoria) {
-		System.out.println("¡Has perdido!"); // Mensaje de derrota.
-		System.out.println("La combinación secreta era: " + Arrays.deepToString(combinacionAleatoria)); // Muestra la combinación aleatoria generada por la máquina.
+	public String mostrarMensajeDerrota(char[] combinacionSecreta) {
+		String mostrarMensajeDerrota = "¡Has perdido! \nLa combinación secreta era: " + Arrays.toString(combinacionSecreta);
+		System.out.println(mostrarMensajeDerrota);
+		return mostrarMensajeDerrota;
+		
+		//System.out.println("¡Has perdido!");
+		//System.out.println("La combinación secreta era: " + Arrays.toString(combinacionSecreta));
 	}
 }
