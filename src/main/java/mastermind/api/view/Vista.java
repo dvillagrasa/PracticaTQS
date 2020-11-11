@@ -16,24 +16,29 @@ public class Vista {
 	public Scanner escaner = new Scanner(System.in);
 
 	/**
-	 * Muestra un mensaje por pantalla solicitando al jugador que inserte una combinación de 4 números 
-	 * con el formato "XXXX".
+	 * Muestra un mensaje por pantalla solicitando al jugador que inserte una 
+	 * combinación de 4 números con el formato "XXXX".
 	 */
 	public String solicitarCombinacion() {
+		
 		String solicitarCombinacion = "Inserta la combinación con el siguiente formato: XXXX";
-		System.out.println(solicitarCombinacion); // Muestra el mensaje de solicitud de una combinación.
+		System.out.println(solicitarCombinacion);
+		
 		return solicitarCombinacion;
 	}
 
 	/**
-	 * Recibe la entrada por teclado del jugador, separa los carácteres y lo almacena en un 
-	 * array de cadena de carácteres.
+	 * Comprueba si existe una entrada por teclado, si es así recibe la entrada
+	 * por teclado del jugador, separa los carácteres y lo almacena en una 
+	 * cadena de caracteres.
 	 * 
-	 * @return Devuelve un array de cadena de carácteres.
+	 * @return Devuelve la cadena de caracteres con la entrada del jugador o null.
 	 */
 	public String obtenerCombinacionJugador() {
+		
 		String entrada = null;
-		if(escaner.hasNextLine()) { // Comprueba si existe una entrada por teclado.
+		
+		if(escaner.hasNextLine()) { // 
 			entrada = escaner.nextLine();
 		}
 		return entrada;
@@ -50,11 +55,11 @@ public class Vista {
 	 * 1 almacena el nº de aciertos blancos.
 	 */
 	public String mostrarJugada(char[] resultadoEntradaJugador, int vecesJugado, char[] aciertos) {		
-		//array de 2 para ambos strings xdd
+		
 		String mostrarJugada = "Jugada #" + vecesJugado + " " + Arrays.toString(resultadoEntradaJugador) + " "+ Arrays.toString(aciertos);
 		System.out.println(mostrarJugada);
-		//System.out.println("Jugada #" + vecesJugado + " " + Arrays.toString(resultadoEntradaJugador) + " "+ Arrays.toString(aciertos));
 		System.out.println("-----------------------------------");
+		
 		return mostrarJugada;
 	}
 	
@@ -66,8 +71,10 @@ public class Vista {
 	 * que ha resultado ser idéntica a la combinación generada por la máquina.
 	 */
 	public String mostrarMensajeVictoria(char[] resultadoEntradaJugador) {
+		
 		String mostrarMensajeVictoria = "¡Felicidades, has ganado! \nHas acertado la combinación secreta: " + Arrays.toString(resultadoEntradaJugador);
 		System.out.println(mostrarMensajeVictoria);
+		
 		return mostrarMensajeVictoria;
 	}
 	
@@ -79,11 +86,10 @@ public class Vista {
 	 * adivinar.
 	 */
 	public String mostrarMensajeDerrota(char[] combinacionSecreta) {
+		
 		String mostrarMensajeDerrota = "¡Has perdido! \nLa combinación secreta era: " + Arrays.toString(combinacionSecreta);
 		System.out.println(mostrarMensajeDerrota);
-		return mostrarMensajeDerrota;
 		
-		//System.out.println("¡Has perdido!");
-		//System.out.println("La combinación secreta era: " + Arrays.toString(combinacionSecreta));
+		return mostrarMensajeDerrota;
 	}
 }
