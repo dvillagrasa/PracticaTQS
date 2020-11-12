@@ -10,7 +10,7 @@ import mastermind.api.view.Vista;
 
 public class MasterMindTest {
 
-	@Test
+	//@Test
 	public void test() {
 		MasterMind masterMind = new MasterMind();
 		String[] args = null;
