@@ -23,6 +23,18 @@ public class Controlador {
 	public int vecesJugado = 1;
 	
 	/**
+	 * Array de cadenas de caracteres de un rango de 0 a 8, que son los numeros para el codigo aleatorio secreto.
+	 */
+	static String[] numeros = {"0","1","2","3","4","5","6","7","8"};
+	
+	Vista vista = new Vista();
+	Modelo modelo = new Modelo();
+	String entradaJugador = null;
+	char[] entradaJugadorCasteada = null;
+	char[] aciertos;
+	char[] combinacionSecretaCasteada;
+	
+	/**
 	 * Realiza las llamadas a los metodos de la clase Vista y Modelo y controlara que el 
 	 * jugador alcance la victoria o agote el numero de turnos en funcion de sus jugadas y
 	 * de la combinacion aleatoria generada por la maquina. El flujo del controlador es el
@@ -45,25 +57,19 @@ public class Controlador {
 	 * @param modelo - Instancia de la clase modelo.
 	 */
 	public Controlador(Vista vista, Modelo modelo) {
-		String entradaJugador = null;
-		char[] entradaJugadorCasteada = null;
-		char[] aciertos;
-		char[] combinacionSecretaCasteada;
 		
 		try {
-			//char[] combinacionSecretaCasteada = mastermind.api.model.Modelo.generarCombinacionSecreta();
 			do {
-				combinacionSecretaCasteada = mastermind.api.model.Modelo.generarCombinacionSecreta();
-			}while(!modelo.validarCombinacionSecreta(combinacionSecretaCasteada));
-			
+				combinacionSecretaCasteada = mastermind.api.model.Modelo.generarCombinacionSecreta(numeros);
+			} while(!modelo.validarCombinacionSecreta(combinacionSecretaCasteada));
+				
 			while (vecesJugado < MAX_INTENTOS) {
 				vista.solicitarCombinacion();
-				
 				entradaJugador = vista.obtenerCombinacionJugador();
 				entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador);
 				
 				while(!Modelo.validarEntradaJugador(entradaJugadorCasteada)) {
-					vista.solicitarCombinacion();
+					vista.solicitarCombinacion();						
 					entradaJugador = vista.obtenerCombinacionJugador();
 					entradaJugadorCasteada = modelo.castearEntradaJugador(entradaJugador);
 				}
@@ -83,6 +89,6 @@ public class Controlador {
 			}
 			} catch (Exception e) {
 				e.printStackTrace();
-				}
-	}
+			}
+		}
 }

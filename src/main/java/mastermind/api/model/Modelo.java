@@ -24,18 +24,15 @@ public class Modelo {
 	public static final Random aleatorio = new Random(); // Random() devuelve un valor aleatorio.
 	
 	/**
-	 * Array de cadenas de caracteres de un rango de 0 a 8, que son los numeros para el codigo aleatorio secreto.
-	 */
-	static String[] numeros = {"0","1","2","3","4","5","6","7","8"};
-
-	/**
 	 * Genera la combinacion aleatoria de la partida a partir de una cola que contiene los numeros del 0 al 8,
 	 * ambos incluidos. De esta cola se extraen de forma aleatoria y sin repeticion 4 numeros que formaran parte
 	 * de la combinacion aleatoria.
 	 * 
+	 * @param numeros - Array de cadenas de caracteres de un rango de 0 a 8, que son los numeros para el codigo 
+	 * aleatorio secreto.
 	 * @return Devuelve el array de caracteres que almacena la combinacion aleatoria de la partida. 
 	 */
-	public static char[] generarCombinacionSecreta(){
+	public static char[] generarCombinacionSecreta(String[] numeros){
 		
 		String combinacionSecreta = "";
 		char[] combinacionSecretaCasteada = {' '};
@@ -57,8 +54,9 @@ public class Modelo {
 	}
 	
 	public boolean validarCombinacionSecreta(char[] combinacionSecretaCasteada) {
-		boolean esCorrecta = true;
 		
+		boolean esCorrecta = true;
+
 		for(int i = 0; i < combinacionSecretaCasteada.length; i++) {
 			for (int j = i + 1; j < combinacionSecretaCasteada.length; j++) {
 				if(combinacionSecretaCasteada[i] == combinacionSecretaCasteada[j]) {
@@ -78,7 +76,9 @@ public class Modelo {
 	 * @return Devuelve el array de cadena de caracteres transformado a array de caracteres.
 	 */
 	public char[] castearEntradaJugador(String entradaJugador) {
+		
 		char[] entradaJugadorCasteada = {' '};
+		
 		for(int i = 0; i < entradaJugador.length(); i++) {
 			entradaJugadorCasteada = entradaJugador.toCharArray();
 		}
@@ -104,7 +104,6 @@ public class Modelo {
 			}
 		} else {
 			esCorrecta = false;
-			return esCorrecta;
 		}
 		return esCorrecta;
 	}
@@ -150,10 +149,13 @@ public class Modelo {
 		boolean victoria = false;
 		int contador = 0;
 		
-		for(int i = 0; i<MAX_CLAVIJAS;i++) {
+		for(int i = 0; i < MAX_CLAVIJAS; i++) {
 			if(aciertos[i] == 'N') { contador++; }
 		}
-		if(contador == MAX_CLAVIJAS) { victoria = true; }
+		
+		if(contador == MAX_CLAVIJAS) { 
+			victoria = true; 
+		}
 		return victoria;
 	}
 }

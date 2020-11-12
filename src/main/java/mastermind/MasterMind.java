@@ -21,7 +21,7 @@ public class MasterMind {
 	public static void main(String[] args) {
 		
 		Menu menu = new Menu();
-		
+
 		boolean esCorrecta = false;
 		
 		do {
