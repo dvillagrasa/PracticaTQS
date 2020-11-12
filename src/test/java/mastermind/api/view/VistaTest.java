@@ -111,11 +111,11 @@ public class VistaTest{
 	
 	}
 	/**
-	 * --------------- Test del método mostrarMensajeDerrota ---------------
+	 * --------------- Test del metodo mostrarMensajeDerrota ---------------
 	 * Comprueba como se muestra el mensaje de derrota en una partida.
 	 * 
 	 * mensajeEsperado -> Mensaje que debe mostrar por pantalla.
-	 * combinacionSecreta -> Combinación secreta generada por la máquina.
+	 * combinacionSecreta -> Combinacion secreta generada por la maquina.
 	 */
 	@Test
 	public void testMostrarMensajeDerrota() {
