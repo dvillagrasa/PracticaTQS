@@ -50,7 +50,7 @@ public class ModeloTest {
 	 * 
 	 * 			https://pairwise.teremokgames.com/x4a8/		
 	 */
-	////////////////////////////////////////////////////////////////////////////////////////////////////////Particiones equivalentes válidas.
+	////////////////////////////////////////////////////////////////////////////////////////////////////////Particiones equivalentes validas.
 	String combinacionJugador0000 = "0000";
 	String combinacionJugador0111 = "0111";
 	String combinacionJugador0222 = "0222";
@@ -418,7 +418,7 @@ public class ModeloTest {
 	@Test
 	public void testValidarEntradaJugador() {
 		
-		////////////////////////////////////////////////////////////////////////////////////////////////////////Particiones equivalentes válidas.
+		////////////////////////////////////////////////////////////////////////////////////////////////////////Particiones equivalentes validas.
 		String combinacionJugador0000 = "0000"; // Valores frontera 0.
 		String combinacionJugador8888 = "8888"; // Valores frontera 8.
 		
@@ -427,10 +427,10 @@ public class ModeloTest {
 		String combinacionJugador4860 = "4860"; // Valores frontera 0 y 8.
 		String combinacionJugador4602 = "4602"; // Valor frontera 0.
 		
-		String combinacionJugador4127 = "4127"; // Valores límite 1 y 7.
-		String combinacionJugador7461 = "7461"; // Valores límite 1 y 7.
-		String combinacionJugador4712 = "4712"; // Valores límite 1 y 7.
-		String combinacionJugador1672 = "1672"; // Valores límite 1 y 7.
+		String combinacionJugador4127 = "4127"; // Valores limite 1 y 7.
+		String combinacionJugador7461 = "7461"; // Valores limite 1 y 7.
+		String combinacionJugador4712 = "4712"; // Valores limite 1 y 7.
+		String combinacionJugador1672 = "1672"; // Valores limite 1 y 7.
 		
 		char[] entradaCasteada0000 = modelo.castearEntradaJugador(combinacionJugador0000);
 		char[] entradaCasteada8888 = modelo.castearEntradaJugador(combinacionJugador8888);
@@ -540,34 +540,34 @@ public class ModeloTest {
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8654));
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8765));
 		
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones equivalentes inválidas
+		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones equivalentes invalidas
 		//if(X == 4)
-		String combinacionJugadorNULL = "";													// Valor límite 0.
-		String combinacionJugadorEspacio = " ";												// Valor límite 1.
-		String combinacionJugador0 = "0";													// Valor límite 1.
-		String combinacionJugador00 = "00";													// Valor límite 2.
-		String combinacionJugador000 = "000";												// Valor límite 3.
-		String combinacionJugador00000 = "00000";											// Valor límite 5.
-		String combinacionJugador50 = "00000000000000000000000000000000000000000000000000"; // Valor límite 50.
+		String combinacionJugadorNULL = "";													// Valor limite 0.
+		String combinacionJugadorEspacio = " ";												// Valor limite 1.
+		String combinacionJugador0 = "0";													// Valor limite 1.
+		String combinacionJugador00 = "00";													// Valor limite 2.
+		String combinacionJugador000 = "000";												// Valor limite 3.
+		String combinacionJugador00000 = "00000";											// Valor limite 5.
+		String combinacionJugador50 = "00000000000000000000000000000000000000000000000000"; // Valor limite 50.
 		
 		//if((Y < '0') || (Y > '8'))
-		String combinacionJugador4629 = "4629";												// Valor límite 9.
-		String combinacionJugador9462 = "9462";												// Valor límite 9.
-		String combinacionJugador4962 = "4962";												// Valor límite 9.
-		String combinacionJugador4692 = "4692";												// Valor límite 9.
-		String combinacionJugador12R3 = "12-3";												// Valor límite -
-		String combinacionJugador12R34 = "12-34";											// Valor límite -
+		String combinacionJugador4629 = "4629";												// Valor limite 9.
+		String combinacionJugador9462 = "9462";												// Valor limite 9.
+		String combinacionJugador4962 = "4962";												// Valor limite 9.
+		String combinacionJugador4692 = "4692";												// Valor limite 9.
+		String combinacionJugador12R3 = "12-3";												// Valor limite -
+		String combinacionJugador12R34 = "12-34";											// Valor limite -
 		
 		//Ambos casos
-		String combinacionJugador9 = "9";													// Valor límite 1 y valor límite 9.
-		String combinacionJugador96 = "96";													// Valor límite 2 y valor límite 9.
-		String combinacionJugador969 = "969";												// Valor límite 3 y valor límite 9.
-		String combinacionJugador96999 = "96999";											// Valor límite 5 y valor límite 9.
+		String combinacionJugador9 = "9";													// Valor limite 1 y valor limite 9.
+		String combinacionJugador96 = "96";													// Valor limite 2 y valor limite 9.
+		String combinacionJugador969 = "969";												// Valor limite 3 y valor limite 9.
+		String combinacionJugador96999 = "96999";											// Valor limite 5 y valor limite 9.
 		
-		String combinacionJugador96250 = "96250";											// Valor límite 5 y valor límite 9.
-		String combinacionJugador90462 = "90462";											// Valor límite 5 y valor límite 9.
-		String combinacionJugador95062 = "95062";											// Valor límite 5 y valor límite 9.
-		String combinacionJugador96502 = "96502";											// Valor límite 5 y valor límite 9.
+		String combinacionJugador96250 = "96250";											// Valor limite 5 y valor limite 9.
+		String combinacionJugador90462 = "90462";											// Valor limite 5 y valor limite 9.
+		String combinacionJugador95062 = "95062";											// Valor limite 5 y valor limite 9.
+		String combinacionJugador96502 = "96502";											// Valor limite 5 y valor limite 9.
 		
 		char[] entradaCasteada0 = modelo.castearEntradaJugador(combinacionJugador0);
 		char[] entradaCasteada00 = modelo.castearEntradaJugador(combinacionJugador00);
@@ -627,9 +627,9 @@ public class ModeloTest {
 	 */
 	@Test
 	public void testValidarCombinacionSecreta() {
-		///////////////////////////////////////////////////////////////////////////////////// Partición equivalente válida.
+		///////////////////////////////////////////////////////////////////////////////////// Particion equivalente valida.
 		//if(X[i] != X[j])
-		char[] combinacionSecretaCasteadaValida = Modelo.generarCombinacionSecreta(numeros); // Siempre será válida.
+		char[] combinacionSecretaCasteadaValida = Modelo.generarCombinacionSecreta(numeros); // Siempre sera valida.
 		char[] combinacionSecretaCasteada0123 = {'0','1','2','3'};
 		char[] combinacionSecretaCasteada3210 = {'3','2','1','0'};
 		char[] combinacionSecretaCasteada5678 = {'5','6','7','8'};
@@ -645,7 +645,7 @@ public class ModeloTest {
 		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada1357));
 		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada7531));
 		
-		///////////////////////////////////////////////////////////////////////////////////// Partición equivalente inválida.
+		///////////////////////////////////////////////////////////////////////////////////// Particion equivalente invalida.
 		//if(X[i] == X[j])
 		char[] combinacionSecretaCasteada0113 = {'0','1','1','3'}; // 1==1.
 		char[] combinacionSecretaCasteada3320 = {'3','3','2','0'}; // 3==3.
@@ -669,7 +669,7 @@ public class ModeloTest {
 	 */
 	@Test
 	public void testCompararCombinaciones() {
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones equivalentes válidas (no hay inválidas)
+		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones equivalentes validas (no hay invalidas)
 		char[] combinacionSecreta2357 = {'2', '3', '5', '7'};
 		char[] combinacionJugador2357 = {'2', '3', '5', '7'};
 		char[] aciertosComparativa2357X2357 = Modelo.compararCombinaciones(combinacionSecreta2357, combinacionJugador2357);
