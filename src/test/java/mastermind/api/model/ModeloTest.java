@@ -3,6 +3,7 @@ package mastermind.api.model;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import mastermind.api.view.*;
+
 /**
  * Clase ModeloTest - Clase donde se encuentran los metodos de test relacionados
  * con el modelo del juego.
@@ -20,12 +21,19 @@ public class ModeloTest {
 	 * Instancia de la clase Vista.
 	 */
 	Vista vista = new Vista();
+	
 	/**
 	 * Numero de posiciones del tablero del juego. En este caso son 4 tanto para los numeros 
 	 * (serian los colores exceptuando el blanco y negro), como para mostrar los aciertos de 
 	 * numeros y/o posicion (serian los colores blanco y negro).
 	 */
 	public static final int MAX_CLAVIJAS = 4;
+	
+	/**
+	 * Array de cadenas de caracteres de un rango de 0 a 8, que son los numeros para el codigo aleatorio secreto.
+	 */
+	static String[] numeros = {"0","1","2","3","4","5","6","7","8"};
+
 	
 	/**
 	 * 	            Pair-wise testing de numeros [0-8]
@@ -42,6 +50,7 @@ public class ModeloTest {
 	 * 
 	 * 			https://pairwise.teremokgames.com/x4a8/		
 	 */
+	////////////////////////////////////////////////////////////////////////////////////////////////////////Particiones equivalentes válidas.
 	String combinacionJugador0000 = "0000";
 	String combinacionJugador0111 = "0111";
 	String combinacionJugador0222 = "0222";
@@ -205,7 +214,6 @@ public class ModeloTest {
 	char[] combinacionCasteada8543 = modelo.castearEntradaJugador(combinacionJugador8543);
 	char[] combinacionCasteada8654 = modelo.castearEntradaJugador(combinacionJugador8654);
 	char[] combinacionCasteada8765 = modelo.castearEntradaJugador(combinacionJugador8765);
-	
 
 	/**
 	 * Test caja negra de castearEntradaJugador.
@@ -213,9 +221,11 @@ public class ModeloTest {
 	 * A -> Simbolo asterisco (*). 
 	 */
 	@Test
-	public void testCastearEntradaJugador() {
+	public void testCastearEntradaJugadorPairWise() {
 		
 		/**
+		 * --------------- Test del metodo castearEntradaJugador() ---------------
+		 * 
 		 * 			  Pair-wise testing de numeros y simbolos
 		 * 			-------------------------------------------
 		 * Char numerico | Char simbolo  | Char numerico | Char simbolo
@@ -408,95 +418,46 @@ public class ModeloTest {
 	@Test
 	public void testValidarEntradaJugador() {
 		
-		String combinacionJugador0000 = "0000";
-		String combinacionJugador000 = "000";
-		String combinacionJugador00000 = "00000";
-		String combinacionJugadorNULL = "";
-		String combinacionJugadorEspacio = " ";
-		String combinacionJugador50 = "00000000000000000000000000000000000000000000000000";
+		////////////////////////////////////////////////////////////////////////////////////////////////////////Particiones equivalentes válidas.
+		String combinacionJugador0000 = "0000"; // Valores frontera 0.
+		String combinacionJugador8888 = "8888"; // Valores frontera 8.
 		
-		String combinacionJugador4629 = "4629";
-		String combinacionJugador9462 = "9462";
-		String combinacionJugador4962 = "4962";
-		String combinacionJugador4692 = "4692";
+		String combinacionJugador0628 = "0628"; // Valores frontera 0 y 8.
+		String combinacionJugador8462 = "8462"; // Valor frontera 8.
+		String combinacionJugador4860 = "4860"; // Valores frontera 0 y 8.
+		String combinacionJugador4602 = "4602"; // Valor frontera 0.
 		
-		String combinacionJugador4627 = "4627";
-		String combinacionJugador7462 = "7462";
-		String combinacionJugador4762 = "4762";
-		String combinacionJugador4672 = "4672";
-		
-		String combinacionJugador4628 = "4628";
-		String combinacionJugador8462 = "8462";
-		String combinacionJugador4862 = "4862";
-		String combinacionJugador4682 = "4682";
-		
-		String combinacionJugador46250 = "46250";
-		String combinacionJugador50462 = "50462";
-		String combinacionJugador45062 = "45062";
-		String combinacionJugador46502 = "46502";
-		
-		String combinacionJugador12R3 = "12-3";
-		String combinacionJugador12R34 = "12-34";
+		String combinacionJugador4127 = "4127"; // Valores límite 1 y 7.
+		String combinacionJugador7461 = "7461"; // Valores límite 1 y 7.
+		String combinacionJugador4712 = "4712"; // Valores límite 1 y 7.
+		String combinacionJugador1672 = "1672"; // Valores límite 1 y 7.
 		
 		char[] entradaCasteada0000 = modelo.castearEntradaJugador(combinacionJugador0000);
-		char[] entradaCasteada000 = modelo.castearEntradaJugador(combinacionJugador000);
-		char[] entradaCasteada00000 = modelo.castearEntradaJugador(combinacionJugador00000);
-		char[] entradaCasteadaNULL = modelo.castearEntradaJugador(combinacionJugadorNULL);
-		char[] entradaCasteadaEspacio = modelo.castearEntradaJugador(combinacionJugadorEspacio);
-		char[] entradaCasteada50 = modelo.castearEntradaJugador(combinacionJugador50);
+		char[] entradaCasteada8888 = modelo.castearEntradaJugador(combinacionJugador8888);
 		
-		char[] combinacionCasteada4629 = modelo.castearEntradaJugador(combinacionJugador4629);
-		char[] combinacionCasteada9462 = modelo.castearEntradaJugador(combinacionJugador9462);
-		char[] combinacionCasteada4962 = modelo.castearEntradaJugador(combinacionJugador4962);
-		char[] combinacionCasteada4692 = modelo.castearEntradaJugador(combinacionJugador4692);
+		char[] combinacionCasteada4127 = modelo.castearEntradaJugador(combinacionJugador4127);
+		char[] combinacionCasteada7461 = modelo.castearEntradaJugador(combinacionJugador7461);
+		char[] combinacionCasteada4712 = modelo.castearEntradaJugador(combinacionJugador4712);
+		char[] combinacionCasteada1672 = modelo.castearEntradaJugador(combinacionJugador1672);
 		
-		char[] combinacionCasteada4627 = modelo.castearEntradaJugador(combinacionJugador4627);
-		char[] combinacionCasteada7462 = modelo.castearEntradaJugador(combinacionJugador7462);
-		char[] combinacionCasteada4762 = modelo.castearEntradaJugador(combinacionJugador4762);
-		char[] combinacionCasteada4672 = modelo.castearEntradaJugador(combinacionJugador4672);
-		
-		char[] combinacionCasteada4628 = modelo.castearEntradaJugador(combinacionJugador4628);
+		char[] combinacionCasteada0628 = modelo.castearEntradaJugador(combinacionJugador0628);
 		char[] combinacionCasteada8462 = modelo.castearEntradaJugador(combinacionJugador8462);
-		char[] combinacionCasteada4862 = modelo.castearEntradaJugador(combinacionJugador4862);
-		char[] combinacionCasteada4682 = modelo.castearEntradaJugador(combinacionJugador4682);
-		
-		char[] combinacionCasteada46250 = modelo.castearEntradaJugador(combinacionJugador46250);
-		char[] combinacionCasteada50462 = modelo.castearEntradaJugador(combinacionJugador50462);
-		char[] combinacionCasteada45062 = modelo.castearEntradaJugador(combinacionJugador45062);
-		char[] combinacionCasteada46502 = modelo.castearEntradaJugador(combinacionJugador46502);
-		
-		char[] entradaCasteada12R3 = modelo.castearEntradaJugador(combinacionJugador12R3);
-		char[] entradaCasteada12R34 = modelo.castearEntradaJugador(combinacionJugador12R34);
-		
+		char[] combinacionCasteada4860 = modelo.castearEntradaJugador(combinacionJugador4860);
+		char[] combinacionCasteada4602 = modelo.castearEntradaJugador(combinacionJugador4602);
+	
 		assertTrue(Modelo.validarEntradaJugador(entradaCasteada0000));
-		assertFalse(Modelo.validarEntradaJugador(entradaCasteada000));
-		assertFalse(Modelo.validarEntradaJugador(entradaCasteada00000));
-		assertFalse(Modelo.validarEntradaJugador(entradaCasteadaNULL));
-		assertFalse(Modelo.validarEntradaJugador(entradaCasteadaEspacio));
-		assertFalse(Modelo.validarEntradaJugador(entradaCasteada50));
+		assertTrue(Modelo.validarEntradaJugador(entradaCasteada8888));
 		
-		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada4629));
-		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada9462));
-		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada4962));
-		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada4692));
+		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4127));
+		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada7461));
+		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4712));
+		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada1672));
 		
-		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4627));
-		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada7462));
-		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4762));
-		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4672));
-		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4628));
+		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada0628));
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8462));
-		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4862));
-		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4682));
+		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4860));
+		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada4602));
 		
-		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada46250));
-		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada50462));
-		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada45062));
-		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada46502));
-		
-		assertFalse(Modelo.validarEntradaJugador(entradaCasteada12R3));
-		assertFalse(Modelo.validarEntradaJugador(entradaCasteada12R34));
-			
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada0000));
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada0111));
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada0222));
@@ -578,31 +539,146 @@ public class ModeloTest {
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8543));
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8654));
 		assertTrue(Modelo.validarEntradaJugador(combinacionCasteada8765));
+		
+		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones equivalentes inválidas
+		//if(X == 4)
+		String combinacionJugadorNULL = "";													// Valor límite 0.
+		String combinacionJugadorEspacio = " ";												// Valor límite 1.
+		String combinacionJugador0 = "0";													// Valor límite 1.
+		String combinacionJugador00 = "00";													// Valor límite 2.
+		String combinacionJugador000 = "000";												// Valor límite 3.
+		String combinacionJugador00000 = "00000";											// Valor límite 5.
+		String combinacionJugador50 = "00000000000000000000000000000000000000000000000000"; // Valor límite 50.
+		
+		//if((Y < '0') || (Y > '8'))
+		String combinacionJugador4629 = "4629";												// Valor límite 9.
+		String combinacionJugador9462 = "9462";												// Valor límite 9.
+		String combinacionJugador4962 = "4962";												// Valor límite 9.
+		String combinacionJugador4692 = "4692";												// Valor límite 9.
+		String combinacionJugador12R3 = "12-3";												// Valor límite -
+		String combinacionJugador12R34 = "12-34";											// Valor límite -
+		
+		//Ambos casos
+		String combinacionJugador9 = "9";													// Valor límite 1 y valor límite 9.
+		String combinacionJugador96 = "96";													// Valor límite 2 y valor límite 9.
+		String combinacionJugador969 = "969";												// Valor límite 3 y valor límite 9.
+		String combinacionJugador96999 = "96999";											// Valor límite 5 y valor límite 9.
+		
+		String combinacionJugador96250 = "96250";											// Valor límite 5 y valor límite 9.
+		String combinacionJugador90462 = "90462";											// Valor límite 5 y valor límite 9.
+		String combinacionJugador95062 = "95062";											// Valor límite 5 y valor límite 9.
+		String combinacionJugador96502 = "96502";											// Valor límite 5 y valor límite 9.
+		
+		char[] entradaCasteada0 = modelo.castearEntradaJugador(combinacionJugador0);
+		char[] entradaCasteada00 = modelo.castearEntradaJugador(combinacionJugador00);
+		char[] entradaCasteadaNULL = modelo.castearEntradaJugador(combinacionJugadorNULL);
+		char[] entradaCasteadaEspacio = modelo.castearEntradaJugador(combinacionJugadorEspacio);
+		char[] entradaCasteada000 = modelo.castearEntradaJugador(combinacionJugador000);
+		char[] entradaCasteada00000 = modelo.castearEntradaJugador(combinacionJugador00000);
+		char[] entradaCasteada50 = modelo.castearEntradaJugador(combinacionJugador50);
+		
+		char[] combinacionCasteada4629 = modelo.castearEntradaJugador(combinacionJugador4629);
+		char[] combinacionCasteada9462 = modelo.castearEntradaJugador(combinacionJugador9462);
+		char[] combinacionCasteada4962 = modelo.castearEntradaJugador(combinacionJugador4962);
+		char[] combinacionCasteada4692 = modelo.castearEntradaJugador(combinacionJugador4692);
+		char[] entradaCasteada12R3 = modelo.castearEntradaJugador(combinacionJugador12R3);
+		char[] entradaCasteada12R34 = modelo.castearEntradaJugador(combinacionJugador12R34);
+		
+		char[] combinacionCasteada9 = modelo.castearEntradaJugador(combinacionJugador9);
+		char[] combinacionCasteada96 = modelo.castearEntradaJugador(combinacionJugador96);
+		char[] combinacionCasteada969 = modelo.castearEntradaJugador(combinacionJugador969);
+		char[] combinacionCasteada96999 = modelo.castearEntradaJugador(combinacionJugador96999);
+		
+		char[] combinacionCasteada96250 = modelo.castearEntradaJugador(combinacionJugador96250);
+		char[] combinacionCasteada90462 = modelo.castearEntradaJugador(combinacionJugador90462);
+		char[] combinacionCasteada95062 = modelo.castearEntradaJugador(combinacionJugador95062);
+		char[] combinacionCasteada96502 = modelo.castearEntradaJugador(combinacionJugador96502);
+		
+		assertFalse(Modelo.validarEntradaJugador(entradaCasteada0));
+		assertFalse(Modelo.validarEntradaJugador(entradaCasteada00));
+		assertFalse(Modelo.validarEntradaJugador(entradaCasteada000));
+		assertFalse(Modelo.validarEntradaJugador(entradaCasteada00000));
+		assertFalse(Modelo.validarEntradaJugador(entradaCasteadaNULL));
+		assertFalse(Modelo.validarEntradaJugador(entradaCasteadaEspacio));
+		assertFalse(Modelo.validarEntradaJugador(entradaCasteada50));
+		
+		assertFalse(Modelo.validarEntradaJugador(entradaCasteada12R3));
+		assertFalse(Modelo.validarEntradaJugador(entradaCasteada12R34));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada4629));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada9462));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada4962));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada4692));
+		
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada9));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada96));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada969));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada96999));
+		
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada96250));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada90462));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada95062));
+		assertFalse(Modelo.validarEntradaJugador(combinacionCasteada96502));
 	}
 	
 	/**
+	 * --------------- Test del metodo validarCombinacionSecreta() ---------------
 	 * Comprueba el correcto funcionamiento de la funcion generarCombinacionSecreta, 
 	 * verificando si realmente no se repite ningun numero dentro de la combinacion secreta.
 	 */
 	@Test
 	public void testValidarCombinacionSecreta() {
-		char[] combinacionSecretaCasteadaValida = Modelo.generarCombinacionSecreta();
-		char[] combinacionSecretaCasteadaInvalida = {'5', '4', '0', '5'};
+		///////////////////////////////////////////////////////////////////////////////////// Partición equivalente válida.
+		//if(X[i] != X[j])
+		char[] combinacionSecretaCasteadaValida = Modelo.generarCombinacionSecreta(numeros); // Siempre será válida.
+		char[] combinacionSecretaCasteada0123 = {'0','1','2','3'};
+		char[] combinacionSecretaCasteada3210 = {'3','2','1','0'};
+		char[] combinacionSecretaCasteada5678 = {'5','6','7','8'};
+		char[] combinacionSecretaCasteada8765 = {'8','7','6','5'};
+		char[] combinacionSecretaCasteada1357 = {'1','3','5','7'};
+		char[] combinacionSecretaCasteada7531 = {'7','5','3','1'};
 		
 		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteadaValida));
-		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteadaInvalida));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0123));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada3210));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada5678));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8765));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada1357));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada7531));
+		
+		///////////////////////////////////////////////////////////////////////////////////// Partición equivalente inválida.
+		//if(X[i] == X[j])
+		char[] combinacionSecretaCasteada0113 = {'0','1','1','3'}; // 1==1.
+		char[] combinacionSecretaCasteada3320 = {'3','3','2','0'}; // 3==3.
+		char[] combinacionSecretaCasteada5668 = {'5','6','6','8'}; // 6==6.
+		char[] combinacionSecretaCasteada8755 = {'8','7','5','5'}; // 5==5.
+		char[] combinacionSecretaCasteada0083 = {'0','0','8','3'}; // 0==0.
+		char[] combinacionSecretaCasteada8428 = {'8','4','2','8'}; // 8==8.
+		
+		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0113));
+		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada3320));
+		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada5668));
+		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8755));
+		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0083));
+		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8428));
 	}
 	
 	/**
 	 * --------------- Test del metodo compararCombinaciones ---------------
-	 *
+	 * Comprueba que en funcion secreta y una combinacion del jugador simuladas devuelva el array
+	 * de aciertos que se espera.
 	 */
 	@Test
 	public void testCompararCombinaciones() {
+		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones equivalentes válidas (no hay inválidas)
 		char[] combinacionSecreta2357 = {'2', '3', '5', '7'};
 		char[] combinacionJugador2357 = {'2', '3', '5', '7'};
 		char[] aciertosComparativa2357X2357 = Modelo.compararCombinaciones(combinacionSecreta2357, combinacionJugador2357);
 		char[] aciertosEsperadosNNNN = {'N', 'N', 'N', 'N'};
+		
+		char[] combinacionSecreta2367 = {'2', '3', '6', '7'};
+		char[] combinacionJugador3276 = {'3', '2', '7', '6'};
+		char[] aciertosComparativa2367X3276 = Modelo.compararCombinaciones(combinacionSecreta2367, combinacionJugador3276);
+		char[] aciertosEsperadosBBBB = {'B', 'B', 'B', 'B'};
 		
 		char[] combinacionSecreta2356 = {'2', '3', '5', '6'};
 		char[] combinacionJugador1234 = {'1', '2', '3', '4'};
@@ -630,6 +706,7 @@ public class ModeloTest {
 		char[] aciertosEsperadosNBBN = {'N', 'B', 'B', 'N'};
 		
 		assertArrayEquals(aciertosEsperadosNNNN, aciertosComparativa2357X2357);
+		assertArrayEquals(aciertosEsperadosBBBB, aciertosComparativa2367X3276);
 		assertArrayEquals(aciertosEsperados0BB0, aciertosComparativa2356X1234);
 		assertArrayEquals(aciertosEsperados0000, aciertosComparativa8740X1235);
 		assertArrayEquals(aciertosEsperadosN00N, aciertosComparativa7856X7236);
@@ -647,6 +724,7 @@ public class ModeloTest {
 	 */
 	@Test
 	public void testComprobarVictoriaTodasCombinaciones() {
+		
 		char[] aciertos0000 = {'0','0','0','0'};
 		char[] aciertos000B = {'0','0','0','B'};
 		char[] aciertos000N = {'0','0','0','N'};
@@ -825,6 +903,7 @@ public class ModeloTest {
 	 */
 	@Test
 	public void comprobarVictoriaPairWise() {
+		
 		// Pair-wise testing de los posibles valores 0, B y N.
 		char[] aciertosNNNN = {'N','N','N','N'};
 		char[] aciertosN000 = {'N','0','0','0'};
