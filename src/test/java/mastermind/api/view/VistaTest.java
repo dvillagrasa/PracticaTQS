@@ -142,4 +142,10 @@ public class VistaTest {
 		assertEquals(mensajeEsperado, vista.mostrarMensajeDerrota(combinacionSecreta));
 
 	}
+	
+	@Test
+	public void testMostrarDespedida() {
+		String despedidaEsperada = "!Hasta pronto!";
+		assertEquals(despedidaEsperada, vista.mostrarMensajeDespedida());
+	}
 }
