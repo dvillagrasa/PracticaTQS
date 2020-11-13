@@ -148,4 +148,11 @@ public class VistaTest {
 		String despedidaEsperada = "!Hasta pronto!";
 		assertEquals(despedidaEsperada, vista.mostrarMensajeDespedida());
 	}
+	
+	@Test
+	public void testMostrarOpcionInvalida() {
+		String mostrarOpcionInvalidaEsperada = "\nOpcion invalida, intentalo de nuevo.";
+		
+		assertEquals(mostrarOpcionInvalidaEsperada, vista.mostrarOpcionInvalida());
+	}
 }

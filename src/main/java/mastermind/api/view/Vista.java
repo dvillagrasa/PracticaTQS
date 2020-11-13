@@ -122,4 +122,13 @@ public class Vista {
 
 		return mostrarMensajeDerrota;
 	}
+
+	public String mostrarMensajeDespedida() {
+		
+		String mensajeDespedida = "!Hasta pronto!";
+		System.out.println(mensajeDespedida);
+		
+		return mensajeDespedida;
+	}
+
 }
