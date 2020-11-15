@@ -42,7 +42,7 @@ public class ModeloTest {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones
 	//////////////////////////////////////////////////////////////////////////////////////////////////////// equivalentes
 	//////////////////////////////////////////////////////////////////////////////////////////////////////// validas.
-	// EL VALOR FRONTERA "0000" ESTÁ EN LA LÍNEA 80 APROX.
+	// EL VALOR FRONTERA "0000" ESTA EN LA LINEA 80 APROX.
 	String combinacionJugador8888 = "8888"; // Valores frontera 8.
 
 	String combinacionJugador0628 = "0628"; // Valores frontera 0 y 8.
@@ -362,27 +362,27 @@ public class ModeloTest {
 	char[] opcionAsterisco = { '*' };
 	char[] opcionMas = { '+' };
 	char[] opcionGorro = { '^' };
-	char[] opcionPiso = { 'º' };
-	char[] opcionPuerta = { 'ª' };
+	//char[] opcionPiso = { 'º' };
+	//char[] opcionPuerta = { 'ª' };
 	char[] opcioContraBarra = { '\\' };
 	char[] opcionEx1 = { '!' };
 	char[] opcionPipe = { '|' };
 	char[] opcionArroba = { '@' };
 	char[] opciobCorchete = { '#' };
-	char[] opcionPunto = { '·' };
+	//char[] opcionPunto = { '·' };
 	char[] opcionDolar = { '$' };
 	char[] opcionEspana = { '~' };
 	char[] opcioXCiento = { '%' };
 	char[] opcionAnd = { '&' };
-	char[] opcionFB = { '¬' };
+	//char[] opcionFB = { '¬' };
 	char[] opcionSlash = { '/' };
 	char[] opcionParentesis1 = { '(' };
 	char[] opcionParentesis2 = { ')' };
 	char[] opcionIgual = { '=' };
 	char[] opcionInterrogante1 = { '?' };
 	char[] opcioComilla = { '\'' };
-	char[] opcionInterro2 = { '¿' };
-	char[] opcionEx2 = { '¡' };
+	//char[] opcionInterro2 = { '¿' };
+	//char[] opcionEx2 = { '¡' };
 	char[] opcion1234 = { '1', '2', '3', '4' };
 	char[] opcion2314 = { '2', '3', '1', '4' };
 
@@ -462,28 +462,28 @@ public class ModeloTest {
 		vectorSuposiciones.add("*");
 		vectorSuposiciones.add("+");
 		vectorSuposiciones.add("^");
-		vectorSuposiciones.add("º");
-		vectorSuposiciones.add("ª");
+		//vectorSuposiciones.add("º");
+		//vectorSuposiciones.add("ª");
 		vectorSuposiciones.add("\\");
 		vectorSuposiciones.add("!");
 		vectorSuposiciones.add("|");
 		vectorSuposiciones.add("\"");
 		vectorSuposiciones.add("@");
 		vectorSuposiciones.add("#");
-		vectorSuposiciones.add("·");
+		//vectorSuposiciones.add("·");
 		vectorSuposiciones.add("$");
 		vectorSuposiciones.add("~");
 		vectorSuposiciones.add("%");
 		vectorSuposiciones.add("&");
-		vectorSuposiciones.add("¬");
+		//vectorSuposiciones.add("¬");
 		vectorSuposiciones.add("/");
 		vectorSuposiciones.add("(");
 		vectorSuposiciones.add(")");
 		vectorSuposiciones.add("=");
 		vectorSuposiciones.add("?");
 		vectorSuposiciones.add("'");
-		vectorSuposiciones.add("¿");
-		vectorSuposiciones.add("¡");
+		//vectorSuposiciones.add("¿");
+		//vectorSuposiciones.add("¡");
 
 		InterfazEscaner interfazEscaner = new MockEscaner(vectorSuposiciones);
 
