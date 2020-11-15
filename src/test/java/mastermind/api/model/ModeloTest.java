@@ -362,27 +362,21 @@ public class ModeloTest {
 	char[] opcionAsterisco = { '*' };
 	char[] opcionMas = { '+' };
 	char[] opcionGorro = { '^' };
-	//char[] opcionPiso = { 'º' };
-	//char[] opcionPuerta = { 'ª' };
 	char[] opcioContraBarra = { '\\' };
 	char[] opcionEx1 = { '!' };
 	char[] opcionPipe = { '|' };
 	char[] opcionArroba = { '@' };
 	char[] opciobCorchete = { '#' };
-	//char[] opcionPunto = { '·' };
 	char[] opcionDolar = { '$' };
 	char[] opcionEspana = { '~' };
 	char[] opcioXCiento = { '%' };
 	char[] opcionAnd = { '&' };
-	//char[] opcionFB = { '¬' };
 	char[] opcionSlash = { '/' };
 	char[] opcionParentesis1 = { '(' };
 	char[] opcionParentesis2 = { ')' };
 	char[] opcionIgual = { '=' };
 	char[] opcionInterrogante1 = { '?' };
 	char[] opcioComilla = { '\'' };
-	//char[] opcionInterro2 = { '¿' };
-	//char[] opcionEx2 = { '¡' };
 	char[] opcion1234 = { '1', '2', '3', '4' };
 	char[] opcion2314 = { '2', '3', '1', '4' };
 
@@ -462,28 +456,22 @@ public class ModeloTest {
 		vectorSuposiciones.add("*");
 		vectorSuposiciones.add("+");
 		vectorSuposiciones.add("^");
-		//vectorSuposiciones.add("º");
-		//vectorSuposiciones.add("ª");
 		vectorSuposiciones.add("\\");
 		vectorSuposiciones.add("!");
 		vectorSuposiciones.add("|");
 		vectorSuposiciones.add("\"");
 		vectorSuposiciones.add("@");
 		vectorSuposiciones.add("#");
-		//vectorSuposiciones.add("·");
 		vectorSuposiciones.add("$");
 		vectorSuposiciones.add("~");
 		vectorSuposiciones.add("%");
 		vectorSuposiciones.add("&");
-		//vectorSuposiciones.add("¬");
 		vectorSuposiciones.add("/");
 		vectorSuposiciones.add("(");
 		vectorSuposiciones.add(")");
 		vectorSuposiciones.add("=");
 		vectorSuposiciones.add("?");
 		vectorSuposiciones.add("'");
-		//vectorSuposiciones.add("¿");
-		//vectorSuposiciones.add("¡");
 
 		InterfazEscaner interfazEscaner = new MockEscaner(vectorSuposiciones);
 
@@ -1451,30 +1439,22 @@ public class ModeloTest {
 		assertFalse(modelo.validarOpcionMenu(opcionAsterisco));
 		assertFalse(modelo.validarOpcionMenu(opcionMas));
 		assertFalse(modelo.validarOpcionMenu(opcionGorro));
-		assertFalse(modelo.validarOpcionMenu(opcionPiso));
-		assertFalse(modelo.validarOpcionMenu(opcionPuerta));
 		assertFalse(modelo.validarOpcionMenu(opcioContraBarra));
 		assertFalse(modelo.validarOpcionMenu(opcionEx1));
 		assertFalse(modelo.validarOpcionMenu(opcionPipe));
 		assertFalse(modelo.validarOpcionMenu(opcionArroba));
 		assertFalse(modelo.validarOpcionMenu(opciobCorchete));
-		assertFalse(modelo.validarOpcionMenu(opcionPunto));
 		assertFalse(modelo.validarOpcionMenu(opcionDolar));
 		assertFalse(modelo.validarOpcionMenu(opcionEspana));
 		assertFalse(modelo.validarOpcionMenu(opcioXCiento));
 		assertFalse(modelo.validarOpcionMenu(opcionAnd));
-		assertFalse(modelo.validarOpcionMenu(opcionFB));
 		assertFalse(modelo.validarOpcionMenu(opcionSlash));
 		assertFalse(modelo.validarOpcionMenu(opcionParentesis1));
 		assertFalse(modelo.validarOpcionMenu(opcionParentesis2));
 		assertFalse(modelo.validarOpcionMenu(opcionIgual));
 		assertFalse(modelo.validarOpcionMenu(opcionInterrogante1));
 		assertFalse(modelo.validarOpcionMenu(opcioComilla));
-		assertFalse(modelo.validarOpcionMenu(opcionInterro2));
-		assertFalse(modelo.validarOpcionMenu(opcionEx2));
-
 		assertFalse(modelo.validarOpcionMenu(opcion1234));
 		assertFalse(modelo.validarOpcionMenu(opcion2314));
-
 	}
 }
