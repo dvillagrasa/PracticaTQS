@@ -13,10 +13,13 @@ import org.junit.Test;
  */
 public class VistaTest {
 
+	/**
+	 * Instancia de la clase Vista.
+	 */
 	Vista vista = new Vista();
 
 	/**
-	 * Comprueba que el menu que muestra por pantalla el metodo mostrarmenu es el
+	 * Comprueba que el menu que muestra por pantalla el metodo mostrarMenu() es el
 	 * correcto.
 	 */
 	@Test
@@ -31,7 +34,7 @@ public class VistaTest {
 
 	/**
 	 * Comprueba que el mensaje que muestra por pantalla el metodo
-	 * solicitarCombinacion es el correcto.
+	 * solicitarCombinacion() es el correcto.
 	 */
 	@Test
 	public void testSolicitarCombinacion() {
@@ -40,14 +43,14 @@ public class VistaTest {
 	}
 
 	/**
-	 * --------------- Test del metodo mostrarJugada --------------- Comprueba como
-	 * se muestran las jugadas del jugador en una partida. Se utilizan entradas y
-	 * resultados aleatorios para 9 jugadas.
+	 * Comprueba como se muestran las jugadas del jugador en una partida. Se
+	 * utilizan entradas y resultados totalmente aleatorios para 9 jugadas.
 	 * 
 	 * mensajeEsperadoXXXXXXXX -> Mensaje que debe mostrar por pantalla.
-	 * resultadoEntradaJugadorXXXX -> Valores casteados que introdujo el usuario.
-	 * jugadaX -> Numero de jugada [1-9]. aciertosXXXXXXXX -> Semejanzas respecto la
-	 * combinacion secreta.
+	 * resultadoEntradaJugadorXXXX -> Valores casteados obtenidos del Escaner o
+	 * MockEscaner. 
+	 * jugadaX -> Numero de jugada [1-9]. 
+	 * aciertosXXXXXXXX -> Semejanzas respecto la combinacion secreta.
 	 */
 	@Test
 	public void testMostrarJugada() {
@@ -113,7 +116,6 @@ public class VistaTest {
 	}
 
 	/**
-	 * --------------- Test del metodo mostrarMensajeVictoria ---------------
 	 * Comprueba como se muestra el mensaje de victoria en una partida.
 	 * 
 	 * mensajeEsperado -> Mensaje que debe mostrar por pantalla.
@@ -125,34 +127,42 @@ public class VistaTest {
 		String mensajeEsperado = "!Felicidades, has ganado! \nHas acertado la combinacion secreta: "
 				+ Arrays.toString(resultadoEntradaJugador) + "\n";
 		assertEquals(mensajeEsperado, vista.mostrarMensajeVictoria(resultadoEntradaJugador));
-
 	}
 
 	/**
-	 * --------------- Test del metodo mostrarMensajeDerrota ---------------
 	 * Comprueba como se muestra el mensaje de derrota en una partida.
 	 * 
-	 * mensajeEsperado -> Mensaje que debe mostrar por pantalla. combinacionSecreta
-	 * -> Combinacion secreta generada por la maquina.
+	 * mensajeEsperado -> Mensaje que debe mostrar por pantalla. 
+	 * combinacionSecreta -> Combinacion secreta generada por la maquina.
 	 */
 	@Test
 	public void testMostrarMensajeDerrota() {
 		char[] combinacionSecreta = { '5', '6', '2', '0' };
-		String mensajeEsperado = "!Has perdido! \nLa combinacion secreta era: " + Arrays.toString(combinacionSecreta) + "\n";
+		String mensajeEsperado = "!Has perdido! \nLa combinacion secreta era: " + Arrays.toString(combinacionSecreta)
+				+ "\n";
 		assertEquals(mensajeEsperado, vista.mostrarMensajeDerrota(combinacionSecreta));
-
 	}
-	
+
+	/**
+	 * Comprueba como se muestra el mensaje de despedida del juego.
+	 * 
+	 * despedidaEsperada -> Mensaje que debe mostrar por pantalla.
+	 */
 	@Test
 	public void testMostrarDespedida() {
 		String despedidaEsperada = "!Hasta pronto!";
 		assertEquals(despedidaEsperada, vista.mostrarMensajeDespedida());
 	}
-	
+
+	/**
+	 * Comprueba como se muestra el mensaje de opcion invalida.
+	 * 
+	 * mostrarOpcionInvalidaEsperada -> Mensaje que debe mostrar por pantalla.
+	 */
 	@Test
 	public void testMostrarOpcionInvalida() {
 		String mostrarOpcionInvalidaEsperada = "\nOpcion invalida, intentalo de nuevo.\n";
-		
+
 		assertEquals(mostrarOpcionInvalidaEsperada, vista.mostrarOpcionInvalida());
 	}
 }
