@@ -235,7 +235,7 @@ public class ModeloTest {
 	 * PARTICIONES EQUIVALENTES VALIDAS -> Toda combinacion que contenga algun 
 	 * valor que no este comprendido entre 0 y 8 (ambos incluidos).
 	 */
-	// if(X == 4) -> Si el tamaño del String es igual a 4.
+	// if(X == 4) -> Si el tamano del String es igual a 4.
 	String combinacionJugadorNULL = ""; // Valor limite 0.
 	String combinacionJugadorEspacio = " "; // Valor limite 1.
 	String combinacionJugador0 = "0"; // Valor limite 1.
@@ -947,7 +947,7 @@ public class ModeloTest {
 		/**
 		 * PARTICIONES EQUIVALENTES VALIDAS -> Combinaciones que no son validas para el juego.
 		 */
-		// if(X == 4) -> Si el tamaño del String es igual a 4.
+		// if(X == 4) -> Si el tamano del String es igual a 4.
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteada0));
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteada00));
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteada000));
