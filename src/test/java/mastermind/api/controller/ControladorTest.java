@@ -71,8 +71,8 @@ public class ControladorTest {
 		vistaTest.testMostrarOpcionInvalida();
 		modeloTest.testCastearEntradaJugadorPairWise();
 		
-		String args[] = null;
-		Controlador.main(args);
+		//String args[] = null;
+		//Controlador.main(args);
 		
 	}
 	
