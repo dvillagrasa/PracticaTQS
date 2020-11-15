@@ -1,8 +1,5 @@
 package mastermind.api.model;
 
-
-import java.util.Random;
-
 import com.google.common.primitives.Chars;
 
 import mastermind.InterfazAleatorio;
@@ -16,7 +13,7 @@ import mastermind.InterfazEscaner;
  * @author Daniel Villagrasa Ramirez
  */
 public class Modelo {
-	
+
 	/**
 	 * Numero de posiciones del tablero del juego. En este caso son 4 tanto para los
 	 * numeros (serian los colores exceptuando el blanco y negro), como para mostrar
@@ -25,42 +22,40 @@ public class Modelo {
 	public static final int MAX_CLAVIJAS = 4;
 
 	/**
-	 * Variable que permite obtener un valor aleatorio dentro de un conjunto de
-	 * datos.
-	 */
-	public static final Random aleatorio = new Random(); // Random() devuelve un valor aleatorio.
-
-	/**
+	 * Obtiene, a traves de la interfaz del escaner la opcion introducida por el
+	 * usuario mediante el Scanner o introducida en el test mediante el MockObject.
 	 * 
-	 * @param interfazEscaner
-	 * @return
+	 * @param interfazEscaner - Instancia de la interfaz InterfazEscaner.
+	 * @return Devuelve un String con la opcion del Scanner o del MockObject.
 	 */
 	public String obtenerOpcionMenu(InterfazEscaner interfazEscaner) {
 		String entrada = null;
 		entrada = interfazEscaner.cogerOpcionMenu();
 		return entrada;
 	}
-	
 
 	/**
-	 * Coge la opcion introducida mediante de la interfaz del escaner y la castea de
-	 * String a char.
+	 * Utiliza el retorno de obtenerOpcionMenu(InterfazEscaner interfazEscaner) para
+	 * transformarlo de String a char.
 	 * 
-	 * @param opcionJugador
-	 * @return
+	 * @param opcionJugador - Retorno del metodo obtenerOpcionMenu(InterfazEscaner
+	 *                      interfazEscaner).
+	 * @return Devuelve un array de chars que contiene la opcion introducida
+	 *         mediante el Scanner o el MockObject en forma de char.
 	 */
 	public char[] castearOpcionMenu(String opcionJugador) {
-		char[] opcionJugadorCasteada = opcionJugador.toCharArray();			
+		char[] opcionJugadorCasteada = opcionJugador.toCharArray();
 		return opcionJugadorCasteada;
 	}
 
 	/**
-	 * Comprueba que el numero introducido mediante de la interfaz del escaner es
-	 * valido.
+	 * Utiliza el retorno de castearOpcionMenu(String opcionJugador) para comprobar
+	 * que el numero introducido mediante el Scanner o el MockObject es valido.
 	 * 
-	 * @param opcionCasteada - opcion introducida mediante de la interfaz del
-	 *                       escaner.
-	 * @return - Devuelve true o false, dependiendo de opcionCasteada.
+	 * @param opcionCasteada - Retorno del metodo castearOpcionMenu(String
+	 *                       opcionJugador).
+	 * @return Devuelve true o false, dependiendo de si opcionCasteada es valida o
+	 *         no.
 	 */
 	public boolean validarOpcionMenu(char[] opcionCasteada) {
 		boolean esCorrecto = true;
@@ -69,13 +64,15 @@ public class Modelo {
 			esCorrecto = false;
 		}
 		return esCorrecto;
-	}	
+	}
 
 	/**
-	 * Obtiene la combinacion que se introduce mediante de la interfaz del escaner.
+	 * Obtiene, a traves de la interfaz del escaner la combinacion introducida por
+	 * el usuario mediante el Scanner o introducida en el test mediante el
+	 * MockObject.
 	 * 
-	 * @param interfazEscaner - Instancia de la clase InterfazEscaner.
-	 * @return entrada - Combinacion obtenida de la interfaz del escaner.
+	 * @param interfazEscaner - Instancia de la interfaz InterfazEscaner.
+	 * @return Devuelve un String con la combinacion del Scanner o del MockObject.
 	 */
 	public String obtenerCombinacionJugador(InterfazEscaner interfazEscaner) {
 		String entrada = null;
@@ -84,13 +81,13 @@ public class Modelo {
 	}
 
 	/**
-	 * Recibe un array de cadena de caracteres el cual convierte a un array de
-	 * caracteres para poder ser utilizado en el resto de metodos del programa.
+	 * Utiliza el retorno del metodo obtenerCombinacionJugador(InterfazEscaner
+	 * interfazEscaner) para convertirlo a un vector de caracteres.
 	 * 
-	 * @param entradaJugador - Array de cadena de caracteres con la entrada del
-	 *                       jugador separada por caracteres.
-	 * @return Devuelve el array de cadena de caracteres transformado a array de
-	 *         caracteres.
+	 * @param entradaJugador - Retorno del metodo
+	 *                       obtenerCombinacionJugador(InterfazEscaner
+	 *                       interfazEscaner).
+	 * @return Devuelve un vector de caracteres.
 	 */
 	public char[] castearCombinacionJugador(String entradaJugador) {
 		char[] entradaJugadorCasteada = { ' ' };
@@ -125,14 +122,13 @@ public class Modelo {
 	}
 
 	/**
-	 * Genera la combinacion aleatoria de la partida a partir de una cola que
-	 * contiene los numeros del 0 al 8, ambos incluidos. De esta cola se extraen de
-	 * forma aleatoria y sin repeticion 4 numeros que formaran parte de la
-	 * combinacion aleatoria.
+	 * Obtiene, a traves de la interfaz del escaner la combinacion secreta generada
+	 * por el juego mediante el Scanner o introducida en el test mediante el
+	 * MockObject. A partir de esta combinacion secreta se comprueba que es valida,
+	 * es decir, que contiene unicamente valores entre 0 y 8 (ambos incluidos).
 	 * 
-	 * @param numeros - Array de cadenas de caracteres de un rango de 0 a 8, que son
-	 *                los numeros para el codigo aleatorio secreto.
-	 * @return Devuelve el array de caracteres que almacena la combinacion aleatoria
+	 * @param interfazAleatorio - Instancia de la interfaz InterfazEscaner.
+	 * @return Devuelve el vector de caracteres que almacena la combinacion secreta
 	 *         de la partida.
 	 */
 	public static char[] generarCombinacionSecreta(InterfazAleatorio interfazAleatorio) {
@@ -158,18 +154,24 @@ public class Modelo {
 		System.out.println(combinacionSecretaCasteada);
 		return combinacionSecretaCasteada;
 	}
-	
+
 	/**
-	 * Comprueba la combinacion generada por la maquina y la combinacion itroducida
-	 * por el jugador. En funcion de la combinacion introducida por el jugador se
-	 * comprobara si los numeros existen y si estan bien ubicados respecto de la
-	 * combinacion generada por la maquina.
+	 * Utiliza los retornos de los metodos
+	 * generarCombinacionSecreta(InterfazAleatorio interfazAleatorio) y
+	 * castearCombinacionJugador(String entradaJugador) y comprueba la combinacion
+	 * generada por la maquina y la combinacion itroducida por el jugador. En
+	 * funcion de la combinacion introducida por el jugador se comprobara si los
+	 * numeros existen y si estan bien ubicados respecto de la combinacion generada
+	 * por la maquina.
 	 * 
-	 * @param combinacionSecreta - Combinacion aleatoria generada por la maquina.
-	 * @param combinacionJugador - Combinacion introducida por el jugador.
-	 * @return Devuelve un array de enteros de 2 posiciones. La posicion 0 almacena
-	 *         el numero de aciertos negros y la posicion 1 almacena el numero de
-	 *         aciertos blancos.
+	 * @param combinacionSecreta - Retorno del metodo
+	 *                           generarCombinacionSecreta(InterfazAleatorio
+	 *                           interfazAleatorio).
+	 * @param combinacionJugador - Retorno del metodo
+	 *                           castearCombinacionJugador(String entradaJugador).
+	 * @return Devuelve un vector de caracteres de 4 posiciones que contendra los
+	 *         caracteres 0, N y/o B en funcion de la semejanza entre la combinacion
+	 *         secreta y la combinacion del jugador.
 	 */
 	public static char[] compararCombinaciones(char[] combinacionSecreta, char[] combinacionJugador) {
 		char[] aciertos = { '0', '0', '0', '0' };
@@ -186,13 +188,16 @@ public class Modelo {
 	}
 
 	/**
-	 * Comprueba si el numero de aciertos negros almacenados en la posicion 0 del
-	 * array de enteros es identico a MAX_CLAVIJAS. En caso de que sea identico (4
-	 * == 4, no existe otra posibilidad) el flag ganar se pondra a true. En caso
-	 * contrario, seguira siendo false.
+	 * Utiliza el retorno del metodo compararCombinaciones(char[]
+	 * combinacionSecreta, char[] combinacionJugador) para comprobar si el numero de
+	 * aciertos negros almacenados en la posicion 0 del array de enteros es identico
+	 * a MAX_CLAVIJAS. En caso de que sea identico (4 == 4) el booleano victoria se
+	 * pondra a true. En caso contrario, seguira siendo false.
 	 * 
-	 * @param aciertos - Array de caracteres que almacenara los fallos (0), aciertos
-	 *                 de numero (B) y los aciertos de numero y posicion (N).
+	 * @param aciertos - retorno del metodo compararCombinaciones(char[]
+	 *                 combinacionSecreta, char[] combinacionJugador) que almacenara
+	 *                 los fallos (0), aciertos de numero (B) y los aciertos de
+	 *                 numero y posicion (N).
 	 * @return Devuelve true si el numero de aciertos negros es igual a 4, en caso
 	 *         contrario, devuelve false.
 	 */

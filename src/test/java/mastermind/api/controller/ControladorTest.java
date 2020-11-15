@@ -319,8 +319,6 @@ public class ControladorTest {
 		InterfazAleatorio interfazAleatorio = new MockAleatorio(vectorAleatorio);
 
 		controlador.init(interfazEscaner, interfazAleatorio);
-		//controlador.init(interfazEscaner, interfazAleatorio);
-		//controlador.init(interfazEscaner, interfazAleatorio);
 	}
 	
 	//@Test
