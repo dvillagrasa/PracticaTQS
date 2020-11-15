@@ -307,6 +307,7 @@ public class ControladorTest {
 		vectorEscaner.add("2"); // Selecciona la opcion 2 del menu. 
 
 		ArrayList<String> vectorAleatorio = new ArrayList<String>();
+		vectorAleatorio.add(""); // No recorre el for ya que no hay nada.
 		vectorAleatorio.add("7070");
 
 		InterfazEscaner interfazEscaner = new MockEscaner(vectorEscaner);
