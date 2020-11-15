@@ -50,6 +50,7 @@ public class ControladorTest {
 		modeloTest.testComprobarVictoriaTodasCombinaciones();
 		modeloTest.testComprobarVictoriaPairWise();
 		modeloTest.testCastearEntradaJugadorPairWise();
+		modeloTest.testCastearOpcionMenu();
 		
 		// Tests de la clase VistaTest.
 		vistaTest.testSolicitarCombinacion();

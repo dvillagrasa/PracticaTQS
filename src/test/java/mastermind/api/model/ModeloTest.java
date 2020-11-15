@@ -494,7 +494,187 @@ public class ModeloTest {
 			}
 		}
 	}
-
+	
+	@Test
+	/**
+	 * Comprueba que que el metodo castearOpcionMenu realiza la transformacion de
+	 * String a vector de caracteres de forma correcta.
+	 */
+	public void testCastearOpcionMenu() {
+		
+		/**
+		 * PARTICIONES EQUIVALENTES VALIDAS
+		 */
+		//Valores frontera
+		char[] opcionCasteada1 = modelo.castearOpcionMenu("1");
+		char[] opcionCasteada2 = modelo.castearOpcionMenu("2");
+		/**
+		 * PARTICIONES EQUIVALENTES INVALIDAS
+		 */
+		//Valores limite
+		char[] opcionCasteada0 = modelo.castearOpcionMenu("0");
+		char[] opcionCasteada3 = modelo.castearOpcionMenu("3");
+		char[] opcionCasteada4 = modelo.castearOpcionMenu("4");
+		char[] opcionCasteada5 = modelo.castearOpcionMenu("5");
+		char[] opcionCasteada6 = modelo.castearOpcionMenu("6");
+		char[] opcionCasteada7 = modelo.castearOpcionMenu("7");
+		char[] opcionCasteada8 = modelo.castearOpcionMenu("8");
+		char[] opcionCasteada9 = modelo.castearOpcionMenu("9");
+		char[] opcionCasteadaa = modelo.castearOpcionMenu("a");
+		char[] opcionCasteadab = modelo.castearOpcionMenu("b");
+		char[] opcionCasteadac = modelo.castearOpcionMenu("c");
+		char[] opcionCasteadad = modelo.castearOpcionMenu("d");
+		char[] opcionCasteadae = modelo.castearOpcionMenu("e");
+		char[] opcionCasteadaf = modelo.castearOpcionMenu("f");
+		char[] opcionCasteadag = modelo.castearOpcionMenu("g");
+		char[] opcionCasteadah = modelo.castearOpcionMenu("h");
+		char[] opcionCasteadai = modelo.castearOpcionMenu("i");
+		char[] opcionCasteadaj = modelo.castearOpcionMenu("j");
+		char[] opcionCasteadak = modelo.castearOpcionMenu("k");
+		char[] opcionCasteadal = modelo.castearOpcionMenu("l");
+		char[] opcionCasteadam = modelo.castearOpcionMenu("m");
+		char[] opcionCasteadan = modelo.castearOpcionMenu("n");
+		char[] opcionCasteadao = modelo.castearOpcionMenu("o");
+		char[] opcionCasteadap = modelo.castearOpcionMenu("p");
+		char[] opcionCasteadaq = modelo.castearOpcionMenu("q");
+		char[] opcionCasteadar = modelo.castearOpcionMenu("r");
+		char[] opcionCasteadas = modelo.castearOpcionMenu("s");
+		char[] opcionCasteadat = modelo.castearOpcionMenu("t");
+		char[] opcionCasteadau = modelo.castearOpcionMenu("u");
+		char[] opcionCasteadav = modelo.castearOpcionMenu("v");
+		char[] opcionCasteadaw = modelo.castearOpcionMenu("w");
+		char[] opcionCasteadax = modelo.castearOpcionMenu("x");
+		char[] opcionCasteaday = modelo.castearOpcionMenu("y");
+		char[] opcionCasteadaz = modelo.castearOpcionMenu("z");
+		char[] opcionCasteadaA = modelo.castearOpcionMenu("A");
+		char[] opcionCasteadaB = modelo.castearOpcionMenu("B");
+		char[] opcionCasteadaC = modelo.castearOpcionMenu("C");
+		char[] opcionCasteadaD = modelo.castearOpcionMenu("D");
+		char[] opcionCasteadaE = modelo.castearOpcionMenu("E");
+		char[] opcionCasteadaF = modelo.castearOpcionMenu("F");
+		char[] opcionCasteadaG = modelo.castearOpcionMenu("G");
+		char[] opcionCasteadaH = modelo.castearOpcionMenu("H");
+		char[] opcionCasteadaI = modelo.castearOpcionMenu("I");
+		char[] opcionCasteadaJ = modelo.castearOpcionMenu("J");
+		char[] opcionCasteadaK = modelo.castearOpcionMenu("K");
+		char[] opcionCasteadaL = modelo.castearOpcionMenu("L");
+		char[] opcionCasteadaM = modelo.castearOpcionMenu("M");
+		char[] opcionCasteadaN = modelo.castearOpcionMenu("N");
+		char[] opcionCasteadaO = modelo.castearOpcionMenu("O");
+		char[] opcionCasteadaP = modelo.castearOpcionMenu("P");
+		char[] opcionCasteadaQ = modelo.castearOpcionMenu("Q");
+		char[] opcionCasteadaR = modelo.castearOpcionMenu("R");
+		char[] opcionCasteadaS = modelo.castearOpcionMenu("S");
+		char[] opcionCasteadaT = modelo.castearOpcionMenu("T");
+		char[] opcionCasteadaU = modelo.castearOpcionMenu("U");
+		char[] opcionCasteadaV = modelo.castearOpcionMenu("V");
+		char[] opcionCasteadaW = modelo.castearOpcionMenu("W");
+		char[] opcionCasteadaX = modelo.castearOpcionMenu("X");
+		char[] opcionCasteadaY = modelo.castearOpcionMenu("Y");
+		char[] opcionCasteadaZ = modelo.castearOpcionMenu("Z");
+		char[] opcionCasteadaLess = modelo.castearOpcionMenu("-");
+		char[] opcionCasteadaAst = modelo.castearOpcionMenu("*");
+		char[] opcionCasteadaSuma = modelo.castearOpcionMenu("+");
+		char[] opcionCasteadaGorr = modelo.castearOpcionMenu("^");
+		char[] opcionCasteadaBarr3 = modelo.castearOpcionMenu("\\");
+		char[] opcionCasteadaEx = modelo.castearOpcionMenu("!");
+		char[] opcionCasteadaPipe = modelo.castearOpcionMenu("|");
+		char[] opcionCasteadaArr = modelo.castearOpcionMenu("@");
+		char[] opcionCasteadaAlm = modelo.castearOpcionMenu("#");
+		char[] opcionCasteadaDoll = modelo.castearOpcionMenu("$");
+		char[] opcionCasteadaEsp = modelo.castearOpcionMenu("~");
+		char[] opcionCasteadaPer = modelo.castearOpcionMenu("%");
+		char[] opcionCasteadaAnd = modelo.castearOpcionMenu("&");
+		char[] opcionCasteadaBarr = modelo.castearOpcionMenu("/");
+		char[] opcionCasteadaPar1 = modelo.castearOpcionMenu("(");
+		char[] opcionCasteadaPar2 = modelo.castearOpcionMenu(")");
+		char[] opcionCasteadaEq = modelo.castearOpcionMenu("=");
+		char[] opcionCasteadaInt = modelo.castearOpcionMenu("?");
+		char[] opcionCasteadaComilla = modelo.castearOpcionMenu("'");
+		
+		assertArrayEquals(opcion0, opcionCasteada0);
+		assertArrayEquals(opcion1, opcionCasteada1);
+		assertArrayEquals(opcion2, opcionCasteada2);
+		assertArrayEquals(opcion3, opcionCasteada3);
+		assertArrayEquals(opcion4, opcionCasteada4);
+		assertArrayEquals(opcion5, opcionCasteada5);
+		assertArrayEquals(opcion6, opcionCasteada6);
+		assertArrayEquals(opcion7, opcionCasteada7);
+		assertArrayEquals(opcion8, opcionCasteada8);
+		assertArrayEquals(opcion9, opcionCasteada9);
+		assertArrayEquals(opciona, opcionCasteadaa);
+		assertArrayEquals(opcionb, opcionCasteadab);
+		assertArrayEquals(opcionc, opcionCasteadac);
+		assertArrayEquals(opciond, opcionCasteadad);
+		assertArrayEquals(opcione, opcionCasteadae);
+		assertArrayEquals(opcionf, opcionCasteadaf);
+		assertArrayEquals(opciong, opcionCasteadag);
+		assertArrayEquals(opcionh, opcionCasteadah);
+		assertArrayEquals(opcioni, opcionCasteadai);
+		assertArrayEquals(opcionj, opcionCasteadaj);
+		assertArrayEquals(opcionk, opcionCasteadak);
+		assertArrayEquals(opcionl, opcionCasteadal);
+		assertArrayEquals(opcionm, opcionCasteadam);
+		assertArrayEquals(opcionn, opcionCasteadan);
+		assertArrayEquals(opciono, opcionCasteadao);
+		assertArrayEquals(opcionp, opcionCasteadap);
+		assertArrayEquals(opcionq, opcionCasteadaq);
+		assertArrayEquals(opcionr, opcionCasteadar);
+		assertArrayEquals(opcions, opcionCasteadas);
+		assertArrayEquals(opciont, opcionCasteadat);
+		assertArrayEquals(opcionu, opcionCasteadau);
+		assertArrayEquals(opcionv, opcionCasteadav);
+		assertArrayEquals(opcionw, opcionCasteadaw);
+		assertArrayEquals(opcionx, opcionCasteadax);
+		assertArrayEquals(opciony, opcionCasteaday);
+		assertArrayEquals(opcionz, opcionCasteadaz);
+		assertArrayEquals(opcionA, opcionCasteadaA);
+		assertArrayEquals(opcionB, opcionCasteadaB);
+		assertArrayEquals(opcionC, opcionCasteadaC);
+		assertArrayEquals(opcionD, opcionCasteadaD);
+		assertArrayEquals(opcionE, opcionCasteadaE);
+		assertArrayEquals(opcionF, opcionCasteadaF);
+		assertArrayEquals(opcionG, opcionCasteadaG);
+		assertArrayEquals(opcionH, opcionCasteadaH);
+		assertArrayEquals(opcionI, opcionCasteadaI);
+		assertArrayEquals(opcionJ, opcionCasteadaJ);
+		assertArrayEquals(opcionK, opcionCasteadaK);
+		assertArrayEquals(opcionL, opcionCasteadaL);
+		assertArrayEquals(opcionM, opcionCasteadaM);
+		assertArrayEquals(opcionN, opcionCasteadaN);
+		assertArrayEquals(opcionO, opcionCasteadaO);
+		assertArrayEquals(opcionP, opcionCasteadaP);
+		assertArrayEquals(opcionQ, opcionCasteadaQ);
+		assertArrayEquals(opcionR, opcionCasteadaR);
+		assertArrayEquals(opcionS, opcionCasteadaS);
+		assertArrayEquals(opcionT, opcionCasteadaT);
+		assertArrayEquals(opcionU, opcionCasteadaU);
+		assertArrayEquals(opcionV, opcionCasteadaV);
+		assertArrayEquals(opcionW, opcionCasteadaW);
+		assertArrayEquals(opcionX, opcionCasteadaX);
+		assertArrayEquals(opcionY, opcionCasteadaY);
+		assertArrayEquals(opcionZ, opcionCasteadaZ);
+		assertArrayEquals(opcionResta, opcionCasteadaLess);
+		assertArrayEquals(opcionAsterisco, opcionCasteadaAst);
+		assertArrayEquals(opcionMas, opcionCasteadaSuma);
+		assertArrayEquals(opcionGorro, opcionCasteadaGorr);
+		assertArrayEquals(opcioContraBarra, opcionCasteadaBarr3);
+		assertArrayEquals(opcionEx1, opcionCasteadaEx);
+		assertArrayEquals(opcionPipe, opcionCasteadaPipe);
+		assertArrayEquals(opcionArroba, opcionCasteadaArr);
+		assertArrayEquals(opciobCorchete, opcionCasteadaAlm);
+		assertArrayEquals(opcionDolar, opcionCasteadaDoll);
+		assertArrayEquals(opcionEspana, opcionCasteadaEsp);
+		assertArrayEquals(opcioXCiento, opcionCasteadaPer);
+		assertArrayEquals(opcionAnd, opcionCasteadaAnd);
+		assertArrayEquals(opcionSlash, opcionCasteadaBarr);
+		assertArrayEquals(opcionParentesis1, opcionCasteadaPar1);
+		assertArrayEquals(opcionParentesis2, opcionCasteadaPar2);
+		assertArrayEquals(opcionIgual, opcionCasteadaEq);
+		assertArrayEquals(opcionInterrogante1, opcionCasteadaInt);
+		assertArrayEquals(opcioComilla, opcionCasteadaComilla);
+	}
+	
 	/**
 	 * Comprueba que solamente es correcto introducir ciertas combinaciones en el
 	 * metodo obtenerOpcionMenu() a traves de la clase MockEscaner.
