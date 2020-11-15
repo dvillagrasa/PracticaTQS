@@ -123,7 +123,7 @@ public class VistaTest {
 	public void testMostrarMensajeVictoria() {
 		char[] resultadoEntradaJugador = { '1', '2', '3', '4' };
 		String mensajeEsperado = "!Felicidades, has ganado! \nHas acertado la combinacion secreta: "
-				+ Arrays.toString(resultadoEntradaJugador);
+				+ Arrays.toString(resultadoEntradaJugador) + "\n";
 		assertEquals(mensajeEsperado, vista.mostrarMensajeVictoria(resultadoEntradaJugador));
 
 	}
@@ -138,7 +138,7 @@ public class VistaTest {
 	@Test
 	public void testMostrarMensajeDerrota() {
 		char[] combinacionSecreta = { '5', '6', '2', '0' };
-		String mensajeEsperado = "!Has perdido! \nLa combinacion secreta era: " + Arrays.toString(combinacionSecreta);
+		String mensajeEsperado = "!Has perdido! \nLa combinacion secreta era: " + Arrays.toString(combinacionSecreta) + "\n";
 		assertEquals(mensajeEsperado, vista.mostrarMensajeDerrota(combinacionSecreta));
 
 	}
@@ -151,7 +151,7 @@ public class VistaTest {
 	
 	@Test
 	public void testMostrarOpcionInvalida() {
-		String mostrarOpcionInvalidaEsperada = "\nOpcion invalida, intentalo de nuevo.";
+		String mostrarOpcionInvalidaEsperada = "\nOpcion invalida, intentalo de nuevo.\n";
 		
 		assertEquals(mostrarOpcionInvalidaEsperada, vista.mostrarOpcionInvalida());
 	}

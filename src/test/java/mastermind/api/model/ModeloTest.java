@@ -5,7 +5,11 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import mastermind.Aleatorio;
+import mastermind.InterfazAleatorio;
 import mastermind.InterfazEscaner;
+import mastermind.MockAleatorio;
 import mastermind.MockEscaner;
 import mastermind.api.view.*;
 
@@ -21,11 +25,6 @@ public class ModeloTest {
 	 * Instancia de la clase Modelo.
 	 */
 	Modelo modelo = new Modelo();
-
-	/**
-	 * Instancia de la clase Vista.
-	 */
-	Vista vista = new Vista();
 
 	/**
 	 * Numero de posiciones del tablero del juego. En este caso son 4 tanto para los
@@ -296,6 +295,97 @@ public class ModeloTest {
 	char[] combinacionCasteada95062 = modelo.castearCombinacionJugador(combinacionJugador95062);
 	char[] combinacionCasteada96502 = modelo.castearCombinacionJugador(combinacionJugador96502);
 
+	char[] opcion0 = { '0' };
+	char[] opcion1 = { '1' };
+	char[] opcion2 = { '2' };
+	char[] opcion3 = { '3' };
+	char[] opcion4 = { '4' };
+	char[] opcion5 = { '5' };
+	char[] opcion6 = { '6' };
+	char[] opcion7 = { '7' };
+	char[] opcion8 = { '8' };
+	char[] opcion9 = { '9' };
+	char[] opciona = { 'a' };
+	char[] opcionb = { 'b' };
+	char[] opcionc = { 'c' };
+	char[] opciond = { 'd' };
+	char[] opcione = { 'e' };
+	char[] opcionf = { 'f' };
+	char[] opciong = { 'g' };
+	char[] opcionh = { 'h' };
+	char[] opcioni = { 'i' };
+	char[] opcionj = { 'j' };
+	char[] opcionk = { 'k' };
+	char[] opcionl = { 'l' };
+	char[] opcionm = { 'm' };
+	char[] opcionn = { 'n' };
+	char[] opciono = { 'o' };
+	char[] opcionp = { 'p' };
+	char[] opcionq = { 'q' };
+	char[] opcionr = { 'r' };
+	char[] opcions = { 's' };
+	char[] opciont = { 't' };
+	char[] opcionu = { 'u' };
+	char[] opcionv = { 'v' };
+	char[] opcionw = { 'w' };
+	char[] opcionx = { 'x' };
+	char[] opciony = { 'y' };
+	char[] opcionz = { 'z' };
+	char[] opcionA = { 'A' };
+	char[] opcionB = { 'B' };
+	char[] opcionC = { 'C' };
+	char[] opcionD = { 'D' };
+	char[] opcionE = { 'E' };
+	char[] opcionF = { 'F' };
+	char[] opcionG = { 'G' };
+	char[] opcionH = { 'H' };
+	char[] opcionI = { 'I' };
+	char[] opcionJ = { 'J' };
+	char[] opcionK = { 'K' };
+	char[] opcionL = { 'L' };
+	char[] opcionM = { 'M' };
+	char[] opcionN = { 'N' };
+	char[] opcionO = { 'O' };
+	char[] opcionP = { 'P' };
+	char[] opcionQ = { 'Q' };
+	char[] opcionR = { 'R' };
+	char[] opcionS = { 'S' };
+	char[] opcionT = { 'T' };
+	char[] opcionU = { 'U' };
+	char[] opcionV = { 'V' };
+	char[] opcionW = { 'W' };
+	char[] opcionX = { 'X' };
+	char[] opcionY = { 'Y' };
+	char[] opcionZ = { 'Z' };
+	char[] opcionBarra = { '/' };
+	char[] opcionResta = { '-' };
+	char[] opcionAsterisco = { '*' };
+	char[] opcionMas = { '+' };
+	char[] opcionGorro = { '^' };
+	char[] opcionPiso = { 'º' };
+	char[] opcionPuerta = { 'ª' };
+	char[] opcioContraBarra = { '\\' };
+	char[] opcionEx1 = { '!' };
+	char[] opcionPipe = { '|' };
+	char[] opcionArroba = { '@' };
+	char[] opciobCorchete = { '#' };
+	char[] opcionPunto = { '·' };
+	char[] opcionDolar = { '$' };
+	char[] opcionEspana = { '~' };
+	char[] opcioXCiento = { '%' };
+	char[] opcionAnd = { '&' };
+	char[] opcionFB = { '¬' };
+	char[] opcionSlash = { '/' };
+	char[] opcionParentesis1 = { '(' };
+	char[] opcionParentesis2 = { ')' };
+	char[] opcionIgual = { '=' };
+	char[] opcionInterrogante1 = { '?' };
+	char[] opcioComilla = { '\'' };
+	char[] opcionInterro2 = { '¿' };
+	char[] opcionEx2 = { '¡' };
+	char[] opcion1234 = { '1', '2', '3', '4' };
+	char[] opcion2314 = { '2', '3', '1', '4' };
+
 	/**
 	 * Comprueba que solamente es correcto introducir los valores 1 o 2 en el metodo
 	 * ObtenerOpcionMenu.
@@ -398,21 +488,17 @@ public class ModeloTest {
 		InterfazEscaner interfazEscaner = new MockEscaner(vectorSuposiciones);
 
 		for (int i = 0; i < vectorSuposiciones.size(); i++) {
-
 			String opcion = modelo.obtenerOpcionMenu(interfazEscaner);
-			char optCasteada = modelo.castearOpcionMenu(opcion);
+			char[] optCasteada = modelo.castearOpcionMenu(opcion);
 
 			if (modelo.validarOpcionMenu(optCasteada)) {
-				System.out.println("True: " + optCasteada);
+				//System.out.println("True: " + Arrays.toString(optCasteada));
 				assertTrue(modelo.validarOpcionMenu(optCasteada));
-
 			} else {
-				System.out.println("False: " + optCasteada);
+				//System.out.println("False: " + Arrays.toString(optCasteada));
 				assertFalse(modelo.validarOpcionMenu(optCasteada));
-
 			}
 		}
-
 	}
 
 	/**
@@ -554,11 +640,11 @@ public class ModeloTest {
 			char[] optCasteada = modelo.castearCombinacionJugador(opcion);
 
 			if (modelo.validarCombinacionJugador(optCasteada)) {
-				System.out.println("True: " + Arrays.toString(optCasteada));
+				//System.out.println("True: " + Arrays.toString(optCasteada));
 				assertTrue(modelo.validarCombinacionJugador(optCasteada));
 
 			} else {
-				System.out.println("False: " + Arrays.toString(optCasteada));
+				//System.out.println("False: " + Arrays.toString(optCasteada));
 				assertFalse(modelo.validarCombinacionJugador(optCasteada));
 
 			}
@@ -574,12 +660,10 @@ public class ModeloTest {
 	public void testCastearEntradaJugadorPairWise() {
 
 		/**
-		 * --------------- Test del metodo castearEntradaJugador() ---------------
 		 * 
-		 * Pair-wise testing de numeros y simbolos
-		 * ------------------------------------------- Char numerico | Char simbolo |
-		 * Char numerico | Char simbolo Char simbolo | Char numerico | Char simbolo |
-		 * Char numerico
+		 * Pair-wise testing de numeros y simbolos Char numerico | Char simbolo |Char
+		 * numerico | Char simbolo Char simbolo | Char numerico | Char simbolo | Char
+		 * numerico
 		 * 
 		 * R -> Simbolo de restar (-). A -> Simbolo asterisco (*).
 		 * 
@@ -760,12 +844,11 @@ public class ModeloTest {
 	}
 
 	/**
-	 * --------------- Test del metodo validarEntradaJugador() ---------------
 	 * Comprueba los valores interiores, limite y frontera ademas de las particiones
 	 * equivalentes.
 	 */
 	@Test
-	public void testValidarEntradaJugador() {
+	public void validarCombinacionJugador() {
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones
 		//////////////////////////////////////////////////////////////////////////////////////////////////////// equivalentes
@@ -897,32 +980,43 @@ public class ModeloTest {
 	}
 
 	/**
-	 * --------------- Test del metodo validarCombinacionSecreta() ---------------
 	 * Comprueba el correcto funcionamiento de la funcion generarCombinacionSecreta,
 	 * verificando si realmente no se repite ningun numero dentro de la combinacion
 	 * secreta.
 	 */
-	@Test
-	public void testValidarCombinacionSecreta() {
+	//@Test
+	/*public void testValidarCombinacionSecreta1() {
+		
 		///////////////////////////////////////////////////////////////////////////////////// Particion
 		///////////////////////////////////////////////////////////////////////////////////// equivalente
 		///////////////////////////////////////////////////////////////////////////////////// valida.
+		ArrayList<String> vectorSuposicionesAleatorio = new ArrayList<String>();
+		vectorSuposicionesAleatorio.add("6548");
+		InterfazAleatorio interfazAleatorio = new MockAleatorio(vectorSuposicionesAleatorio);
+		
+		char[] suposicionAleatoria = Modelo.generarCombinacionSecreta(interfazAleatorio);
+		
 		// if(X[i] != X[j])
-		char[] combinacionSecretaCasteadaValida = Modelo.generarCombinacionSecreta(numeros); // Siempre sera valida.
 		char[] combinacionSecretaCasteada0123 = { '0', '1', '2', '3' };
 		char[] combinacionSecretaCasteada3210 = { '3', '2', '1', '0' };
 		char[] combinacionSecretaCasteada5678 = { '5', '6', '7', '8' };
 		char[] combinacionSecretaCasteada8765 = { '8', '7', '6', '5' };
 		char[] combinacionSecretaCasteada1357 = { '1', '3', '5', '7' };
-		char[] combinacionSecretaCasteada7531 = { '7', '5', '3', '1' };
+		char[] combinacionSecretaCasteada6548 = { '6', '5', '4', '8' };
 
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteadaValida));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0123));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada3210));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada5678));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8765));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada1357));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada7531));
+		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada0123);
+		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada3210);
+		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada5678);
+		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada8765);
+		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada1357);
+		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada6548);
+
+		
+		ArrayList<String> vectorSuposicionesJugador = new ArrayList<String>();
+		vectorSuposiciones.add(e);
+		
+		assertArrayEquals(); 
+		modelo.generarCombinacionSecreta(interfazAleatorio);
 
 		///////////////////////////////////////////////////////////////////////////////////// Particion
 		///////////////////////////////////////////////////////////////////////////////////// equivalente
@@ -934,14 +1028,16 @@ public class ModeloTest {
 		char[] combinacionSecretaCasteada8755 = { '8', '7', '5', '5' }; // 5==5.
 		char[] combinacionSecretaCasteada0083 = { '0', '0', '8', '3' }; // 0==0.
 		char[] combinacionSecretaCasteada8428 = { '8', '4', '2', '8' }; // 8==8.
+		char[] combinacionSecretaCasteadaM428 = { '+', '4', '2', '8' }; // 8==8.
 
-		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0113));
-		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada3320));
-		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada5668));
-		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8755));
-		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0083));
-		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8428));
-	}
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0113));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada3320));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada5668));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8755));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0083));
+		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8428));
+		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteadaM428));
+	}*/
 
 	/**
 	 * --------------- Test del metodo compararCombinaciones ---------------
@@ -1015,8 +1111,8 @@ public class ModeloTest {
 	}
 
 	/**
-	 * --------------- Test del metodo comprobarVictoria --------------- Comprueba
-	 * todas las combinaciones posibles de 0, B y N en un array de 4 posiciones.
+	 * Comprueba todas las combinaciones posibles de 0, B y N en un array de 4
+	 * posiciones.
 	 * 
 	 * https://pairwise.teremokgames.com/x4to/
 	 * 
@@ -1191,12 +1287,11 @@ public class ModeloTest {
 	}
 
 	/**
-	 * --------------- Test del metodo comprobarVictoria --------------- Comprueba
-	 * todas las combinaciones posibles de: - 0, B y N en un array de 4 posiciones |
-	 * https://pairwise.teremokgames.com/x4to/ - 0 y B en un array de 4 posiciones |
-	 * https://pairwise.teremokgames.com/x4wg/ - 0 y N en un array de 4 posiciones |
-	 * https://pairwise.teremokgames.com/x520/ - B y N en un array de 4 posiciones |
-	 * https://pairwise.teremokgames.com/x4z8/
+	 * Comprueba todas las combinaciones posibles de: - 0, B y N en un array de 4
+	 * posiciones | https://pairwise.teremokgames.com/x4to/ - 0 y B en un array de 4
+	 * posiciones | https://pairwise.teremokgames.com/x4wg/ - 0 y N en un array de 4
+	 * posiciones | https://pairwise.teremokgames.com/x520/ - B y N en un array de 4
+	 * posiciones | https://pairwise.teremokgames.com/x4z8/
 	 * 
 	 * Todo ello usando pair-wise testing. La unica vez que el assert es true es
 	 * cuando el array es {'N','N','N','N'}.
@@ -1281,22 +1376,105 @@ public class ModeloTest {
 	 * Comprueba la opcion del menu inicial del juego correcta sea unicamente la 1 o
 	 * la 2.
 	 */
+	@Test
 	public void testComprobarOpcion() {
 
-		assertFalse(modelo.validarOpcionMenu('-')); // Limite.
-		assertFalse(modelo.validarOpcionMenu('*')); // Limite.
+		assertFalse(modelo.validarOpcionMenu(opcion0)); // Limite inferior.
 
-		assertFalse(modelo.validarOpcionMenu('0')); // Limite inferior.
+		assertTrue(modelo.validarOpcionMenu(opcion1)); // Frontera inferior.
+		assertTrue(modelo.validarOpcionMenu(opcion2)); // Frontera superior.
 
-		assertTrue(modelo.validarOpcionMenu('1')); // Frontera inferior.
-		assertTrue(modelo.validarOpcionMenu('2')); // Frontera superior.
+		assertFalse(modelo.validarOpcionMenu(opcion3)); // Limite superior alejado.
+		assertFalse(modelo.validarOpcionMenu(opcion4)); // Limite superior alejado.
+		assertFalse(modelo.validarOpcionMenu(opcion5)); // Limite superior alejado.
+		assertFalse(modelo.validarOpcionMenu(opcion6)); // Limite superior alejado.
+		assertFalse(modelo.validarOpcionMenu(opcion7)); // Limite superior alejado.
+		assertFalse(modelo.validarOpcionMenu(opcion8)); // Limite superior alejado.
+		assertFalse(modelo.validarOpcionMenu(opcion9)); // Limite superior alejado.
+		assertFalse(modelo.validarOpcionMenu(opciona));
+		assertFalse(modelo.validarOpcionMenu(opcionb));
+		assertFalse(modelo.validarOpcionMenu(opcionc));
+		assertFalse(modelo.validarOpcionMenu(opciond));
+		assertFalse(modelo.validarOpcionMenu(opcione));
+		assertFalse(modelo.validarOpcionMenu(opcionf));
+		assertFalse(modelo.validarOpcionMenu(opciong));
+		assertFalse(modelo.validarOpcionMenu(opcionh));
+		assertFalse(modelo.validarOpcionMenu(opcioni));
+		assertFalse(modelo.validarOpcionMenu(opcionj));
+		assertFalse(modelo.validarOpcionMenu(opcionk));
+		assertFalse(modelo.validarOpcionMenu(opcionl));
+		assertFalse(modelo.validarOpcionMenu(opcionm));
+		assertFalse(modelo.validarOpcionMenu(opcionn));
+		assertFalse(modelo.validarOpcionMenu(opciono));
+		assertFalse(modelo.validarOpcionMenu(opcionp));
+		assertFalse(modelo.validarOpcionMenu(opcionq));
+		assertFalse(modelo.validarOpcionMenu(opcionr));
+		assertFalse(modelo.validarOpcionMenu(opcions));
+		assertFalse(modelo.validarOpcionMenu(opciont));
+		assertFalse(modelo.validarOpcionMenu(opcionu));
+		assertFalse(modelo.validarOpcionMenu(opcionv));
+		assertFalse(modelo.validarOpcionMenu(opcionw));
+		assertFalse(modelo.validarOpcionMenu(opcionx));
+		assertFalse(modelo.validarOpcionMenu(opciony));
+		assertFalse(modelo.validarOpcionMenu(opcionz));
+		assertFalse(modelo.validarOpcionMenu(opcionA));
+		assertFalse(modelo.validarOpcionMenu(opcionB));
+		assertFalse(modelo.validarOpcionMenu(opcionC));
+		assertFalse(modelo.validarOpcionMenu(opcionD));
+		assertFalse(modelo.validarOpcionMenu(opcionE));
+		assertFalse(modelo.validarOpcionMenu(opcionF));
+		assertFalse(modelo.validarOpcionMenu(opcionG));
+		assertFalse(modelo.validarOpcionMenu(opcionH));
+		assertFalse(modelo.validarOpcionMenu(opcionI));
+		assertFalse(modelo.validarOpcionMenu(opcionJ));
+		assertFalse(modelo.validarOpcionMenu(opcionK));
+		assertFalse(modelo.validarOpcionMenu(opcionL));
+		assertFalse(modelo.validarOpcionMenu(opcionM));
+		assertFalse(modelo.validarOpcionMenu(opcionN));
+		assertFalse(modelo.validarOpcionMenu(opcionO));
+		assertFalse(modelo.validarOpcionMenu(opcionP));
+		assertFalse(modelo.validarOpcionMenu(opcionQ));
+		assertFalse(modelo.validarOpcionMenu(opcionR));
+		assertFalse(modelo.validarOpcionMenu(opcionS));
+		assertFalse(modelo.validarOpcionMenu(opcionT));
+		assertFalse(modelo.validarOpcionMenu(opcionU));
+		assertFalse(modelo.validarOpcionMenu(opcionV));
+		assertFalse(modelo.validarOpcionMenu(opcionW));
+		assertFalse(modelo.validarOpcionMenu(opcionX));
+		assertFalse(modelo.validarOpcionMenu(opcionY));
+		assertFalse(modelo.validarOpcionMenu(opcionZ));
 
-		assertFalse(modelo.validarOpcionMenu('3')); // Limite superior alejado.
-		assertFalse(modelo.validarOpcionMenu('4')); // Limite superior alejado.
-		assertFalse(modelo.validarOpcionMenu('5')); // Limite superior alejado.
-		assertFalse(modelo.validarOpcionMenu('6')); // Limite superior alejado.
-		assertFalse(modelo.validarOpcionMenu('7')); // Limite superior alejado.
-		assertFalse(modelo.validarOpcionMenu('8')); // Limite superior alejado.
-		assertFalse(modelo.validarOpcionMenu('9')); // Limite superior alejado.
+		assertFalse(modelo.validarOpcionMenu(opcionResta)); // Limite.
+		assertFalse(modelo.validarOpcionMenu(opcionAsterisco)); // Limite.
+		assertFalse(modelo.validarOpcionMenu(opcionBarra));
+		assertFalse(modelo.validarOpcionMenu(opcionResta));
+		assertFalse(modelo.validarOpcionMenu(opcionAsterisco));
+		assertFalse(modelo.validarOpcionMenu(opcionMas));
+		assertFalse(modelo.validarOpcionMenu(opcionGorro));
+		assertFalse(modelo.validarOpcionMenu(opcionPiso));
+		assertFalse(modelo.validarOpcionMenu(opcionPuerta));
+		assertFalse(modelo.validarOpcionMenu(opcioContraBarra));
+		assertFalse(modelo.validarOpcionMenu(opcionEx1));
+		assertFalse(modelo.validarOpcionMenu(opcionPipe));
+		assertFalse(modelo.validarOpcionMenu(opcionArroba));
+		assertFalse(modelo.validarOpcionMenu(opciobCorchete));
+		assertFalse(modelo.validarOpcionMenu(opcionPunto));
+		assertFalse(modelo.validarOpcionMenu(opcionDolar));
+		assertFalse(modelo.validarOpcionMenu(opcionEspana));
+		assertFalse(modelo.validarOpcionMenu(opcioXCiento));
+		assertFalse(modelo.validarOpcionMenu(opcionAnd));
+		assertFalse(modelo.validarOpcionMenu(opcionFB));
+		assertFalse(modelo.validarOpcionMenu(opcionSlash));
+		assertFalse(modelo.validarOpcionMenu(opcionParentesis1));
+		assertFalse(modelo.validarOpcionMenu(opcionParentesis2));
+		assertFalse(modelo.validarOpcionMenu(opcionIgual));
+		assertFalse(modelo.validarOpcionMenu(opcionInterrogante1));
+		assertFalse(modelo.validarOpcionMenu(opcioComilla));
+		assertFalse(modelo.validarOpcionMenu(opcionInterro2));
+		assertFalse(modelo.validarOpcionMenu(opcionEx2));
+
+		assertFalse(modelo.validarOpcionMenu(opcion1234));
+		assertFalse(modelo.validarOpcionMenu(opcion2314));
+
 	}
 }

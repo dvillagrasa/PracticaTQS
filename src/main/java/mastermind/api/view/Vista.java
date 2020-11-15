@@ -100,7 +100,7 @@ public class Vista {
 	public String mostrarMensajeVictoria(char[] resultadoEntradaJugador) {
 
 		String mostrarMensajeVictoria = "!Felicidades, has ganado! \nHas acertado la combinacion secreta: "
-				+ Arrays.toString(resultadoEntradaJugador);
+				+ Arrays.toString(resultadoEntradaJugador) + "\n";
 		System.out.println(mostrarMensajeVictoria);
 
 		return mostrarMensajeVictoria;
@@ -117,7 +117,7 @@ public class Vista {
 	public String mostrarMensajeDerrota(char[] combinacionSecreta) {
 
 		String mostrarMensajeDerrota = "!Has perdido! \nLa combinacion secreta era: "
-				+ Arrays.toString(combinacionSecreta);
+				+ Arrays.toString(combinacionSecreta) + "\n";
 		System.out.println(mostrarMensajeDerrota);
 
 		return mostrarMensajeDerrota;
@@ -129,6 +129,14 @@ public class Vista {
 		System.out.println(mensajeDespedida);
 		
 		return mensajeDespedida;
+	}
+	
+	public String mostrarOpcionInvalida() {
+		
+		String mostrarOpcionInvalida = "\nOpcion invalida, intentalo de nuevo.\n";
+		System.out.println(mostrarOpcionInvalida);
+		
+		return mostrarOpcionInvalida;
 	}
 
 }
