@@ -186,7 +186,7 @@ public class ControladorTest {
 		
 		InterfazEscaner interfazEscaner = new MockEscaner(vectorSuposicionesDerrota);
 		
-		controlador.logicaMastermind(interfazEscaner, interfazAleatorio);
+		controlador.jugarMastermind(interfazEscaner, interfazAleatorio);
 	}
 
 	/**
@@ -228,7 +228,7 @@ public class ControladorTest {
 
 		InterfazEscaner interfazEscanerVictoria = new MockEscaner(vectorSuposicionesVictoria);
 
-		controlador.logicaMastermind(interfazEscanerVictoria, interfazAleatorio);
+		controlador.jugarMastermind(interfazEscanerVictoria, interfazAleatorio);
 	}
 	
 	/**
@@ -270,7 +270,7 @@ public class ControladorTest {
 
 		InterfazEscaner interfazEscanerVictoria = new MockEscaner(vectorSuposicionesVictoria);
 
-		controlador.logicaMastermind(interfazEscanerVictoria, interfazAleatorio);
+		controlador.jugarMastermind(interfazEscanerVictoria, interfazAleatorio);
 	}
 	
 	//@Test
@@ -318,7 +318,7 @@ public class ControladorTest {
 		InterfazEscaner interfazEscaner = new MockEscaner(vectorEscaner);
 		InterfazAleatorio interfazAleatorio = new MockAleatorio(vectorAleatorio);
 
-		controlador.init(interfazEscaner, interfazAleatorio);
+		controlador.gestorMastermind(interfazEscaner, interfazAleatorio);
 	}
 	
 	//@Test
@@ -354,7 +354,7 @@ public class ControladorTest {
 		InterfazAleatorio interfazAleatorio = new MockAleatorio(vectorAleatorio);
 
 		
-		controlador.init(interfazEscaner, interfazAleatorio);
+		controlador.gestorMastermind(interfazEscaner, interfazAleatorio);
 	}
 
 }
