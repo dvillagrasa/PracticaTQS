@@ -1,6 +1,6 @@
 package mastermind.api.model;
 
-import java.util.ArrayList;
+
 import java.util.Random;
 
 import com.google.common.primitives.Chars;
@@ -16,6 +16,7 @@ import mastermind.InterfazEscaner;
  * @author Daniel Villagrasa Ramirez
  */
 public class Modelo {
+	
 	/**
 	 * Numero de posiciones del tablero del juego. En este caso son 4 tanto para los
 	 * numeros (serian los colores exceptuando el blanco y negro), como para mostrar
@@ -40,11 +41,6 @@ public class Modelo {
 		return entrada;
 	}
 	
-	/*public String obtenerJugarOtra(InterfazEscaner interfazEscaner) {
-		String entrada = null;
-		entrada = interfazEscaner.cogerOpcionMenu();
-		return entrada;
-	}*/
 
 	/**
 	 * Coge la opcion introducida mediante de la interfaz del escaner y la castea de
@@ -54,9 +50,7 @@ public class Modelo {
 	 * @return
 	 */
 	public char[] castearOpcionMenu(String opcionJugador) {
-		
-		char[] opcionJugadorCasteada = opcionJugador.toCharArray();
-			
+		char[] opcionJugadorCasteada = opcionJugador.toCharArray();			
 		return opcionJugadorCasteada;
 	}
 
@@ -71,13 +65,11 @@ public class Modelo {
 	public boolean validarOpcionMenu(char[] opcionCasteada) {
 		boolean esCorrecto = true;
 		int i = 0;
-
 		if ((opcionCasteada.length != 1) || ((opcionCasteada[i] < '1') || (opcionCasteada[i] > '2'))) {
 			esCorrecto = false;
 		}
 		return esCorrecto;
-	}
-	
+	}	
 
 	/**
 	 * Obtiene la combinacion que se introduce mediante de la interfaz del escaner.
@@ -88,7 +80,6 @@ public class Modelo {
 	public String obtenerCombinacionJugador(InterfazEscaner interfazEscaner) {
 		String entrada = null;
 		entrada = interfazEscaner.cogerEntradaJugador();
-
 		return entrada;
 	}
 
@@ -102,9 +93,7 @@ public class Modelo {
 	 *         caracteres.
 	 */
 	public char[] castearCombinacionJugador(String entradaJugador) {
-
 		char[] entradaJugadorCasteada = { ' ' };
-
 		for (int i = 0; i < entradaJugador.length(); i++) {
 			entradaJugadorCasteada = entradaJugador.toCharArray();
 		}
@@ -121,9 +110,7 @@ public class Modelo {
 	 *         sean caracteres dentro del rango de 0 a 8 (ambos incluídos).
 	 */
 	public boolean validarCombinacionJugador(char[] entradaJugadorCasteada) {
-
 		boolean esCorrecta = true;
-
 		if (entradaJugadorCasteada.length == MAX_CLAVIJAS) {
 			for (int i = 0; i < entradaJugadorCasteada.length; i++) {
 				if ((entradaJugadorCasteada[i] < '0') || (entradaJugadorCasteada[i] > '8')) {
@@ -136,26 +123,6 @@ public class Modelo {
 		}
 		return esCorrecta;
 	}
-	
-	
-	
-	/**
-	 * Comprueba que el numero introducido mediante de la interfaz del escaner es
-	 * valido.
-	 * 
-	 * @param opcionCasteada - opcion introducida mediante de la interfaz del
-	 *                       escaner.
-	 * @return - Devuelve true o false, dependiendo de opcionCasteada.
-	 */
-	/*public boolean validarJugarOtra(char[] jugarOtraCasteada) {
-		boolean esCorrecto = false;
-		int i = 0;
-
-		if (jugarOtraCasteada[i] == 'y' || jugarOtraCasteada[i] == 'n') {
-			esCorrecto = true;
-		}
-		return esCorrecto;
-	}*/
 
 	/**
 	 * Genera la combinacion aleatoria de la partida a partir de una cola que
@@ -169,16 +136,13 @@ public class Modelo {
 	 *         de la partida.
 	 */
 	public static char[] generarCombinacionSecreta(InterfazAleatorio interfazAleatorio) {
-
 		boolean esValida = false;
 		String combinacionSecreta;
 		char[] combinacionSecretaCasteada = { ' ' };
-
 		while (!esValida) {
 			esValida = true;
 			combinacionSecreta = interfazAleatorio.obtenerValorAleatorio();
 			combinacionSecretaCasteada = combinacionSecreta.toCharArray();
-
 			if (combinacionSecretaCasteada.length == MAX_CLAVIJAS) {
 				for (int i = 0; i < combinacionSecretaCasteada.length; i++) {
 					if ((combinacionSecretaCasteada[i] < '0') || (combinacionSecretaCasteada[i] > '8')) {
@@ -192,30 +156,8 @@ public class Modelo {
 		}
 		System.out.print("Combinacion secreta: ");
 		System.out.println(combinacionSecretaCasteada);
-
 		return combinacionSecretaCasteada;
 	}
-	/**
-	 * 
-	 * @param combinacionSecretaCasteada
-	 * @return
-	 */
-	/*public boolean validarCombinacionSecreta(char[] combinacionSecretaCasteada) {
-
-		boolean esCorrecta = true;
-
-		if (combinacionSecretaCasteada.length == MAX_CLAVIJAS) {
-			for (int i = 0; i < combinacionSecretaCasteada.length; i++) {
-				if ((combinacionSecretaCasteada[i] < '0') || (combinacionSecretaCasteada[i] > '8')) {
-					esCorrecta = false;
-					break;
-				}
-			}
-		} else {
-			esCorrecta = false;
-		}
-		return esCorrecta;
-	}*/
 	
 	/**
 	 * Comprueba la combinacion generada por la maquina y la combinacion itroducida
@@ -230,9 +172,7 @@ public class Modelo {
 	 *         aciertos blancos.
 	 */
 	public static char[] compararCombinaciones(char[] combinacionSecreta, char[] combinacionJugador) {
-
 		char[] aciertos = { '0', '0', '0', '0' };
-
 		for (int i = 0; i < combinacionSecreta.length; i++) {
 			if (combinacionSecreta[i] == combinacionJugador[i]) {
 				aciertos[i] = 'N';
@@ -257,16 +197,13 @@ public class Modelo {
 	 *         contrario, devuelve false.
 	 */
 	public static boolean comprobarVictoria(char[] aciertos) {
-
 		boolean victoria = false;
 		int contador = 0;
-
 		for (int i = 0; i < MAX_CLAVIJAS; i++) {
 			if (aciertos[i] == 'N') {
 				contador++;
 			}
 		}
-
 		if (contador == MAX_CLAVIJAS) {
 			victoria = true;
 		}

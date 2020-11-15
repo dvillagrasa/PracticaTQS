@@ -1,9 +1,5 @@
 package mastermind.api.view;
 
-import java.util.Scanner;
-
-import mastermind.InterfazEscaner;
-
 import java.util.Arrays;
 
 /**
@@ -41,26 +37,6 @@ public class Vista {
 		return solicitarCombinacion;
 	}
 
-	/**
-	 * Comprueba si existe una entrada por teclado, si es asi recibe la entrada por
-	 * teclado del jugador, separa los caracteres y lo almacena en una cadena de
-	 * caracteres.
-	 * 
-	 * @return Devuelve la cadena de caracteres con la entrada del jugador o null.
-	 */
-	/*
-	 * public String obtenerCombinacionJugador() { Scanner escaner = new
-	 * Scanner(System.in); String entrada = null;
-	 * 
-	 * if(escaner.hasNextLine()) { entrada = escaner.nextLine(); } return entrada; }
-	 */
-
-	/*
-	 * public String obtenerCombinacionJugador(InterfazEscaner interfazEscaner) {
-	 * String entrada = null; entrada = interfazEscaner.cogerEntradaJugador();
-	 * 
-	 * return entrada; }
-	 */
 
 	/**
 	 * Muestra por pantalla el numero de jugada (entre 1 y 9, ambos incluidos) junto

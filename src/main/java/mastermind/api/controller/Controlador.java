@@ -1,8 +1,5 @@
 package mastermind.api.controller;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 import mastermind.Aleatorio;
 import mastermind.Escaner;
 import mastermind.InterfazAleatorio;
@@ -20,38 +17,15 @@ import mastermind.api.view.*;
  * @author Daniel Villagrasa Ramirez
  */
 public class Controlador {
+	
 	/**
 	 * Numero de jugadas que dispone el jugador para adivinar la combinacion
 	 * generada por la maquina.
 	 */
 	public static final int MAX_INTENTOS = 10;
-
-	/**
-	 * Variable que almacenara el numero de jugadas del jugador. La primera de todas
-	 * sera igual a 1.
-	 */
-	//public int vecesJugado = 1;
-
-	/**
-	 * Array de cadenas de caracteres de un rango de 0 a 8, que son los numeros para
-	 * el codigo aleatorio secreto.
-	 */
-	//static String[] numeros = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-
-	// Vista vista = new Vista();
-	// Modelo modelo = new Modelo();
-
-	/*InterfazEscaner escaner = new Escaner();
-	InterfazAleatorio interfazAleatorio1 = new Aleatorio();
-	InterfazAleatorio interfazAleatorio2 = new Aleatorio();
-	InterfazAleatorio interfazAleatorio3 = new Aleatorio();
-	InterfazAleatorio interfazAleatorio4 = new Aleatorio();*/
-	
 	String entradaJugador = null;
 	char[] entradaJugadorCasteada = null;
 	char[] aciertos;
-	/*char[] combinacionSecretaCasteada = Modelo.generarCombinacionSecreta(interfazAleatorio1,
-			interfazAleatorio2, interfazAleatorio3, interfazAleatorio4);*/
 	char[] combinacionSecretaCasteada;
 	static char opcionSwitch;
 	static char jugarOtra;
@@ -62,10 +36,7 @@ public class Controlador {
 	 * @param vista  - Instancia de la clase vista.
 	 * @param modelo - Instancia de la clase modelo.
 	 */
-	public Controlador(Vista vista, Modelo modelo) {
-
-	}
-
+	public Controlador(Vista vista, Modelo modelo) { }
 	static Vista vista = new Vista();
 	static Modelo modelo = new Modelo();
 	static Controlador controlador = new Controlador(vista, modelo);
@@ -77,55 +48,27 @@ public class Controlador {
 	 *             desde la linea de comandos.
 	 */
 	public static void main(String[] args) {
-
 		InterfazEscaner interfazEscaner = new Escaner();
-		InterfazAleatorio interfazAleatorio = new Aleatorio();
-		
-		Controlador controladorMain = new Controlador(vista, modelo);
-		
+		InterfazAleatorio interfazAleatorio = new Aleatorio();		
+		Controlador controladorMain = new Controlador(vista, modelo);		
 		controladorMain.init(interfazEscaner, interfazAleatorio);
 
 	}
 	
 	public void init(InterfazEscaner interfazEscaner, InterfazAleatorio interfazAleatorio) {
-		//boolean esCorrecta = false;
-		//jugarOtra ='y';
-		
 		boolean salirMastermind = false;
 		char opcionMenu;
-		do{
-			//System.out.println("do " + salirMastermind);	
-			//System.out.println("sss");
+		do {
 			opcionMenu = controlador.gestorMenu(interfazEscaner);
 			if (opcionMenu == '1') {
 				logicaMastermind(interfazEscaner, interfazAleatorio);
-				//jugarOtra = controlador.juegaOtra(interfazEscaner);
 			} 
 			if (opcionMenu == '2') {
 				vista.mostrarMensajeDespedida();
 				salirMastermind = true;
-				//System.out.println(salirMastermind);
-				//break;
-				//System.exit(0);
 			}
-		}while(!salirMastermind);
-
+		} while(!salirMastermind);
 	}
-	
-	/*public char juegaOtra(InterfazEscaner interfazEscaner) {
-		boolean esValida = false;
-		do {
-			System.out.println("\nQuieres jugar otra vez? ( y / n ).");
-			String decision = modelo.obtenerJugarOtra(interfazEscaner);
-			char[] jugarOtraCasteada = modelo.castearOpcionMenu(decision);
-			esValida = modelo.validarJugarOtra(jugarOtraCasteada);
-			jugarOtra = decision.charAt(0);
-			if (!esValida) {
-				vista.mostrarOpcionInvalida();
-			}
-		} while (!esValida);
-		return jugarOtra;
-	}*/
 
 	public char gestorMenu(InterfazEscaner interfazEscaner) {
 		boolean esValida = false;
@@ -139,7 +82,6 @@ public class Controlador {
 				vista.mostrarOpcionInvalida();
 			}
 		} while (!esValida);
-		//System.out.println(opcionSwitch);
 		return opcionSwitch;
 	}
 	
@@ -165,22 +107,18 @@ public class Controlador {
 	 * combinacion generada por la maquina y finalizara la partida.
 	 */
 	public void logicaMastermind(InterfazEscaner interfazEscaner, InterfazAleatorio interfazAleatorio) {
-
 		char[] combinacionSecretaCasteada = Modelo.generarCombinacionSecreta(interfazAleatorio);
 		int vecesJugado = 1;
 		while (vecesJugado < MAX_INTENTOS) {
 			vista.solicitarCombinacion();
 			entradaJugador = modelo.obtenerCombinacionJugador(interfazEscaner);
 			entradaJugadorCasteada = modelo.castearCombinacionJugador(entradaJugador);
-
 			while (!modelo.validarCombinacionJugador(entradaJugadorCasteada)) {
 				vista.solicitarCombinacion();
 				entradaJugador = modelo.obtenerCombinacionJugador(interfazEscaner);
 				entradaJugadorCasteada = modelo.castearCombinacionJugador(entradaJugador);
-			}
-
+			} 
 			aciertos = Modelo.compararCombinaciones(combinacionSecretaCasteada, entradaJugadorCasteada);
-
 			if (Modelo.comprobarVictoria(aciertos)) {
 				vista.mostrarMensajeVictoria(entradaJugadorCasteada);
 				break;
