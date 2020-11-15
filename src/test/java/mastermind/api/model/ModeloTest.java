@@ -591,6 +591,8 @@ public class ModeloTest {
 		char[] opcionCasteadaEq = modelo.castearOpcionMenu("=");
 		char[] opcionCasteadaInt = modelo.castearOpcionMenu("?");
 		char[] opcionCasteadaComilla = modelo.castearOpcionMenu("'");
+		char[] opcionCasteada1234 = modelo.castearOpcionMenu("1234");
+		char[] opcionCasteada2314 = modelo.castearOpcionMenu("2314");
 		
 		assertArrayEquals(opcion0, opcionCasteada0);
 		assertArrayEquals(opcion1, opcionCasteada1);
@@ -673,6 +675,8 @@ public class ModeloTest {
 		assertArrayEquals(opcionIgual, opcionCasteadaEq);
 		assertArrayEquals(opcionInterrogante1, opcionCasteadaInt);
 		assertArrayEquals(opcioComilla, opcionCasteadaComilla);
+		assertArrayEquals(opcion1234, opcionCasteada1234);
+		assertArrayEquals(opcion2314, opcionCasteada2314);
 	}
 	
 	/**
