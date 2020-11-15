@@ -75,6 +75,7 @@ public class ControladorTest {
 		//Controlador.main(args);
 		
 	}
+
 	
 	//@Test
 	public void testGestorMenu() {
@@ -280,6 +281,9 @@ public class ControladorTest {
 
 		ArrayList<String> vectorEscaner = new ArrayList<String>();
 		vectorEscaner.add("1");
+		vectorEscaner.add("123");
+		vectorEscaner.add("123*");
+		vectorEscaner.add("1238");
 		vectorEscaner.add("1234"); //1
 		vectorEscaner.add("1234");
 		vectorEscaner.add("1234");
@@ -303,6 +307,9 @@ public class ControladorTest {
 		vectorEscaner.add("2");
 		
 		ArrayList<String> vectorAleatorio = new ArrayList<String>();
+		vectorAleatorio.add("700");
+		vectorAleatorio.add("701*");
+		vectorAleatorio.add("7019");
 		vectorAleatorio.add("7070");
 		vectorAleatorio.add("9503");
 		vectorAleatorio.add("7071");
