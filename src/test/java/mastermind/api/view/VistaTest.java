@@ -38,7 +38,7 @@ public class VistaTest {
 	 */
 	@Test
 	public void testSolicitarCombinacion() {
-		String mensajeEsperado = "Inserta la combinacion con el siguiente formato: XXXX";
+		String mensajeEsperado = "Inserta una combinacion de 4 numeros [0-8] con el siguiente formato: XXXX";
 		assertEquals(mensajeEsperado, vista.solicitarCombinacion());
 	}
 

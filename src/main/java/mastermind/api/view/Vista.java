@@ -35,7 +35,7 @@ public class Vista {
 	 */
 	public String solicitarCombinacion() {
 
-		String solicitarCombinacion = "Inserta la combinacion con el siguiente formato: XXXX";
+		String solicitarCombinacion = "Inserta una combinacion de 4 numeros [0-8] con el siguiente formato: XXXX";
 		System.out.println(solicitarCombinacion);
 
 		return solicitarCombinacion;
