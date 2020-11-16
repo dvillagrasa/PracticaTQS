@@ -68,9 +68,6 @@ public class Modelo {
 		else {
 			esCorrecto = false;
 		}
-		/*if ((opcionCasteada.length != 1) || ((opcionCasteada[i] < '1') || (opcionCasteada[i] > '2'))) {
-			esCorrecto = false;
-		}*/
 		return esCorrecto;
 	}
 

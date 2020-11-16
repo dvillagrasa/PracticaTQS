@@ -102,7 +102,7 @@ public class Controlador {
 			String opcionMenu = modelo.obtenerOpcionMenu(interfazEscaner);
 			opcionMenuCasteada = modelo.castearOpcionMenu(opcionMenu);
 			esValida = modelo.validarOpcionMenu(opcionMenuCasteada);
-			//opcionEscogida = opcionMenu.charAt(0);
+
 			if (!esValida) {
 				vista.mostrarOpcionInvalida();
 			}

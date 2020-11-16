@@ -77,9 +77,6 @@ public class ControladorTest {
 	
 	//@Test
 	public void testGestorMenu() {
-		//Vista vista = new Vista();
-		//Modelo modelo = new Modelo();
-		//Controlador controlador = new Controlador(vista,modelo);
 
 		ArrayList<String> vectorSuposiciones = new ArrayList<String>();
 		
@@ -115,11 +112,7 @@ public class ControladorTest {
 	 */
 	//@Test
 	public void testJugarMastermind1() {
-		
-		//Vista vista = new Vista();
-		//Modelo modelo = new Modelo();
-		//Controlador controlador = new Controlador(vista,modelo);
-		
+				
 		ArrayList<String> vectorSuposiciones = new ArrayList<String>();
 						
 		vectorSuposiciones.add("5902");
@@ -157,10 +150,6 @@ public class ControladorTest {
 	 */
 	//@Test
 	public void testJugarMastermind2() {
-
-		//Vista vista = new Vista();
-		//Modelo modelo = new Modelo();
-		//Controlador controlador = new Controlador(vista, modelo);
 
 		ArrayList<String> vectorSuposiciones = new ArrayList<String>();
 
@@ -200,10 +189,6 @@ public class ControladorTest {
 	//@Test
 	public void testJugarMastermind3() {
 
-		//Vista vista = new Vista();
-		//Modelo modelo = new Modelo();
-		//Controlador controlador = new Controlador(vista, modelo);
-
 		ArrayList<String> vectorSuposiciones = new ArrayList<String>();
 
 		vectorSuposiciones.add("5902");
@@ -242,9 +227,6 @@ public class ControladorTest {
 	 */
 	//@Test
 	public void testgestorMastermind1() {
-		//Vista vista = new Vista();
-		//Modelo modelo = new Modelo();
-		//Controlador controlador = new Controlador(vista, modelo);
 
 		ArrayList<String> vectorEscaner = new ArrayList<String>();
 		vectorEscaner.add("1"); // Selecciona la opcion 1 del menu.
@@ -294,9 +276,6 @@ public class ControladorTest {
 	 */
 	//@Test
 	public void testgestorMastermind2() {
-		//Vista vista = new Vista();
-		//Modelo modelo = new Modelo();
-		//Controlador controlador = new Controlador(vista, modelo);
 
 		ArrayList<String> vectorEscaner = new ArrayList<String>();
 		vectorEscaner.add("1"); // Selecciona la opcion 1 del menu.
