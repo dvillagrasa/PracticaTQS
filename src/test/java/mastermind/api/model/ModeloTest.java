@@ -4,14 +4,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import mastermind.Aleatorio;
-import mastermind.InterfazAleatorio;
 import mastermind.InterfazEscaner;
-import mastermind.MockAleatorio;
 import mastermind.MockEscaner;
-import mastermind.api.view.*;
 
 /**
  * Clase ModeloTest - Clase donde se encuentran los metodos de test relacionados
@@ -26,34 +20,24 @@ public class ModeloTest {
 	 */
 	Modelo modelo = new Modelo();
 
-	/**
-	 * Numero de posiciones del tablero del juego. En este caso son 4 tanto para los
-	 * numeros (serian los colores exceptuando el blanco y negro), como para mostrar
-	 * los aciertos de numeros y/o posicion (serian los colores blanco y negro).
-	 */
-	public static final int MAX_CLAVIJAS = 4;
 
 	/**
-	 * Array de cadenas de caracteres de un rango de 0 a 8, que son los numeros para
-	 * el codigo aleatorio secreto.
+	 * PARTICIONES EQUIVALENTES VALIDAS -> Toda combinacion que comprenda numeros
+	 * entre 0 y 8 (ambos incluidos).
 	 */
-	static String[] numeros = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones
-	//////////////////////////////////////////////////////////////////////////////////////////////////////// equivalentes
-	//////////////////////////////////////////////////////////////////////////////////////////////////////// validas.
-	// EL VALOR FRONTERA "0000" ESTA EN LA LINEA 80 APROX.
-	String combinacionJugador8888 = "8888"; // Valores frontera 8.
+	// Valores frontera 8 y 0 en diferentes combinaciones.
+	String combinacionJugador8888 = "8888";
+	String combinacionJugador0628 = "0628";
+	String combinacionJugador8462 = "8462";
+	String combinacionJugador4860 = "4860";
+	String combinacionJugador4602 = "4602";
 
-	String combinacionJugador0628 = "0628"; // Valores frontera 0 y 8.
-	String combinacionJugador8462 = "8462"; // Valor frontera 8.
-	String combinacionJugador4860 = "4860"; // Valores frontera 0 y 8.
-	String combinacionJugador4602 = "4602"; // Valor frontera 0.
-
-	String combinacionJugador4127 = "4127"; // Valores limite 1 y 7.
-	String combinacionJugador7461 = "7461"; // Valores limite 1 y 7.
-	String combinacionJugador4712 = "4712"; // Valores limite 1 y 7.
-	String combinacionJugador1672 = "1672"; // Valores limite 1 y 7.
+	// Valores limite 1 y 7 en diferentes ubicaciones.
+	String combinacionJugador4127 = "4127";
+	String combinacionJugador7461 = "7461";
+	String combinacionJugador4712 = "4712";
+	String combinacionJugador1672 = "1672";
 
 	char[] entradaCasteada8888 = modelo.castearCombinacionJugador(combinacionJugador8888);
 
@@ -68,14 +52,22 @@ public class ModeloTest {
 	char[] combinacionCasteada4602 = modelo.castearCombinacionJugador(combinacionJugador4602);
 
 	/**
-	 * Pair-wise testing de numeros [0-8]
-	 * ------------------------------------------- 0 | 0 | 0 | 0 1 | 1 | 1 | 1 2 | 2
-	 * | 2 | 2 3 | 3 | 3 | 3 4 | 4 | 4 | 4 5 | 5 | 5 | 5 6 | 6 | 6 | 6 7 | 7 | 7 | 7
-	 * 8 | 8 | 8 | 8
+	 * Pair-wise testing de particiones equivalentes validas (numeros comprendidos 
+	 * entre 0 y 8, ambos incluidos).
 	 * 
-	 * https://pairwise.teremokgames.com/x4a8/
+	 * 			0 | 0 | 0 | 0 
+	 * 			1 | 1 | 1 | 1 
+	 * 			2 | 2 | 2 | 2 
+	 * 			3 | 3 | 3 | 3 
+	 * 			4 | 4 | 4 | 4 
+	 * 			5 | 5 | 5 | 5 
+	 * 			6 | 6 | 6 | 6 
+	 * 			7 | 7 | 7 | 7
+	 * 			8 | 8 | 8 | 8
+	 * 
+	 * Enlace a la herramienta de Pair-wise -> https://pairwise.teremokgames.com/x4a8/
 	 */
-	String combinacionJugador0000 = "0000"; // Valores frontera 0.
+	String combinacionJugador0000 = "0000";
 	String combinacionJugador0111 = "0111";
 	String combinacionJugador0222 = "0222";
 	String combinacionJugador0333 = "0333";
@@ -239,10 +231,11 @@ public class ModeloTest {
 	char[] combinacionCasteada8654 = modelo.castearCombinacionJugador(combinacionJugador8654);
 	char[] combinacionCasteada8765 = modelo.castearCombinacionJugador(combinacionJugador8765);
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones
-	//////////////////////////////////////////////////////////////////////////////////////////////////////// equivalentes
-	//////////////////////////////////////////////////////////////////////////////////////////////////////// invalidas
-	// if(X == 4)
+	/**
+	 * PARTICIONES EQUIVALENTES VALIDAS -> Toda combinacion que contenga algun 
+	 * valor que no este comprendido entre 0 y 8 (ambos incluidos).
+	 */
+	// if(X == 4) -> Si el tamano del String es igual a 4.
 	String combinacionJugadorNULL = ""; // Valor limite 0.
 	String combinacionJugadorEspacio = " "; // Valor limite 1.
 	String combinacionJugador0 = "0"; // Valor limite 1.
@@ -251,7 +244,16 @@ public class ModeloTest {
 	String combinacionJugador00000 = "00000"; // Valor limite 5.
 	String combinacionJugador50 = "00000000000000000000000000000000000000000000000000"; // Valor limite 50.
 
-	// if((Y < '0') || (Y > '8'))
+	char[] entradaCasteada0 = modelo.castearCombinacionJugador(combinacionJugador0);
+	char[] entradaCasteada00 = modelo.castearCombinacionJugador(combinacionJugador00);
+	char[] entradaCasteadaNULL = modelo.castearCombinacionJugador(combinacionJugadorNULL);
+	char[] entradaCasteadaEspacio = modelo.castearCombinacionJugador(combinacionJugadorEspacio);
+	char[] entradaCasteada000 = modelo.castearCombinacionJugador(combinacionJugador000);
+	char[] entradaCasteada00000 = modelo.castearCombinacionJugador(combinacionJugador00000);
+	char[] entradaCasteada50 = modelo.castearCombinacionJugador(combinacionJugador50);
+	
+	// if((Y < '0') || (Y > '8')) -> Si algun valor no esta comprendido entre 0 y 8
+	// (ambos incluidos).
 	String combinacionJugador4629 = "4629"; // Valor limite 9.
 	String combinacionJugador9462 = "9462"; // Valor limite 9.
 	String combinacionJugador4962 = "4962"; // Valor limite 9.
@@ -259,7 +261,14 @@ public class ModeloTest {
 	String combinacionJugador12R3 = "12-3"; // Valor limite -
 	String combinacionJugador12R34 = "12-34"; // Valor limite -
 
-	// Ambos casos
+	char[] combinacionCasteada4629 = modelo.castearCombinacionJugador(combinacionJugador4629);
+	char[] combinacionCasteada9462 = modelo.castearCombinacionJugador(combinacionJugador9462);
+	char[] combinacionCasteada4962 = modelo.castearCombinacionJugador(combinacionJugador4962);
+	char[] combinacionCasteada4692 = modelo.castearCombinacionJugador(combinacionJugador4692);
+	char[] entradaCasteada12R3 = modelo.castearCombinacionJugador(combinacionJugador12R3);
+	char[] entradaCasteada12R34 = modelo.castearCombinacionJugador(combinacionJugador12R34);
+	
+	// Ambos casos anteriores comprendidos en un mismo String.
 	String combinacionJugador9 = "9"; // Valor limite 1 y valor limite 9.
 	String combinacionJugador96 = "96"; // Valor limite 2 y valor limite 9.
 	String combinacionJugador969 = "969"; // Valor limite 3 y valor limite 9.
@@ -269,21 +278,6 @@ public class ModeloTest {
 	String combinacionJugador90462 = "90462"; // Valor limite 5 y valor limite 9.
 	String combinacionJugador95062 = "95062"; // Valor limite 5 y valor limite 9.
 	String combinacionJugador96502 = "96502"; // Valor limite 5 y valor limite 9.
-
-	char[] entradaCasteada0 = modelo.castearCombinacionJugador(combinacionJugador0);
-	char[] entradaCasteada00 = modelo.castearCombinacionJugador(combinacionJugador00);
-	char[] entradaCasteadaNULL = modelo.castearCombinacionJugador(combinacionJugadorNULL);
-	char[] entradaCasteadaEspacio = modelo.castearCombinacionJugador(combinacionJugadorEspacio);
-	char[] entradaCasteada000 = modelo.castearCombinacionJugador(combinacionJugador000);
-	char[] entradaCasteada00000 = modelo.castearCombinacionJugador(combinacionJugador00000);
-	char[] entradaCasteada50 = modelo.castearCombinacionJugador(combinacionJugador50);
-
-	char[] combinacionCasteada4629 = modelo.castearCombinacionJugador(combinacionJugador4629);
-	char[] combinacionCasteada9462 = modelo.castearCombinacionJugador(combinacionJugador9462);
-	char[] combinacionCasteada4962 = modelo.castearCombinacionJugador(combinacionJugador4962);
-	char[] combinacionCasteada4692 = modelo.castearCombinacionJugador(combinacionJugador4692);
-	char[] entradaCasteada12R3 = modelo.castearCombinacionJugador(combinacionJugador12R3);
-	char[] entradaCasteada12R34 = modelo.castearCombinacionJugador(combinacionJugador12R34);
 
 	char[] combinacionCasteada9 = modelo.castearCombinacionJugador(combinacionJugador9);
 	char[] combinacionCasteada96 = modelo.castearCombinacionJugador(combinacionJugador96);
@@ -295,10 +289,25 @@ public class ModeloTest {
 	char[] combinacionCasteada95062 = modelo.castearCombinacionJugador(combinacionJugador95062);
 	char[] combinacionCasteada96502 = modelo.castearCombinacionJugador(combinacionJugador96502);
 
-	char[] opcion0 = { '0' };
-	char[] opcion1 = { '1' };
+	/**
+	 * PARTICIONES EQUIVALENTES VALIDAS -> Char que pueden ser introducidos para la
+	 * opcion del menu del juego y que permiten ejecutar la acciond de jugar o salir
+	 * del juego.
+	 */
+	// Valores frontera.
+	char[] opcion1 = { '1' }; 
 	char[] opcion2 = { '2' };
-	char[] opcion3 = { '3' };
+	
+	/**
+	 * PARTICIONES EQUIVALENTES INVALIDAS -> Char que no son aptos para usar en la
+	 * opcion del menu del juego y provocan un mensaje de error para que se
+	 * introduzca nuevamente.
+	 */
+	// Valores limite.
+	char[] opcion0 = { '0' }; 
+	char[] opcion3 = { '3' }; 
+	
+	// Valores limite alejados.
 	char[] opcion4 = { '4' };
 	char[] opcion5 = { '5' };
 	char[] opcion6 = { '6' };
@@ -357,7 +366,6 @@ public class ModeloTest {
 	char[] opcionX = { 'X' };
 	char[] opcionY = { 'Y' };
 	char[] opcionZ = { 'Z' };
-	char[] opcionBarra = { '/' };
 	char[] opcionResta = { '-' };
 	char[] opcionAsterisco = { '*' };
 	char[] opcionMas = { '+' };
@@ -382,7 +390,7 @@ public class ModeloTest {
 
 	/**
 	 * Comprueba que solamente es correcto introducir los valores 1 o 2 en el metodo
-	 * ObtenerOpcionMenu.
+	 * ObtenerOpcionMenu a traves de la clase MockEscaner.
 	 */
 	@Test
 	public void testMockObtenerOpcionMenu() {
@@ -480,17 +488,200 @@ public class ModeloTest {
 			char[] optCasteada = modelo.castearOpcionMenu(opcion);
 
 			if (modelo.validarOpcionMenu(optCasteada)) {
-				//System.out.println("True: " + Arrays.toString(optCasteada));
 				assertTrue(modelo.validarOpcionMenu(optCasteada));
 			} else {
-				//System.out.println("False: " + Arrays.toString(optCasteada));
 				assertFalse(modelo.validarOpcionMenu(optCasteada));
 			}
 		}
 	}
-
+	
+	@Test
 	/**
-	 * 
+	 * Comprueba que que el metodo castearOpcionMenu realiza la transformacion de
+	 * String a vector de caracteres de forma correcta.
+	 */
+	public void testCastearOpcionMenu() {
+		
+		/**
+		 * PARTICIONES EQUIVALENTES VALIDAS
+		 */
+		//Valores frontera
+		char[] opcionCasteada1 = modelo.castearOpcionMenu("1");
+		char[] opcionCasteada2 = modelo.castearOpcionMenu("2");
+		/**
+		 * PARTICIONES EQUIVALENTES INVALIDAS
+		 */
+		//Valores limite
+		char[] opcionCasteada0 = modelo.castearOpcionMenu("0");
+		char[] opcionCasteada3 = modelo.castearOpcionMenu("3");
+		char[] opcionCasteada4 = modelo.castearOpcionMenu("4");
+		char[] opcionCasteada5 = modelo.castearOpcionMenu("5");
+		char[] opcionCasteada6 = modelo.castearOpcionMenu("6");
+		char[] opcionCasteada7 = modelo.castearOpcionMenu("7");
+		char[] opcionCasteada8 = modelo.castearOpcionMenu("8");
+		char[] opcionCasteada9 = modelo.castearOpcionMenu("9");
+		char[] opcionCasteadaa = modelo.castearOpcionMenu("a");
+		char[] opcionCasteadab = modelo.castearOpcionMenu("b");
+		char[] opcionCasteadac = modelo.castearOpcionMenu("c");
+		char[] opcionCasteadad = modelo.castearOpcionMenu("d");
+		char[] opcionCasteadae = modelo.castearOpcionMenu("e");
+		char[] opcionCasteadaf = modelo.castearOpcionMenu("f");
+		char[] opcionCasteadag = modelo.castearOpcionMenu("g");
+		char[] opcionCasteadah = modelo.castearOpcionMenu("h");
+		char[] opcionCasteadai = modelo.castearOpcionMenu("i");
+		char[] opcionCasteadaj = modelo.castearOpcionMenu("j");
+		char[] opcionCasteadak = modelo.castearOpcionMenu("k");
+		char[] opcionCasteadal = modelo.castearOpcionMenu("l");
+		char[] opcionCasteadam = modelo.castearOpcionMenu("m");
+		char[] opcionCasteadan = modelo.castearOpcionMenu("n");
+		char[] opcionCasteadao = modelo.castearOpcionMenu("o");
+		char[] opcionCasteadap = modelo.castearOpcionMenu("p");
+		char[] opcionCasteadaq = modelo.castearOpcionMenu("q");
+		char[] opcionCasteadar = modelo.castearOpcionMenu("r");
+		char[] opcionCasteadas = modelo.castearOpcionMenu("s");
+		char[] opcionCasteadat = modelo.castearOpcionMenu("t");
+		char[] opcionCasteadau = modelo.castearOpcionMenu("u");
+		char[] opcionCasteadav = modelo.castearOpcionMenu("v");
+		char[] opcionCasteadaw = modelo.castearOpcionMenu("w");
+		char[] opcionCasteadax = modelo.castearOpcionMenu("x");
+		char[] opcionCasteaday = modelo.castearOpcionMenu("y");
+		char[] opcionCasteadaz = modelo.castearOpcionMenu("z");
+		char[] opcionCasteadaA = modelo.castearOpcionMenu("A");
+		char[] opcionCasteadaB = modelo.castearOpcionMenu("B");
+		char[] opcionCasteadaC = modelo.castearOpcionMenu("C");
+		char[] opcionCasteadaD = modelo.castearOpcionMenu("D");
+		char[] opcionCasteadaE = modelo.castearOpcionMenu("E");
+		char[] opcionCasteadaF = modelo.castearOpcionMenu("F");
+		char[] opcionCasteadaG = modelo.castearOpcionMenu("G");
+		char[] opcionCasteadaH = modelo.castearOpcionMenu("H");
+		char[] opcionCasteadaI = modelo.castearOpcionMenu("I");
+		char[] opcionCasteadaJ = modelo.castearOpcionMenu("J");
+		char[] opcionCasteadaK = modelo.castearOpcionMenu("K");
+		char[] opcionCasteadaL = modelo.castearOpcionMenu("L");
+		char[] opcionCasteadaM = modelo.castearOpcionMenu("M");
+		char[] opcionCasteadaN = modelo.castearOpcionMenu("N");
+		char[] opcionCasteadaO = modelo.castearOpcionMenu("O");
+		char[] opcionCasteadaP = modelo.castearOpcionMenu("P");
+		char[] opcionCasteadaQ = modelo.castearOpcionMenu("Q");
+		char[] opcionCasteadaR = modelo.castearOpcionMenu("R");
+		char[] opcionCasteadaS = modelo.castearOpcionMenu("S");
+		char[] opcionCasteadaT = modelo.castearOpcionMenu("T");
+		char[] opcionCasteadaU = modelo.castearOpcionMenu("U");
+		char[] opcionCasteadaV = modelo.castearOpcionMenu("V");
+		char[] opcionCasteadaW = modelo.castearOpcionMenu("W");
+		char[] opcionCasteadaX = modelo.castearOpcionMenu("X");
+		char[] opcionCasteadaY = modelo.castearOpcionMenu("Y");
+		char[] opcionCasteadaZ = modelo.castearOpcionMenu("Z");
+		char[] opcionCasteadaLess = modelo.castearOpcionMenu("-");
+		char[] opcionCasteadaAst = modelo.castearOpcionMenu("*");
+		char[] opcionCasteadaSuma = modelo.castearOpcionMenu("+");
+		char[] opcionCasteadaGorr = modelo.castearOpcionMenu("^");
+		char[] opcionCasteadaBarr3 = modelo.castearOpcionMenu("\\");
+		char[] opcionCasteadaEx = modelo.castearOpcionMenu("!");
+		char[] opcionCasteadaPipe = modelo.castearOpcionMenu("|");
+		char[] opcionCasteadaArr = modelo.castearOpcionMenu("@");
+		char[] opcionCasteadaAlm = modelo.castearOpcionMenu("#");
+		char[] opcionCasteadaDoll = modelo.castearOpcionMenu("$");
+		char[] opcionCasteadaEsp = modelo.castearOpcionMenu("~");
+		char[] opcionCasteadaPer = modelo.castearOpcionMenu("%");
+		char[] opcionCasteadaAnd = modelo.castearOpcionMenu("&");
+		char[] opcionCasteadaBarr = modelo.castearOpcionMenu("/");
+		char[] opcionCasteadaPar1 = modelo.castearOpcionMenu("(");
+		char[] opcionCasteadaPar2 = modelo.castearOpcionMenu(")");
+		char[] opcionCasteadaEq = modelo.castearOpcionMenu("=");
+		char[] opcionCasteadaInt = modelo.castearOpcionMenu("?");
+		char[] opcionCasteadaComilla = modelo.castearOpcionMenu("'");
+		char[] opcionCasteada1234 = modelo.castearOpcionMenu("1234");
+		char[] opcionCasteada2314 = modelo.castearOpcionMenu("2314");
+		
+		assertArrayEquals(opcion0, opcionCasteada0);
+		assertArrayEquals(opcion1, opcionCasteada1);
+		assertArrayEquals(opcion2, opcionCasteada2);
+		assertArrayEquals(opcion3, opcionCasteada3);
+		assertArrayEquals(opcion4, opcionCasteada4);
+		assertArrayEquals(opcion5, opcionCasteada5);
+		assertArrayEquals(opcion6, opcionCasteada6);
+		assertArrayEquals(opcion7, opcionCasteada7);
+		assertArrayEquals(opcion8, opcionCasteada8);
+		assertArrayEquals(opcion9, opcionCasteada9);
+		assertArrayEquals(opciona, opcionCasteadaa);
+		assertArrayEquals(opcionb, opcionCasteadab);
+		assertArrayEquals(opcionc, opcionCasteadac);
+		assertArrayEquals(opciond, opcionCasteadad);
+		assertArrayEquals(opcione, opcionCasteadae);
+		assertArrayEquals(opcionf, opcionCasteadaf);
+		assertArrayEquals(opciong, opcionCasteadag);
+		assertArrayEquals(opcionh, opcionCasteadah);
+		assertArrayEquals(opcioni, opcionCasteadai);
+		assertArrayEquals(opcionj, opcionCasteadaj);
+		assertArrayEquals(opcionk, opcionCasteadak);
+		assertArrayEquals(opcionl, opcionCasteadal);
+		assertArrayEquals(opcionm, opcionCasteadam);
+		assertArrayEquals(opcionn, opcionCasteadan);
+		assertArrayEquals(opciono, opcionCasteadao);
+		assertArrayEquals(opcionp, opcionCasteadap);
+		assertArrayEquals(opcionq, opcionCasteadaq);
+		assertArrayEquals(opcionr, opcionCasteadar);
+		assertArrayEquals(opcions, opcionCasteadas);
+		assertArrayEquals(opciont, opcionCasteadat);
+		assertArrayEquals(opcionu, opcionCasteadau);
+		assertArrayEquals(opcionv, opcionCasteadav);
+		assertArrayEquals(opcionw, opcionCasteadaw);
+		assertArrayEquals(opcionx, opcionCasteadax);
+		assertArrayEquals(opciony, opcionCasteaday);
+		assertArrayEquals(opcionz, opcionCasteadaz);
+		assertArrayEquals(opcionA, opcionCasteadaA);
+		assertArrayEquals(opcionB, opcionCasteadaB);
+		assertArrayEquals(opcionC, opcionCasteadaC);
+		assertArrayEquals(opcionD, opcionCasteadaD);
+		assertArrayEquals(opcionE, opcionCasteadaE);
+		assertArrayEquals(opcionF, opcionCasteadaF);
+		assertArrayEquals(opcionG, opcionCasteadaG);
+		assertArrayEquals(opcionH, opcionCasteadaH);
+		assertArrayEquals(opcionI, opcionCasteadaI);
+		assertArrayEquals(opcionJ, opcionCasteadaJ);
+		assertArrayEquals(opcionK, opcionCasteadaK);
+		assertArrayEquals(opcionL, opcionCasteadaL);
+		assertArrayEquals(opcionM, opcionCasteadaM);
+		assertArrayEquals(opcionN, opcionCasteadaN);
+		assertArrayEquals(opcionO, opcionCasteadaO);
+		assertArrayEquals(opcionP, opcionCasteadaP);
+		assertArrayEquals(opcionQ, opcionCasteadaQ);
+		assertArrayEquals(opcionR, opcionCasteadaR);
+		assertArrayEquals(opcionS, opcionCasteadaS);
+		assertArrayEquals(opcionT, opcionCasteadaT);
+		assertArrayEquals(opcionU, opcionCasteadaU);
+		assertArrayEquals(opcionV, opcionCasteadaV);
+		assertArrayEquals(opcionW, opcionCasteadaW);
+		assertArrayEquals(opcionX, opcionCasteadaX);
+		assertArrayEquals(opcionY, opcionCasteadaY);
+		assertArrayEquals(opcionZ, opcionCasteadaZ);
+		assertArrayEquals(opcionResta, opcionCasteadaLess);
+		assertArrayEquals(opcionAsterisco, opcionCasteadaAst);
+		assertArrayEquals(opcionMas, opcionCasteadaSuma);
+		assertArrayEquals(opcionGorro, opcionCasteadaGorr);
+		assertArrayEquals(opcioContraBarra, opcionCasteadaBarr3);
+		assertArrayEquals(opcionEx1, opcionCasteadaEx);
+		assertArrayEquals(opcionPipe, opcionCasteadaPipe);
+		assertArrayEquals(opcionArroba, opcionCasteadaArr);
+		assertArrayEquals(opciobCorchete, opcionCasteadaAlm);
+		assertArrayEquals(opcionDolar, opcionCasteadaDoll);
+		assertArrayEquals(opcionEspana, opcionCasteadaEsp);
+		assertArrayEquals(opcioXCiento, opcionCasteadaPer);
+		assertArrayEquals(opcionAnd, opcionCasteadaAnd);
+		assertArrayEquals(opcionSlash, opcionCasteadaBarr);
+		assertArrayEquals(opcionParentesis1, opcionCasteadaPar1);
+		assertArrayEquals(opcionParentesis2, opcionCasteadaPar2);
+		assertArrayEquals(opcionIgual, opcionCasteadaEq);
+		assertArrayEquals(opcionInterrogante1, opcionCasteadaInt);
+		assertArrayEquals(opcioComilla, opcionCasteadaComilla);
+		assertArrayEquals(opcion1234, opcionCasteada1234);
+		assertArrayEquals(opcion2314, opcionCasteada2314);
+	}
+	
+	/**
+	 * Comprueba que solamente es correcto introducir ciertas combinaciones en el
+	 * metodo obtenerOpcionMenu() a traves de la clase MockEscaner.
 	 */
 	@Test
 	public void testMockObtenerEntradaJugador() {
@@ -503,6 +694,7 @@ public class ModeloTest {
 		vectorSuposiciones.add("4000");
 		vectorSuposiciones.add("1239");
 
+		// Combinaciones pair-wise.
 		vectorSuposiciones.add(combinacionJugador0000);
 		vectorSuposiciones.add(combinacionJugador0111);
 		vectorSuposiciones.add(combinacionJugador0222);
@@ -585,16 +777,19 @@ public class ModeloTest {
 		vectorSuposiciones.add(combinacionJugador8654);
 		vectorSuposiciones.add(combinacionJugador8765);
 
-		vectorSuposiciones.add("0000"); // Valores frontera 0.
-		vectorSuposiciones.add("8888"); // Valores frontera 8.
-		vectorSuposiciones.add("0628"); // Valores frontera 0 y 8.
-		vectorSuposiciones.add("8462"); // Valor frontera 8.
-		vectorSuposiciones.add("4860"); // Valores frontera 0 y 8.
-		vectorSuposiciones.add("4602"); // Valor frontera 0.
-		vectorSuposiciones.add("4127"); // Valores limite 1 y 7.
-		vectorSuposiciones.add("7461"); // Valores limite 1 y 7.
-		vectorSuposiciones.add("4712"); // Valores limite 1 y 7.
-		vectorSuposiciones.add("1672"); // Valores limite 1 y 7.
+		// Valores frontera 0 y 8.
+		vectorSuposiciones.add("0000");
+		vectorSuposiciones.add("8888");
+		vectorSuposiciones.add("0628");
+		vectorSuposiciones.add("8462");
+		vectorSuposiciones.add("4860");
+		vectorSuposiciones.add("4602");
+
+		// Valores limite 1 y 7.
+		vectorSuposiciones.add("4127");
+		vectorSuposiciones.add("7461");
+		vectorSuposiciones.add("4712");
+		vectorSuposiciones.add("1672");
 
 		vectorSuposiciones.add(""); // Valor limite)
 		vectorSuposiciones.add(" "); // Valor limite 1.
@@ -604,21 +799,26 @@ public class ModeloTest {
 		vectorSuposiciones.add("00000"); // Valor limite 5.
 		vectorSuposiciones.add("00000000000000000000000000000000000000000000000000"); // Valor limite 50.
 
-		vectorSuposiciones.add("4629"); // Valor limite 9.
-		vectorSuposiciones.add("9462"); // Valor limite 9.
-		vectorSuposiciones.add("4962"); // Valor limite 9.
-		vectorSuposiciones.add("4692"); // Valor limite 9.
-		vectorSuposiciones.add("12-3"); // Valor limite -
-		vectorSuposiciones.add("12-34"); // Valor limite -
+		// Valor limite 9.
+		vectorSuposiciones.add("4629");
+		vectorSuposiciones.add("9462");
+		vectorSuposiciones.add("4962");
+		vectorSuposiciones.add("4692");
+
+		// Valor limite -
+		vectorSuposiciones.add("12-3");
+		vectorSuposiciones.add("12-34");
 
 		vectorSuposiciones.add("9"); // Valor limite 1 y valor limite 9.
 		vectorSuposiciones.add("96"); // Valor limite 2 y valor limite 9.
 		vectorSuposiciones.add("969"); // Valor limite 3 y valor limite 9.
-		vectorSuposiciones.add("96999"); // Valor limite 5 y valor limite 9.
-		vectorSuposiciones.add("96250"); // Valor limite 5 y valor limite 9.
-		vectorSuposiciones.add("90462"); // Valor limite 5 y valor limite 9.
-		vectorSuposiciones.add("95062"); // Valor limite 5 y valor limite 9.
-		vectorSuposiciones.add("96502"); // Valor limite 5 y valor limite 9.
+
+		// Valor limite 5 y valor limite 9.
+		vectorSuposiciones.add("96999");
+		vectorSuposiciones.add("96250");
+		vectorSuposiciones.add("90462");
+		vectorSuposiciones.add("95062");
+		vectorSuposiciones.add("96502");
 
 		InterfazEscaner interfazEscaner = new MockEscaner(vectorSuposiciones);
 
@@ -628,30 +828,24 @@ public class ModeloTest {
 			char[] optCasteada = modelo.castearCombinacionJugador(opcion);
 
 			if (modelo.validarCombinacionJugador(optCasteada)) {
-				//System.out.println("True: " + Arrays.toString(optCasteada));
 				assertTrue(modelo.validarCombinacionJugador(optCasteada));
-
 			} else {
-				//System.out.println("False: " + Arrays.toString(optCasteada));
 				assertFalse(modelo.validarCombinacionJugador(optCasteada));
-
 			}
 		}
-
 	}
 
 	/**
-	 * Test caja negra de castearEntradaJugador. R -> Simbolo de restar (-). A ->
-	 * Simbolo asterisco (*).
+	 * Comprueba a traves de valores generados a partir del pair-wise testing
+	 * que se pueden transformar de String a vector de caracteres.
 	 */
 	@Test
 	public void testCastearEntradaJugadorPairWise() {
-
 		/**
-		 * 
-		 * Pair-wise testing de numeros y simbolos Char numerico | Char simbolo |Char
-		 * numerico | Char simbolo Char simbolo | Char numerico | Char simbolo | Char
-		 * numerico
+		 * Pair-wise testing de particiones equivalentes invalidas (numeros comprendidos 
+		 * entre 0 y 8, ambos incluidos).
+		 * Char numerico | Char simbolo |Char numerico | Char simbolo 
+		 * Char simbolo | Char numerico | Char simbolo | Char numerico
 		 * 
 		 * R -> Simbolo de restar (-). A -> Simbolo asterisco (*).
 		 * 
@@ -666,6 +860,7 @@ public class ModeloTest {
 		char[] combinacionCasteadaR2A8 = modelo.castearCombinacionJugador(combinacionJugadorR2A8);
 		assertArrayEquals(combinacionCasteadaEsperadaR2A8, combinacionCasteadaR2A8);
 
+		// Pair-wise testing de particiones equivalentes validas
 		char[] combinacionEsperada0000 = { '0', '0', '0', '0' };
 		char[] combinacionEsperada0111 = { '0', '1', '1', '1' };
 		char[] combinacionEsperada0222 = { '0', '2', '2', '2' };
@@ -833,26 +1028,24 @@ public class ModeloTest {
 
 	/**
 	 * Comprueba los valores interiores, limite y frontera ademas de las particiones
-	 * equivalentes.
+	 * equivalentes validas como invalidas de las combinaciones introducidas
+	 * mediante el Escaner o el MockEscaner.
 	 */
 	@Test
 	public void validarCombinacionJugador() {
 
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// equivalentes
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// validas.
+		/**
+		 * PARTICIONES EQUIVALENTES VALIDAS -> Combinaciones que son validas para el juego.
+		 */
 		assertTrue(modelo.validarCombinacionJugador(entradaCasteada8888));
-
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada4127));
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada7461));
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada4712));
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada1672));
-
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada0628));
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada8462));
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada4860));
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada4602));
-
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada0000));
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada0111));
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada0222));
@@ -935,10 +1128,10 @@ public class ModeloTest {
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada8654));
 		assertTrue(modelo.validarCombinacionJugador(combinacionCasteada8765));
 
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// equivalentes
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// invalidas
-		// if(X == 4)
+		/**
+		 * PARTICIONES EQUIVALENTES VALIDAS -> Combinaciones que no son validas para el juego.
+		 */
+		// if(X == 4) -> Si el tamano del String es igual a 4.
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteada0));
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteada00));
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteada000));
@@ -947,7 +1140,8 @@ public class ModeloTest {
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteadaEspacio));
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteada50));
 
-		// if((Y < '0') || (Y > '8'))
+		// if((Y < '0') || (Y > '8')) -> Si algun valor no esta comprendido entre 0 y 8
+		// (ambos incluidos).
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteada12R3));
 		assertFalse(modelo.validarCombinacionJugador(entradaCasteada12R34));
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada4629));
@@ -955,12 +1149,11 @@ public class ModeloTest {
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada4962));
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada4692));
 
-		// Ambos casos
+		// Ambos casos anteriores comprendidos en un mismo String.
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada9));
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada96));
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada969));
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada96999));
-
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada96250));
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada90462));
 		assertFalse(modelo.validarCombinacionJugador(combinacionCasteada95062));
@@ -968,78 +1161,12 @@ public class ModeloTest {
 	}
 
 	/**
-	 * Comprueba el correcto funcionamiento de la funcion generarCombinacionSecreta,
-	 * verificando si realmente no se repite ningun numero dentro de la combinacion
-	 * secreta.
-	 */
-	//@Test
-	/*public void testValidarCombinacionSecreta1() {
-		
-		///////////////////////////////////////////////////////////////////////////////////// Particion
-		///////////////////////////////////////////////////////////////////////////////////// equivalente
-		///////////////////////////////////////////////////////////////////////////////////// valida.
-		ArrayList<String> vectorSuposicionesAleatorio = new ArrayList<String>();
-		vectorSuposicionesAleatorio.add("6548");
-		InterfazAleatorio interfazAleatorio = new MockAleatorio(vectorSuposicionesAleatorio);
-		
-		char[] suposicionAleatoria = Modelo.generarCombinacionSecreta(interfazAleatorio);
-		
-		// if(X[i] != X[j])
-		char[] combinacionSecretaCasteada0123 = { '0', '1', '2', '3' };
-		char[] combinacionSecretaCasteada3210 = { '3', '2', '1', '0' };
-		char[] combinacionSecretaCasteada5678 = { '5', '6', '7', '8' };
-		char[] combinacionSecretaCasteada8765 = { '8', '7', '6', '5' };
-		char[] combinacionSecretaCasteada1357 = { '1', '3', '5', '7' };
-		char[] combinacionSecretaCasteada6548 = { '6', '5', '4', '8' };
-
-		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada0123);
-		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada3210);
-		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada5678);
-		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada8765);
-		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada1357);
-		assertArrayEquals(suposicionAleatoria, combinacionSecretaCasteada6548);
-
-		
-		ArrayList<String> vectorSuposicionesJugador = new ArrayList<String>();
-		vectorSuposiciones.add(e);
-		
-		assertArrayEquals(); 
-		modelo.generarCombinacionSecreta(interfazAleatorio);
-
-		///////////////////////////////////////////////////////////////////////////////////// Particion
-		///////////////////////////////////////////////////////////////////////////////////// equivalente
-		///////////////////////////////////////////////////////////////////////////////////// invalida.
-		// if(X[i] == X[j])
-		char[] combinacionSecretaCasteada0113 = { '0', '1', '1', '3' }; // 1==1.
-		char[] combinacionSecretaCasteada3320 = { '3', '3', '2', '0' }; // 3==3.
-		char[] combinacionSecretaCasteada5668 = { '5', '6', '6', '8' }; // 6==6.
-		char[] combinacionSecretaCasteada8755 = { '8', '7', '5', '5' }; // 5==5.
-		char[] combinacionSecretaCasteada0083 = { '0', '0', '8', '3' }; // 0==0.
-		char[] combinacionSecretaCasteada8428 = { '8', '4', '2', '8' }; // 8==8.
-		char[] combinacionSecretaCasteadaM428 = { '+', '4', '2', '8' }; // 8==8.
-
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0113));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada3320));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada5668));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8755));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada0083));
-		assertTrue(modelo.validarCombinacionSecreta(combinacionSecretaCasteada8428));
-		assertFalse(modelo.validarCombinacionSecreta(combinacionSecretaCasteadaM428));
-	}*/
-
-	/**
-	 * --------------- Test del metodo compararCombinaciones ---------------
-	 * Comprueba que en funcion secreta y una combinacion del jugador simuladas
-	 * devuelva el array de aciertos que se espera.
+	 * Comprueba que en funcion de la combinacion secreta y una combinacion del
+	 * jugador simuladas devuelva el array de aciertos que se espera.
 	 */
 	@Test
 	public void testCompararCombinaciones() {
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// Particiones
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// equivalentes
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// validas
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// (no
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// hay
-		//////////////////////////////////////////////////////////////////////////////////////////////////////// invalidas)
+
 		char[] combinacionSecreta2357 = { '2', '3', '5', '7' };
 		char[] combinacionJugador2357 = { '2', '3', '5', '7' };
 		char[] aciertosComparativa2357X2357 = Modelo.compararCombinaciones(combinacionSecreta2357,
@@ -1099,12 +1226,12 @@ public class ModeloTest {
 	}
 
 	/**
-	 * Comprueba todas las combinaciones posibles de 0, B y N en un array de 4
-	 * posiciones.
-	 * 
-	 * https://pairwise.teremokgames.com/x4to/
+	 * Comprueba si se gana el juego con todas las combinaciones posibles de 0, B y
+	 * N en un array de 4 posiciones.
 	 * 
 	 * La unica vez que el assert es true es cuando el array es {'N','N','N','N'}.
+	 * 
+	 * Enlace a la herramienta -> https://pairwise.teremokgames.com/x4to/
 	 */
 	@Test
 	public void testComprobarVictoriaTodasCombinaciones() {
@@ -1190,7 +1317,14 @@ public class ModeloTest {
 		char[] aciertosNNN0 = { 'N', 'N', 'N', '0' };
 		char[] aciertosNNNB = { 'N', 'N', 'N', 'B' };
 		char[] aciertosNNNN = { 'N', 'N', 'N', 'N' };
-
+		char[] aciertosNULL = new char[0];
+		char[] aciertos3 = { '0', '0', '0'};
+		char[] aciertos5 = { '0', '0', '0', '0','0' };
+		
+		assertFalse(Modelo.comprobarVictoria(aciertosNULL));
+		assertFalse(Modelo.comprobarVictoria(aciertos3));
+		assertFalse(Modelo.comprobarVictoria(aciertos5));
+		
 		assertFalse(Modelo.comprobarVictoria(aciertos0000));
 		assertFalse(Modelo.comprobarVictoria(aciertos000B));
 		assertFalse(Modelo.comprobarVictoria(aciertos000N));
@@ -1275,11 +1409,11 @@ public class ModeloTest {
 	}
 
 	/**
-	 * Comprueba todas las combinaciones posibles de: - 0, B y N en un array de 4
-	 * posiciones | https://pairwise.teremokgames.com/x4to/ - 0 y B en un array de 4
-	 * posiciones | https://pairwise.teremokgames.com/x4wg/ - 0 y N en un array de 4
-	 * posiciones | https://pairwise.teremokgames.com/x520/ - B y N en un array de 4
-	 * posiciones | https://pairwise.teremokgames.com/x4z8/
+	 * Comprueba si se gana el juego con todas las combinaciones posibles de: 
+	 * - 0, B y N en un array de 4 posiciones | https://pairwise.teremokgames.com/x4to/ 
+	 * - 0 y B en un array de 4 posiciones | https://pairwise.teremokgames.com/x4wg/ 
+	 * - 0 y N en un array de 4 posiciones | https://pairwise.teremokgames.com/x520/ 
+	 * - B y N en un array de 4 posiciones | https://pairwise.teremokgames.com/x4z8/
 	 * 
 	 * Todo ello usando pair-wise testing. La unica vez que el assert es true es
 	 * cuando el array es {'N','N','N','N'}.
@@ -1361,8 +1495,8 @@ public class ModeloTest {
 	}
 
 	/**
-	 * Comprueba la opcion del menu inicial del juego correcta sea unicamente la 1 o
-	 * la 2.
+	 * Comprueba que la opcion del menu inicial del juego correcta sea cuando sea
+	 * unicamente la 1 o la 2.
 	 */
 	@Test
 	public void testComprobarOpcion() {
@@ -1379,7 +1513,7 @@ public class ModeloTest {
 		assertFalse(modelo.validarOpcionMenu(opcion7)); // Limite superior alejado.
 		assertFalse(modelo.validarOpcionMenu(opcion8)); // Limite superior alejado.
 		assertFalse(modelo.validarOpcionMenu(opcion9)); // Limite superior alejado.
-		assertFalse(modelo.validarOpcionMenu(opciona));
+		assertFalse(modelo.validarOpcionMenu(opciona)); // ....
 		assertFalse(modelo.validarOpcionMenu(opcionb));
 		assertFalse(modelo.validarOpcionMenu(opcionc));
 		assertFalse(modelo.validarOpcionMenu(opciond));
@@ -1434,8 +1568,7 @@ public class ModeloTest {
 
 		assertFalse(modelo.validarOpcionMenu(opcionResta)); // Limite.
 		assertFalse(modelo.validarOpcionMenu(opcionAsterisco)); // Limite.
-		assertFalse(modelo.validarOpcionMenu(opcionBarra));
-		assertFalse(modelo.validarOpcionMenu(opcionResta));
+		assertFalse(modelo.validarOpcionMenu(opcionResta)); // ....
 		assertFalse(modelo.validarOpcionMenu(opcionAsterisco));
 		assertFalse(modelo.validarOpcionMenu(opcionMas));
 		assertFalse(modelo.validarOpcionMenu(opcionGorro));
