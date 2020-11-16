@@ -60,9 +60,17 @@ public class Modelo {
 	public boolean validarOpcionMenu(char[] opcionCasteada) {
 		boolean esCorrecto = true;
 		int i = 0;
-		if ((opcionCasteada.length != 1) || ((opcionCasteada[i] < '1') || (opcionCasteada[i] > '2'))) {
+		if(opcionCasteada.length == 1) {
+			if((opcionCasteada[i] < '1') || (opcionCasteada[i] > '2')) {
+				esCorrecto = false;
+			}
+		}
+		else {
 			esCorrecto = false;
 		}
+		/*if ((opcionCasteada.length != 1) || ((opcionCasteada[i] < '1') || (opcionCasteada[i] > '2'))) {
+			esCorrecto = false;
+		}*/
 		return esCorrecto;
 	}
 

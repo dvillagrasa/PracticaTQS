@@ -23,16 +23,25 @@ import org.junit.Test;
 public class ControladorTest {
 
 	/**
+	 * Instancias de las clases VistaTest y ModeloTest.
+	 */
+	VistaTest vistaTest = new VistaTest();
+	ModeloTest modeloTest = new ModeloTest();
+	
+	/**
+	 * Instancias de las clases Vista, Modelo y Controlador.
+	 */
+	Vista vista = new Vista();
+	Modelo modelo = new Modelo();
+	Controlador controlador = new Controlador(vista, modelo);
+	
+	/**
 	 * Metodo de test que reune todos los tests disponibles para el juego
 	 * Mastermind.
 	 */
 	@Test
 	public void testTodoEnUno() {
 
-		// Instancias de las clases VistaTest y ModeloTest.
-		VistaTest vistaTest = new VistaTest();
-		ModeloTest modeloTest = new ModeloTest();
-		
 		// Tests de la clase ControladorTest.
 		testGestorMenu();
 		testJugarMastermind1();
@@ -60,10 +69,6 @@ public class ControladorTest {
 		vistaTest.testMostrarMensajeVictoria();
 		vistaTest.testMostrarDespedida();
 		vistaTest.testMostrarOpcionInvalida();
-
-		Vista vista = new Vista();
-		Modelo modelo = new Modelo();
-		Controlador controlador = new Controlador(vista, modelo);
 	
 		String args[] = null;
 		Controlador.main(args);
@@ -72,9 +77,9 @@ public class ControladorTest {
 	
 	//@Test
 	public void testGestorMenu() {
-		Vista vista = new Vista();
-		Modelo modelo = new Modelo();
-		Controlador controlador = new Controlador(vista,modelo);
+		//Vista vista = new Vista();
+		//Modelo modelo = new Modelo();
+		//Controlador controlador = new Controlador(vista,modelo);
 
 		ArrayList<String> vectorSuposiciones = new ArrayList<String>();
 		
@@ -87,8 +92,8 @@ public class ControladorTest {
 		
 		InterfazEscaner interfazEscaner = new MockEscaner(vectorSuposiciones);
 		
-		char suposicionEsperada = controlador.gestorMenu(interfazEscaner);
-		assertEquals(suposicionEsperada, '1');
+		char[] suposicionEsperada = controlador.gestorMenu(interfazEscaner);
+		assertEquals(suposicionEsperada[0], '1');
 		
 		ArrayList<String> vectorSuposiciones1 = new ArrayList<String>();
 
@@ -101,8 +106,8 @@ public class ControladorTest {
 		
 		InterfazEscaner interfazEscaner1 = new MockEscaner(vectorSuposiciones1);
 
-		char suposicionEsperada1 = controlador.gestorMenu(interfazEscaner1);
-		assertEquals(suposicionEsperada1, '2');
+		char[] suposicionEsperada1 = controlador.gestorMenu(interfazEscaner1);
+		assertEquals(suposicionEsperada1[0], '2');
 	}
 	
 	/**
@@ -111,9 +116,9 @@ public class ControladorTest {
 	//@Test
 	public void testJugarMastermind1() {
 		
-		Vista vista = new Vista();
-		Modelo modelo = new Modelo();
-		Controlador controlador = new Controlador(vista,modelo);
+		//Vista vista = new Vista();
+		//Modelo modelo = new Modelo();
+		//Controlador controlador = new Controlador(vista,modelo);
 		
 		ArrayList<String> vectorSuposiciones = new ArrayList<String>();
 						
@@ -153,9 +158,9 @@ public class ControladorTest {
 	//@Test
 	public void testJugarMastermind2() {
 
-		Vista vista = new Vista();
-		Modelo modelo = new Modelo();
-		Controlador controlador = new Controlador(vista, modelo);
+		//Vista vista = new Vista();
+		//Modelo modelo = new Modelo();
+		//Controlador controlador = new Controlador(vista, modelo);
 
 		ArrayList<String> vectorSuposiciones = new ArrayList<String>();
 
@@ -195,9 +200,9 @@ public class ControladorTest {
 	//@Test
 	public void testJugarMastermind3() {
 
-		Vista vista = new Vista();
-		Modelo modelo = new Modelo();
-		Controlador controlador = new Controlador(vista, modelo);
+		//Vista vista = new Vista();
+		//Modelo modelo = new Modelo();
+		//Controlador controlador = new Controlador(vista, modelo);
 
 		ArrayList<String> vectorSuposiciones = new ArrayList<String>();
 
@@ -237,9 +242,9 @@ public class ControladorTest {
 	 */
 	//@Test
 	public void testgestorMastermind1() {
-		Vista vista = new Vista();
-		Modelo modelo = new Modelo();
-		Controlador controlador = new Controlador(vista, modelo);
+		//Vista vista = new Vista();
+		//Modelo modelo = new Modelo();
+		//Controlador controlador = new Controlador(vista, modelo);
 
 		ArrayList<String> vectorEscaner = new ArrayList<String>();
 		vectorEscaner.add("1"); // Selecciona la opcion 1 del menu.
@@ -289,9 +294,9 @@ public class ControladorTest {
 	 */
 	//@Test
 	public void testgestorMastermind2() {
-		Vista vista = new Vista();
-		Modelo modelo = new Modelo();
-		Controlador controlador = new Controlador(vista, modelo);
+		//Vista vista = new Vista();
+		//Modelo modelo = new Modelo();
+		//Controlador controlador = new Controlador(vista, modelo);
 
 		ArrayList<String> vectorEscaner = new ArrayList<String>();
 		vectorEscaner.add("1"); // Selecciona la opcion 1 del menu.

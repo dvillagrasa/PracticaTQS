@@ -72,13 +72,13 @@ public class Controlador {
 	 */
 	public void gestorMastermind(InterfazEscaner interfazEscaner, InterfazAleatorio interfazAleatorio) {
 		boolean salirMastermind = false;
-		char opcionMenu;
+		char[] opcionMenu;
 		do {
 			opcionMenu = controlador.gestorMenu(interfazEscaner);
-			if (opcionMenu == '1') {
+			if (opcionMenu[0] == '1') {
 				jugarMastermind(interfazEscaner, interfazAleatorio);
 			}
-			if (opcionMenu == '2') {
+			if (opcionMenu[0] == '2') {
 				vista.mostrarMensajeDespedida();
 				salirMastermind = true;
 			}
@@ -94,19 +94,20 @@ public class Controlador {
 	 * @param interfazEscaner - Instancia de la interfaz InterfazEscaner.
 	 * @return Devuelve la opcion del menu validada.
 	 */
-	public char gestorMenu(InterfazEscaner interfazEscaner) {
+	public char[] gestorMenu(InterfazEscaner interfazEscaner) {
 		boolean esValida = false;
+		char[] opcionMenuCasteada;
 		do {
 			vista.mostrarMenu();
 			String opcionMenu = modelo.obtenerOpcionMenu(interfazEscaner);
-			char[] opcionMenuCasteada = modelo.castearOpcionMenu(opcionMenu);
+			opcionMenuCasteada = modelo.castearOpcionMenu(opcionMenu);
 			esValida = modelo.validarOpcionMenu(opcionMenuCasteada);
-			opcionEscogida = opcionMenu.charAt(0);
+			//opcionEscogida = opcionMenu.charAt(0);
 			if (!esValida) {
 				vista.mostrarOpcionInvalida();
 			}
 		} while (!esValida);
-		return opcionEscogida;
+		return opcionMenuCasteada;
 	}
 
 	/**
