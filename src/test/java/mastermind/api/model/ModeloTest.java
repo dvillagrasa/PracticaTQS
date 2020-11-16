@@ -1317,7 +1317,14 @@ public class ModeloTest {
 		char[] aciertosNNN0 = { 'N', 'N', 'N', '0' };
 		char[] aciertosNNNB = { 'N', 'N', 'N', 'B' };
 		char[] aciertosNNNN = { 'N', 'N', 'N', 'N' };
-
+		char[] aciertosNULL = new char[0];
+		char[] aciertos3 = { '0', '0', '0'};
+		char[] aciertos5 = { '0', '0', '0', '0','0' };
+		
+		assertFalse(Modelo.comprobarVictoria(aciertosNULL));
+		assertFalse(Modelo.comprobarVictoria(aciertos3));
+		assertFalse(Modelo.comprobarVictoria(aciertos5));
+		
 		assertFalse(Modelo.comprobarVictoria(aciertos0000));
 		assertFalse(Modelo.comprobarVictoria(aciertos000B));
 		assertFalse(Modelo.comprobarVictoria(aciertos000N));

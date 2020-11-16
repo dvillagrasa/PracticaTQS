@@ -212,8 +212,13 @@ public class Modelo {
 	public static boolean comprobarVictoria(char[] aciertos) {
 		boolean victoria = false;
 		int contador = 0;
+		char aux[] = new char[0];
+		
 		for (int i = 0; i < MAX_CLAVIJAS; i++) {
-			if (aciertos[i] == 'N') {
+			if(aciertos.length == aux.length) {
+				return victoria;
+			}
+			if ((aciertos.length == MAX_CLAVIJAS) && (aciertos[i] == 'N')) {
 				contador++;
 			}
 		}
